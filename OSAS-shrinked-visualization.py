@@ -114,3 +114,9 @@ plt.figure(figsize=(20, 6))
 plt.plot(patient_map_features['10']['SpO2(%)'])
 plt.show()
 
+# Missing data in patient 10's SpO2 time series
+plt.figure(figsize=(20, 6))
+plt.plot(patient_map_features['10']['signal_pleth'])
+plt.show()
+
+
