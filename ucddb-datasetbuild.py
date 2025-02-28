@@ -1,10 +1,9 @@
-
 import mne
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime
-
+import glob
 
 
 
@@ -17,8 +16,16 @@ def read_rec(file_path):
         print(f"Error reading REC file: {e}")
         return None
 
+def convert_measure_time(info):
+    meas_date = info['meas_date']
+    if isinstance(meas_date, tuple):  # Handle MNE's tuple format
+        meas_date = meas_date[0]
+    if not isinstance(meas_date, datetime.datetime):
+        meas_date = datetime.datetime.fromtimestamp(meas_date, tz=datetime.timezone.utc)
 
-def load_respiratory_events(file_path, date):
+    return meas_date
+
+def load_respiratory_events(file_path, meas_date, patient):
     # Read the file
     with open(file_path, 'r') as file:
         lines = file.readlines()
@@ -58,76 +65,66 @@ def load_respiratory_events(file_path, date):
                         event_datetime += datetime.timedelta(days=1)
                     # Calculate the time difference in seconds from meas_date
                     time_diff = (event_datetime - meas_date).total_seconds()
-                data.append([ time_diff, event_type, duration, low, percent_drop])
+                data.append([patient, time_diff, event_type, duration, low, percent_drop])
+    
     # Create DataFrame
-    columns = ['Time', 'Type', 'Duration', 'Low', 'PercentDrop']
+    columns = ['Patient','Time', 'Type', 'Duration', 'Low', 'PercentDrop']
     df = pd.DataFrame(data, columns=columns)
     
     return df
-                
-patient_path = "datasets/files/ucddb027"
+   
+patients = []
+resp_events = pd.DataFrame()
+patients_df = None
 
-file = patient_path + ".edf"
-data = mne.io.read_raw_edf(file)
-raw_data = data.get_data()
-# you can get the metadata included in the file and a list of all channels:
-info = data.info
-channels = data.ch_names
-
-
-print(info)
-print(channels)
-
-
-# Extract meas_date
-meas_date = info['meas_date']
-if isinstance(meas_date, tuple):  # Handle MNE's tuple format
-    meas_date = meas_date[0]
-
-# Ensure meas_date is a datetime object
-if not isinstance(meas_date, datetime.datetime):
-    meas_date = datetime.datetime.fromtimestamp(meas_date, tz=datetime.timezone.utc)
-
-
-resp_events = load_respiratory_events(patient_path + '_respevt.txt',meas_date)
-print(resp_events.head())
+for file in glob.glob("datasets/files/*.edf"):
+    p = file.split("/")
+    p = p[-1].split(".")
+    p = p[0]
+    patients.append((p,file))
 
 
 
 
-#print(channels)
 
+for p in patients:
+    p_name = p[0]
+    p_file = p[1]
+    data = mne.io.read_raw_edf(p_file)
+    raw_data = data.get_data()
 
-# Create a DataFrame
-df = pd.DataFrame(raw_data.T, columns=channels)
-# Create a time vector in seconds
-sfreq = info['sfreq']  # Sampling frequency
-time_vector_seconds = np.arange(raw_data.shape[1]) / sfreq
+    info = data.info
+    channels = data.ch_names
 
-# Create DataFrame for EDF data
-df_edf = pd.DataFrame(raw_data.T, columns=channels)
-df_edf['Time'] = time_vector_seconds  # Use seconds for time
+    meas_date = convert_measure_time(info)
+    p_events = p_file.split(".")[0]
+    print(p_name)
+    df = load_respiratory_events(p_events + '_respevt.txt',meas_date, p_name)
+    resp_events = pd.concat([resp_events,df])
 
-# Print the first few rows of the DataFrame
-#print(df_edf.head())
-
-
-# Plot EDF data
-plt.figure(figsize=(14, 10))
-for i, channel in enumerate(channels[5:10]): 
-    plt.subplot(5, 1, i+1)
-    plt.plot(df_edf['Time'], df_edf[channel], label=channel)
+    sfreq = info['sfreq']  # Sampling frequency
+    time_vector_seconds = np.arange(raw_data.shape[1]) / sfreq
     
-    # Overlay respiratory events
-    for _, event in resp_events.iterrows():
-        event_start = event['Time']
-        event_end = event_start + event['Duration']
-        plt.axvspan(event_start, event_end, color='red', alpha=0.3)
-    
-    plt.title(channel)
-    plt.xlabel('Time (seconds)')
-    plt.ylabel('Amplitude')
-    plt.legend()
 
-plt.tight_layout()
-plt.show()
+    if isinstance(patients_df, pd.DataFrame):
+        df_edf = pd.DataFrame(raw_data.T, columns=channels)
+        
+        df_edf['Time'] = time_vector_seconds
+        df_edf['Patient'] = p_name
+        patients_df = pd.concat([patients_df,df_edf],ignore_index=True)
+    else:
+        patients_df = pd.DataFrame(raw_data.T, columns=channels)
+        patients_df['Time'] = time_vector_seconds
+        patients_df['Patient'] = p_name
+
+        
+    #print(patients_df.tail())
+
+#print(resp_events[resp_events['Time'] >= 1060.0 and resp_events['Time'] < 1080])
+print(resp_events)
+
+
+smaller_df = patients_df[['Patient', 'Time', 'SpO2']]
+
+smaller_df.to_feather('datasets/dataset_UCDDB.feather')
+resp_events.to_feather('datasets/dataset_UCDDB_events.feather')
