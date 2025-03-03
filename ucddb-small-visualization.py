@@ -144,5 +144,5 @@ print(f"Test set: {len(test_segments)} segments")
 print(train_segments['Segment'])
 
 
-train_df.to_feather('trainset-labeled.feather')
-train_df.to_feather('testset-labeled.feather')
+train_df.to_feather('datasets/trainset-labeled.feather')
+train_df.to_feather('datasets/testset-labeled.feather')
