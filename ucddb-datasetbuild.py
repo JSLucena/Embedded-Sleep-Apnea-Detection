@@ -118,13 +118,13 @@ for p in patients:
         patients_df['Patient'] = p_name
 
         
-    #print(patients_df.tail())
+   
 
 #print(resp_events[resp_events['Time'] >= 1060.0 and resp_events['Time'] < 1080])
-print(resp_events)
-
+#print(resp_events)
 
 smaller_df = patients_df[['Patient', 'Time', 'SpO2']]
+print(smaller_df.tail())
 
 smaller_df.to_feather('datasets/dataset_UCDDB.feather')
 resp_events.to_feather('datasets/dataset_UCDDB_events.feather')
