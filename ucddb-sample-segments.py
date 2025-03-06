@@ -2,13 +2,14 @@ import pandas as pd
 import numpy as np
 from tqdm.notebook import tqdm
 from matplotlib import pyplot as plt
-
-
+from functools import partial
+import multiprocessing as mp
 
 # Constants for the segment splits
 FS = 128  # Original sampling rate (Hz)
-TARGET_FREQUENCY = 1  # Desired sampling frequency (Hz)
-WINDOW_SIZE = int(FS * 60 / (FS // TARGET_FREQUENCY))  # Adjusted window size
+TARGET_FREQUENCY = 1 # Desired sampling frequency (Hz)
+LENGTH = 30
+WINDOW_SIZE = int(FS * LENGTH / (FS // TARGET_FREQUENCY))  # Adjusted window size
 HALF_WINDOW = WINDOW_SIZE // 2  # 50% overlap
 APNEA_RATIO = 0.5  # Desired balance between apnea and non-apnea events
 SAMPLE_INTERVAL = FS // TARGET_FREQUENCY  # How many original samples to skip
@@ -67,8 +68,6 @@ def get_random_apnea_segment(df):
     Returns:
     Tuple: (sampled segment, random index) or -1 if segment cannot be extracted
     """
-    # Calculate sampling interval
-    sample_interval = FS // TARGET_FREQUENCY
     
     # Recalculate window size based on target frequency
 
@@ -79,9 +78,9 @@ def get_random_apnea_segment(df):
     random_idx = np.random.choice(apnea_indices)
 
     # Calculate start and end indices
-    start_idx = random_idx - HALF_WINDOW
-    end_idx = random_idx + HALF_WINDOW - 1
-    segment_indices = range(start_idx, end_idx, sample_interval)
+    start_idx = random_idx - LENGTH*FS//2
+    end_idx = random_idx + LENGTH*FS//2 - 1
+    segment_indices = range(int(start_idx), int(end_idx), SAMPLE_INTERVAL)
     # Ensure we stay within dataset bounds
     if start_idx >= 0 and end_idx < len(df):
         # Extract full segment
@@ -91,6 +90,27 @@ def get_random_apnea_segment(df):
         return sampled_segment, random_idx
     else:
         return sampled_segment, -1
+
+def extract_segment(df, batch_size, counter, lock):
+    """Extract multiple apnea segments in a batch with progress tracking."""
+    results = []
+    process_name = mp.current_process().name
+    process_id = int(process_name.split("-")[-1])
+    seed = process_id * 1000
+    np.random.seed(seed)
+    for _ in range(batch_size):
+        segment, random_idx = get_random_apnea_segment(df)
+        if random_idx != -1:  # Discard invalid segments
+            results.append((segment, random_idx))
+
+        # Update progress using shared counter
+        #with lock:
+        #    counter.value += 1
+        #if counter.value % 100 == 0:  # Print progress every 100 segments
+        #    print(f"Progress: {counter.value} segments processed")
+
+    print(f"{process_name} process processed  {batch_size} segments", flush=True)
+    return results
 
 def generate_segments(df, patients, target_frequency=1):
     """
@@ -108,26 +128,27 @@ def generate_segments(df, patients, target_frequency=1):
     apnea_segments = []  # Store apnea-heavy segments separately
 
     # Recalculate window size and sampling interval based on target frequency
-    sample_interval = FS // target_frequency
-    window_size = int(FS * 60 / sample_interval)
-    half_window = window_size // 2
+    #sample_interval = FS // target_frequency
+    #window_size = int(FS * 60 / sample_interval)
+    #half_window = window_size // 2
 
     for patient in patients:
         patient_df = df[df["Patient"] == patient].reset_index(drop=True)
 
         # Generate sliding window segments (50% overlap)
-        for start in range(0, len(patient_df) - window_size, half_window):
+        for start in range(0, len(patient_df) - (LENGTH*FS), HALF_WINDOW*FS):
             # Sample every nth point based on target frequency
-            segment_indices = range(start, start + window_size, sample_interval)
+            segment_indices = range(start, start + (LENGTH*FS), SAMPLE_INTERVAL)
+            #print(segment_indices)
             segment_df = patient_df.iloc[segment_indices]
 
             # Extract sampled SpO2 values
             spo2_values = segment_df["SpO2"].values
 
             # Labels are now precomputed from the dataset
-            binary_label = 1 if segment_df["Label"].sum() > 0 else 0
-            apnea_label = segment_df["Apnea"].max()  # If any Apnea in segment, set to 1
-            hypopnea_label = segment_df["Hypopnea"].max()  # If any Hypopnea, set to 1
+            binary_label = 1 if segment_df["Label"].sum() > 10*TARGET_FREQUENCY else 0
+            apnea_label = 1 if segment_df["Apnea"].sum() > 10*TARGET_FREQUENCY else 0  # If any Apnea in segment, set to 1
+            hypopnea_label = 1 if segment_df["Hypopnea"].sum() > 10*TARGET_FREQUENCY else 0   # If any Hypopnea, set to 1
             if apnea_label == 0 and hypopnea_label == 0:
                 other_label = segment_df["Other"].max()  # If none, set Other = 1
             else:
@@ -139,94 +160,63 @@ def generate_segments(df, patients, target_frequency=1):
             if binary_label == 1:
                 apnea_segments.append(spo2_values)
 
+    count = int((len(segments) - len(apnea_segments)) * APNEA_RATIO)
     print(f"Total segments: {len(segments)}, Apnea segments: {len(apnea_segments)}")
 
-    # Randomly sample apnea segments to balance the dataset
-    count = int((len(segments) - len(apnea_segments)) * APNEA_RATIO)
-    for i in range(count):
-        random_segment, idx = get_random_apnea_segment(df)
-        if idx < 0:  # Check if function failed to find a segment
-            i -= 1
-        else:
-            # Resample the random segment to match target frequency
-            random_segment_sampled = random_segment[::sample_interval]
-            segments.append((random_segment_sampled, 1, 
-                             df.iloc[idx]['Apnea'], 
+    num_processes = 8  # Number of processes in the pool
+    batch_size = 32  # Number of segments to process per batch
+    num_batches = (count + batch_size - 1) // batch_size  # Calculate number of batches
+
+    print(f"Starting parallel extraction using {num_processes} processes with batch size {batch_size}")
+
+    # Use a global manager to create a shared counter and lock
+    with mp.Manager() as manager:
+        counter = manager.Value("i", 0)  # Shared counter
+        lock = manager.Lock()  # Lock for thread safety
+
+        # Create a process pool
+        with mp.Pool(processes=num_processes) as pool:
+            # Submit batches of work
+            results = [
+                pool.apply_async(extract_segment, args=(df, batch_size, counter, lock))
+                for _ in range(num_batches)
+            ]
+
+            # Collect results
+            for r in results:
+                batch_segments = r.get()  # Get the results from this batch
+                for segment, idx in batch_segments:
+                    if segment is not None:  # Only add valid segments
+                        segments.append((segment, 1 , df.iloc[idx]['Apnea'], 
                              df.iloc[idx]['Hypopnea'], 
                              df.iloc[idx]['Other']))
 
     print(f"Final segments: {len(segments)}")
+
     return pd.DataFrame(segments, columns=["Segment", "Label", "Apnea", "Hypopnea", "Other"])
 
-path = 'datasets/dataset_UCDDB.feather'
-events = 'datasets/dataset_UCDDB_events.feather'
+
+
+train = 'datasets/trainset-labeled.feather'
+test = 'datasets/testset-labeled.feather'
 pd.set_option('display.max_columns', None)  # or 1000
 #pd.set_option('display.max_rows', None)  # or 1000
 pd.set_option('display.max_colwidth', None)  # or 199
 
-
-dataset = pd.read_feather(path)  
-events = pd.read_feather(events)
-
-
-print(events.head())
-print(events['Type'].unique())
-#print(dataset.head()
+train = pd.read_feather(train)  
+test = pd.read_feather(test)
 
 
-# Initialize a label column in the SpO2 dataframe
-dataset['Label'] = 0  # Default label
-# Display the labeled dataframe
-dataset = dataset[dataset["SpO2"] >= spo2_min_threshold].reset_index(drop=True)
-
-# Get unique patients
-patients = events['Patient'].unique()
-
-# Iterate through each patient
-for patient in patients:
-    # Filter events and SpO2 data for the current patient
-    patient_events = events[events['Patient'] == patient]
-    patient_spo2 = dataset[dataset['Patient'] == patient]
-    
-    # Iterate through each event for the current patient
-    for _, event in patient_events.iterrows():
-        start_time = event['Time']
-        end_time = start_time + event['Duration']
-        apnea_type = event['Type']
-        event_type = 1
-        
-        # Find SpO2 measurements within the event's time range
-        mask = (patient_spo2['Time'] >= start_time) & (patient_spo2['Time'] <= end_time)
-        # Update the labels in the main dataset
-        dataset.loc[patient_spo2[mask].index, 'Label'] = event_type
-        dataset.loc[patient_spo2[mask].index, 'Type'] = apnea_type
-
-
-print(dataset.loc[dataset['Label'] == 1])
-train_df = dataset[dataset["Patient"].isin(train_patients)].reset_index(drop=True)
-test_df = dataset[dataset["Patient"].isin(test_patients)].reset_index(drop=True)
-
-train_df = one_hot_encode_labels(train_df)  # Apply one-hot encoding
-test_df = one_hot_encode_labels(test_df)  # Apply one-hot encoding
-
-
-print(f"Training set: {train_df.shape[0]} rows, {train_df['Patient'].nunique()} patients")
-print(f"Test set: {test_df.shape[0]} rows, {test_df['Patient'].nunique()} patients")
-
-train_df.to_feather('datasets/trainset-labeled.feather')
-test_df.to_feather('datasets/testset-labeled.feather')
 
 # Generate segments for training and testing separately
-#train_segments = generate_segments(train_df, train_patients)
-#test_segments = generate_segments(test_df, test_patients) 
+train_segments = generate_segments(train, train_patients)
+test_segments = generate_segments(test, test_patients) 
 
 
-#print(f"Training set: {len(train_segments)} segments")
-#print(f"Test set: {len(test_segments)} segments")
-#print(train_segments['Segment'])
+print(f"Training set: {len(train_segments)} segments")
+print(f"Test set: {len(test_segments)} segments")
+print(train_segments['Segment'])
 
 
-
-
-#train_segments.to_feather('datasets/trainset-segments.feather')
-#test_segments.to_feather('datasets/testset-segments.feather')
+train_segments.to_feather('datasets/trainset-segments.feather')
+test_segments.to_feather('datasets/testset-segments.feather')

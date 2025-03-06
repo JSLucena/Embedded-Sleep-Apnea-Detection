@@ -10,7 +10,7 @@ FS = 128  # Original sampling rate (Hz)
 TARGET_FREQUENCY = 1  # Desired sampling frequency (Hz)
 WINDOW_SIZE = int(FS * 60 / (FS // TARGET_FREQUENCY))  # Adjusted window size
 HALF_WINDOW = WINDOW_SIZE // 2  # 50% overlap
-APNEA_RATIO = 0.5  # Desired balance between apnea and non-apnea events
+APNEA_RATIO = 0.8  # Desired balance between apnea and non-apnea events
 SAMPLE_INTERVAL = FS // TARGET_FREQUENCY  # How many original samples to skip
 
 spo2_min_threshold = 68  # Not sure what to use here
@@ -158,24 +158,75 @@ def generate_segments(df, patients, target_frequency=1):
     print(f"Final segments: {len(segments)}")
     return pd.DataFrame(segments, columns=["Segment", "Label", "Apnea", "Hypopnea", "Other"])
 
-
-
-train = 'datasets/trainset-labeled.feather'
-test = 'datasets/testset-labeled.feather'
+path = 'datasets/dataset_UCDDB.feather'
+events = 'datasets/dataset_UCDDB_events.feather'
 pd.set_option('display.max_columns', None)  # or 1000
 #pd.set_option('display.max_rows', None)  # or 1000
 pd.set_option('display.max_colwidth', None)  # or 199
 
-train = pd.read_feather(train)  
-test = pd.read_feather(test)
+
+dataset = pd.read_feather(path)  
+events = pd.read_feather(events)
 
 
+print(events.head())
+print(events['Type'].unique())
+#print(dataset.head()
+
+
+# Initialize a label column in the SpO2 dataframe
+dataset['Label'] = 0  # Default label
+# Display the labeled dataframe
+dataset = dataset[dataset["SpO2"] >= spo2_min_threshold].reset_index(drop=True)
+
+# Get unique patients
+patients = events['Patient'].unique()
+
+# Iterate through each patient
+for patient in patients:
+    # Filter events and SpO2 data for the current patient
+    patient_events = events[events['Patient'] == patient]
+    patient_spo2 = dataset[dataset['Patient'] == patient]
+    
+    # Iterate through each event for the current patient
+    for _, event in patient_events.iterrows():
+        start_time = event['Time']
+        end_time = start_time + event['Duration']
+        apnea_type = event['Type']
+        event_type = 1
+        
+        # Find SpO2 measurements within the event's time range
+        mask = (patient_spo2['Time'] >= start_time) & (patient_spo2['Time'] <= end_time)
+        # Update the labels in the main dataset
+        dataset.loc[patient_spo2[mask].index, 'Label'] = event_type
+        dataset.loc[patient_spo2[mask].index, 'Type'] = apnea_type
+
+
+print(dataset.loc[dataset['Label'] == 1])
+train_df = dataset[dataset["Patient"].isin(train_patients)].reset_index(drop=True)
+test_df = dataset[dataset["Patient"].isin(test_patients)].reset_index(drop=True)
+
+train_df = one_hot_encode_labels(train_df)  # Apply one-hot encoding
+test_df = one_hot_encode_labels(test_df)  # Apply one-hot encoding
+
+
+print(f"Training set: {train_df.shape[0]} rows, {train_df['Patient'].nunique()} patients")
+print(f"Test set: {test_df.shape[0]} rows, {test_df['Patient'].nunique()} patients")
+
+train_df.to_feather('datasets/trainset-labeled.feather')
+test_df.to_feather('datasets/testset-labeled.feather')
 
 # Generate segments for training and testing separately
-train_segments = generate_segments(train, train_patients)
-test_segments = generate_segments(test, test_patients) 
+#train_segments = generate_segments(train_df, train_patients)
+#test_segments = generate_segments(test_df, test_patients) 
 
 
-print(f"Training set: {len(train_segments)} segments")
-print(f"Test set: {len(test_segments)} segments")
-print(train_segments['Segment'])
+#print(f"Training set: {len(train_segments)} segments")
+#print(f"Test set: {len(test_segments)} segments")
+#print(train_segments['Segment'])
+
+
+
+
+#train_segments.to_feather('datasets/trainset-segments.feather')
+#test_segments.to_feather('datasets/testset-segments.feather')
