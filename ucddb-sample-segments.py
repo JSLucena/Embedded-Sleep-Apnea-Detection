@@ -7,14 +7,15 @@ import multiprocessing as mp
 
 # Constants for the segment splits
 FS = 128  # Original sampling rate (Hz)
-TARGET_FREQUENCY = 1 # Desired sampling frequency (Hz)
-LENGTH = 30
-WINDOW_SIZE = int(FS * LENGTH / (FS // TARGET_FREQUENCY))  # Adjusted window size
-HALF_WINDOW = WINDOW_SIZE // 2  # 50% overlap
-APNEA_RATIO = 0.5  # Desired balance between apnea and non-apnea events
+TARGET_FREQUENCY = 8 # Desired sampling frequency (Hz)
+LENGTH = 16
+#WINDOW_SIZE = int(FS * LENGTH / (FS // TARGET_FREQUENCY))  # Adjusted window size
+WINDOW_OVERLAP = 0.5
+HALF_WINDOW = int(LENGTH * FS * WINDOW_OVERLAP)  # 50% overlap
+APNEA_RATIO = 1.0  # Desired balance between apnea and non-apnea events
 SAMPLE_INTERVAL = FS // TARGET_FREQUENCY  # How many original samples to skip
 
-spo2_min_threshold = 68  # Not sure what to use here
+spo2_min_threshold = 80  # Not sure what to use here
 apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
 hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
 other_types = ['PB', 'POSSIBLE']
@@ -136,7 +137,7 @@ def generate_segments(df, patients, target_frequency=1):
         patient_df = df[df["Patient"] == patient].reset_index(drop=True)
 
         # Generate sliding window segments (50% overlap)
-        for start in range(0, len(patient_df) - (LENGTH*FS), HALF_WINDOW*FS):
+        for start in range(0, len(patient_df) - (LENGTH*FS), HALF_WINDOW):
             # Sample every nth point based on target frequency
             segment_indices = range(start, start + (LENGTH*FS), SAMPLE_INTERVAL)
             #print(segment_indices)
@@ -163,8 +164,8 @@ def generate_segments(df, patients, target_frequency=1):
     count = int((len(segments) - len(apnea_segments)) * APNEA_RATIO)
     print(f"Total segments: {len(segments)}, Apnea segments: {len(apnea_segments)}")
 
-    num_processes = 8  # Number of processes in the pool
-    batch_size = 32  # Number of segments to process per batch
+    num_processes = 6  # Number of processes in the pool
+    batch_size = 128  # Number of segments to process per batch
     num_batches = (count + batch_size - 1) // batch_size  # Calculate number of batches
 
     print(f"Starting parallel extraction using {num_processes} processes with batch size {batch_size}")

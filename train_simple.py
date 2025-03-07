@@ -7,6 +7,8 @@ from tensorflow import keras
 from keras import layers
 from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc
 from sklearn.utils import shuffle
+from keras import regularizers
+from sklearn.model_selection import train_test_split
 train = 'datasets/trainset-segments.feather'
 test = 'datasets/testset-segments.feather'
 pd.set_option('display.max_columns', None)  # or 1000
@@ -15,50 +17,59 @@ pd.set_option('display.max_colwidth', None)  # or 199
 
 train = pd.read_feather(train)  
 test = pd.read_feather(test)
-#for i, segment in enumerate(train["Segment"].values):
-#    print(f"Index {i}: Shape = {segment.shape}")
-X_train = np.stack(train["Segment"].values)  # Convert to NumPy array
 
-labels = test[test['Label'] == 1]
-print(len(labels))
+combined = pd.concat([train, test], axis=0, ignore_index=True)
+combined = shuffle(combined, random_state=42)
 
-X_test = np.stack(test["Segment"].values)
+X_train, X_test = train_test_split(
+    combined, test_size=0.2, random_state=42  # Adjust test_size as needed
+)
+print(X_train.columns)
+y_train = X_train[["Label"]].values  # For Binary Classification (Apnea vs. Normal)
+y_test = X_test[["Label"]].values
+X_train = np.stack(X_train["Segment"].values)  # Convert to NumPy array
 
-y_train = train[["Label"]].values  # For Binary Classification (Apnea vs. Normal)
-y_test = test[["Label"]].values
+
+
+X_test = np.stack(X_test["Segment"].values)
+
 
 print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
 print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
 
 X_train = X_train / 100.0  # Normalize SpO₂ (assuming max 100%)
 X_test = X_test / 100.0
+
 print(tf.config.list_physical_devices('GPU'))
 
 # Model based on the
 model = keras.Sequential([
 
     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-    #layers.Conv1D(filters=16, kernel_size=8, strides=2, padding="same", activation="relu", input_shape=(X_train.shape[1], 1)),
-    layers.Conv1D(filters=6, kernel_size=25, strides=1, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2, strides=1),
-    #layers.Dropout(0.3),
-
-    layers.Conv1D(filters=50, kernel_size=10, activation="relu", padding="same",kernel_regularizer=keras.regularizers.l2(0.001)),
-    layers.MaxPooling1D(pool_size=2, strides=1),
-    #layers.Dropout(0.3),
-
-    layers.Conv1D(filters=30, kernel_size=15, activation="relu", padding="same",kernel_regularizer=keras.regularizers.l2(0.001)),
-    layers.MaxPooling1D(pool_size=5, strides=1),
-    #layers.Dropout(0.3),
-
-    layers.BatchNormalization(),
+  # First conv block - more filters
+    layers.Conv1D(filters=6, kernel_size=25, strides=2, padding="same", activation="relu"),
+    layers.MaxPooling1D(pool_size=2),
+    #layers.Dropout(0.2),
+    # Second conv block
+    layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu",kernel_regularizer=regularizers.l2(0.01)),
+    layers.MaxPooling1D(pool_size=2),
+    #layers.Dropout(0.2),
+    # Third conv block
+    layers.Conv1D(filters=30, kernel_size=15, padding="same", activation="relu"),
+    layers.MaxPooling1D(pool_size=2),
+    #layers.Dropout(0.2),
+    layers.BatchNormalization(), 
+    # Add LSTM layer to capture temporal dependencies
+    #layers.Bidirectional(layers.LSTM(64, return_sequences=False)),
     layers.Flatten(),
-    #layers.Dense(64, activation="relu"),
+    # Fully connected layers
+    #layers.Dense(128, activation="relu"),
     #layers.Dropout(0.5),
-    #layers.Dense(16, activation="relu"),
-    #layers.Dropout(0.5),
+    layers.Dense(16, activation="relu",kernel_regularizer=regularizers.l2(0.01)),
+    #layers.Dropout(0.3),
     layers.Dense(1, activation="sigmoid")
 ])
+
 lr_schedule = keras.optimizers.schedules.ExponentialDecay(
     initial_learning_rate=5e-4,
     decay_steps=10000,
@@ -82,16 +93,19 @@ X_train, y_train = shuffle(X_train, y_train, random_state=42)
 X_train = X_train.reshape(-1, X_train.shape[1], 1)
 X_test = X_test.reshape(-1, X_test.shape[1], 1)
 
+
 # Train Model
 early_stopping = keras.callbacks.EarlyStopping(
-    monitor='val_accuracy',
-    patience=20,
+    monitor='val_loss',
+    patience=10,
     restore_best_weights=True
 )
+class_weights = {0: 1.0, 1: 1.0}
+history = model.fit(X_train, y_train, epochs=100, batch_size=256, validation_data=(X_test, y_test), callbacks=[early_stopping], class_weight=class_weights)
 
-history = model.fit(X_train, y_train, epochs=100, batch_size=64, validation_data=(X_test, y_test), callbacks=[early_stopping])
-
-
+raw_predictions = model.predict(X_test)
+print("Prediction distribution:", np.histogram(raw_predictions, bins=10))
+print("Mean prediction value:", np.mean(raw_predictions))
 # Evaluate on Test Set
 results = model.evaluate(X_test, y_test, return_dict=True)
 print(f"Test Loss: {results['loss']:.4f}")
@@ -185,7 +199,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-
+"""
 # Learning Curves - Combined plot showing both accuracy and loss
 plt.figure(figsize=(12, 6))
 plt.subplot(1, 2, 1)
@@ -222,3 +236,4 @@ plt.legend(loc="lower left")
 plt.grid(True)
 plt.show()
 
+"""
