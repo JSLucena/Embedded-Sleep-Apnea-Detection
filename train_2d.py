@@ -9,6 +9,9 @@ from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve,
 from sklearn.utils import shuffle
 from keras import regularizers
 from sklearn.model_selection import train_test_split
+from pyts.image import RecurrencePlot
+from pyts.image import GramianAngularField
+
 train = 'datasets/trainset-segments.feather'
 test = 'datasets/testset-segments.feather'
 pd.set_option('display.max_columns', None)  # or 1000
@@ -18,13 +21,9 @@ pd.set_option('display.max_colwidth', None)  # or 199
 train = pd.read_feather(train)  
 test = pd.read_feather(test)
 
-combined = pd.concat([train, test], axis=0, ignore_index=True)
-combined = shuffle(combined, random_state=42)
-#X_train = train
-#X_test = train
-X_train, X_test = train_test_split(
-    combined, test_size=0.2, random_state=42  # Adjust test_size as needed
-)
+
+X_train = train
+X_test = test
 
 print(X_train.columns)
 y_train = X_train[["Label"]].values  # For Binary Classification (Apnea vs. Normal)
@@ -35,40 +34,52 @@ X_train = np.stack(X_train["Segment"].values)  # Convert to NumPy array
 
 X_test = np.stack(X_test["Segment"].values)
 
-
-print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
-print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
-
 X_train = X_train / 100.0  # Normalize SpO₂ (assuming max 100%)
 X_test = X_test / 100.0
+print(f"X_train_2d shape: {X_train.shape}")
+
+"""
+# Create Gramian Angular Field (GAF) images
+gasf = GramianAngularField(method='summation')
+X_train_gasf = gasf.fit_transform(X_train)
+
+# Visualize
+plt.figure(figsize=(5, 5))
+plt.imshow(X_train_gasf[0], cmap='viridis', origin='lower')
+plt.title("Gramian Angular Field")
+plt.colorbar()
+plt.show()
+"""
+
+rp = RecurrencePlot()
+
+
+X_train = rp.fit_transform(X_train) 
+X_test = rp.fit_transform(X_test)       
+
+# Add channel dimension for CNN input
+X_train = X_train[..., np.newaxis]  # Shape: (80691, 128, 128, 1)
+X_test = X_test[..., np.newaxis]
+
+# Print shapes to confirm
+print(f"X_train_2d shape: {X_train.shape}")
 
 print(tf.config.list_physical_devices('GPU'))
 
+sample_idx = 0
+# Plot the Recurrence Plot
+plt.figure(figsize=(5, 5))
+plt.imshow(X_train[sample_idx, :, :, 0], cmap='viridis', origin='lower')
+plt.title(f"Recurrence Plot for Sample {sample_idx}")
+plt.colorbar()
+plt.show()
 # Model based on the
 model = keras.Sequential([
-
-    layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-  # First conv block - more filters
-    layers.Conv1D(filters=6, kernel_size=25, strides=1, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2),
-    #layers.Dropout(0.2),
-    # Second conv block
-    layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2),
-    #layers.Dropout(0.2),
-    # Third conv block
-    layers.Conv1D(filters=30, kernel_size=15, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2),
-    #layers.Dropout(0.2),
-    layers.BatchNormalization(), 
-    # Add LSTM layer to capture temporal dependencies
-    #layers.Bidirectional(layers.LSTM(64, return_sequences=False)),
+    layers.Conv2D(filters=4, kernel_size=8, strides=2, padding="same", activation="relu",input_shape=(240, 240, 1)),
+    layers.MaxPooling2D(pool_size=2),
     layers.Flatten(),
-    # Fully connected layers
-    #layers.Dense(128, activation="relu"),
-    #layers.Dropout(0.5),
-    #layers.Dense(16, activation="relu"),
-    #layers.Dropout(0.3),
+    layers.Dense(64, activation="relu"),
+    layers.Dense(16, activation="relu"),
     layers.Dense(1, activation="sigmoid")
 ])
 
@@ -85,15 +96,28 @@ model.compile(
                  keras.metrics.Precision(name='precision'),
                  keras.metrics.Recall(name='recall')]
     )
-    
+
+
+def data_generator(x_data, y_data, batch_size=64):
+    num_samples = len(x_data)
+    while True:
+        indices = np.random.permutation(num_samples)
+        for i in range(0, num_samples, batch_size):
+            batch_indices = indices[i:i+batch_size]
+            yield x_data[batch_indices], y_data[batch_indices]
+
+train_gen = data_generator(X_train, y_train, batch_size=64)
+val_gen = data_generator(X_test, y_test, batch_size=64)
+
+
 
 model.summary()
 # Reshape X to match Keras expectations (batch_size, timesteps, features)
 X_train, y_train = shuffle(X_train, y_train, random_state=42)
 
 
-X_train = X_train.reshape(-1, X_train.shape[1], 1)
-X_test = X_test.reshape(-1, X_test.shape[1], 1)
+#X_train = X_train.reshape(-1, X_train.shape[1], 1)
+#X_test = X_test.reshape(-1, X_test.shape[1], 1)
 
 
 # Train Model
@@ -103,7 +127,14 @@ early_stopping = keras.callbacks.EarlyStopping(
     restore_best_weights=True
 )
 class_weights = {0: 1.0, 1: 1.0}
-history = model.fit(X_train, y_train, epochs=100, batch_size=256, validation_data=(X_test, y_test), callbacks=[early_stopping], class_weight=class_weights)
+history = model.fit(
+    train_gen,
+    steps_per_epoch=len(X_train) // 64,
+    epochs=20,
+    validation_data=val_gen,
+    validation_steps=len(X_test) // 64,
+    callbacks=[early_stopping]
+)
 
 raw_predictions = model.predict(X_test)
 print("Prediction distribution:", np.histogram(raw_predictions, bins=10))

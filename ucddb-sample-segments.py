@@ -8,7 +8,7 @@ import multiprocessing as mp
 # Constants for the segment splits
 FS = 128  # Original sampling rate (Hz)
 TARGET_FREQUENCY = 8 # Desired sampling frequency (Hz)
-LENGTH = 16
+LENGTH = 30
 #WINDOW_SIZE = int(FS * LENGTH / (FS // TARGET_FREQUENCY))  # Adjusted window size
 WINDOW_OVERLAP = 0.5
 HALF_WINDOW = int(LENGTH * FS * WINDOW_OVERLAP)  # 50% overlap
@@ -216,7 +216,7 @@ test_segments = generate_segments(test, test_patients)
 
 print(f"Training set: {len(train_segments)} segments")
 print(f"Test set: {len(test_segments)} segments")
-print(train_segments['Segment'])
+
 
 
 train_segments.to_feather('datasets/trainset-segments.feather')
