@@ -9,8 +9,8 @@ from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve,
 from sklearn.utils import shuffle
 from keras import regularizers
 from sklearn.model_selection import train_test_split
-train = 'datasets/trainset-segments.feather'
-test = 'datasets/testset-segments.feather'
+train = 'datasets/ablation_study/train_freq4_len20_overlap75.feather'
+test = 'datasets/ablation_study/test_freq4_len20_overlap75.feather'
 pd.set_option('display.max_columns', None)  # or 1000
 #pd.set_option('display.max_rows', None)  # or 1000
 pd.set_option('display.max_colwidth', None)  # or 199
@@ -18,19 +18,23 @@ pd.set_option('display.max_colwidth', None)  # or 199
 train = pd.read_feather(train)  
 test = pd.read_feather(test)
 
-combined = pd.concat([train, test], axis=0, ignore_index=True)
-combined = shuffle(combined, random_state=42)
-#X_train = train
-#X_test = train
-X_train, X_test = train_test_split(
-    combined, test_size=0.2, random_state=42  # Adjust test_size as needed
+#combined = pd.concat([train, test], axis=0, ignore_index=True)
+#combined = shuffle(combined, random_state=42)
+X_train, X_valid = train_test_split(
+    train, test_size=0.2, random_state=42  # Adjust test_size as needed
 )
+X_train = train
+X_test = test
+#X_train, X_test = train_test_split(
+#    combined, test_size=0.2, random_state=42  # Adjust test_size as needed
+#)
 
-print(X_train.columns)
+
 y_train = X_train[["Label"]].values  # For Binary Classification (Apnea vs. Normal)
+y_valid = X_valid[["Label"]].values
 y_test = X_test[["Label"]].values
 X_train = np.stack(X_train["Segment"].values)  # Convert to NumPy array
-
+X_valid = np.stack(X_valid["Segment"].values) 
 
 
 X_test = np.stack(X_test["Segment"].values)
@@ -40,6 +44,7 @@ print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
 print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
 
 X_train = X_train / 100.0  # Normalize SpO₂ (assuming max 100%)
+X_valid = X_valid / 100.0 
 X_test = X_test / 100.0
 
 print(tf.config.list_physical_devices('GPU'))
@@ -68,8 +73,8 @@ model = keras.Sequential([
     #layers.Dense(128, activation="relu"),
     #layers.Dropout(0.5),
     #layers.Dense(16, activation="relu"),
-    #layers.Dropout(0.3),
-    layers.Dense(1, activation="sigmoid")
+    layers.Dropout(0.25),
+    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01))
 ])
 
 lr_schedule = keras.optimizers.schedules.ExponentialDecay(
@@ -83,6 +88,7 @@ model.compile(
         metrics=["accuracy",
                  keras.metrics.AUC(name='auc'),  # Additional metrics
                  keras.metrics.Precision(name='precision'),
+                 keras.metrics.F1Score(name="f1_score"),
                  keras.metrics.Recall(name='recall')]
     )
     
@@ -93,6 +99,7 @@ X_train, y_train = shuffle(X_train, y_train, random_state=42)
 
 
 X_train = X_train.reshape(-1, X_train.shape[1], 1)
+X_valid = X_valid.reshape(-1, X_valid.shape[1], 1)
 X_test = X_test.reshape(-1, X_test.shape[1], 1)
 
 
@@ -103,7 +110,7 @@ early_stopping = keras.callbacks.EarlyStopping(
     restore_best_weights=True
 )
 class_weights = {0: 1.0, 1: 1.0}
-history = model.fit(X_train, y_train, epochs=100, batch_size=256, validation_data=(X_test, y_test), callbacks=[early_stopping], class_weight=class_weights)
+history = model.fit(X_train, y_train, epochs=200, batch_size=256, validation_data=(X_valid, y_valid), callbacks=[early_stopping], class_weight=class_weights)
 
 raw_predictions = model.predict(X_test)
 print("Prediction distribution:", np.histogram(raw_predictions, bins=10))
@@ -115,6 +122,7 @@ print(f"Test Accuracy: {results['accuracy']:.4f}")
 print(f"Test AUC: {results['auc']:.4f}")
 print(f"Test Recall: {results['recall']:.4f}")
 print(f"Test Precision: {results['precision']:.4f}")
+print(f"Test F1-score: {results['f1_score']:.4f}")
 
 # Set up the figure size and style
 plt.figure(figsize=(20, 15))

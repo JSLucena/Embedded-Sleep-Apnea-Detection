@@ -38,25 +38,32 @@ X_train = X_train / 100.0  # Normalize SpO₂ (assuming max 100%)
 X_test = X_test / 100.0
 print(f"X_train_2d shape: {X_train.shape}")
 
-"""
+
 # Create Gramian Angular Field (GAF) images
 gasf = GramianAngularField(method='summation')
-X_train_gasf = gasf.fit_transform(X_train)
-
+X_train = gasf.fit_transform(X_train)
+X_test = gasf.transform(X_test)
 # Visualize
 plt.figure(figsize=(5, 5))
-plt.imshow(X_train_gasf[0], cmap='viridis', origin='lower')
+plt.imshow(X_train[0], cmap='viridis', origin='lower')
 plt.title("Gramian Angular Field")
 plt.colorbar()
 plt.show()
-"""
 
+"""
 rp = RecurrencePlot()
 
 
 X_train = rp.fit_transform(X_train) 
-X_test = rp.fit_transform(X_test)       
-
+X_test = rp.fit_transform(X_test)
+sample_idx = 0
+# Plot the Recurrence Plot
+plt.figure(figsize=(5, 5))
+plt.imshow(X_train[sample_idx, :, :, 0], cmap='viridis', origin='lower')
+plt.title(f"Recurrence Plot for Sample {sample_idx}")
+plt.colorbar()
+plt.show()
+"""
 # Add channel dimension for CNN input
 X_train = X_train[..., np.newaxis]  # Shape: (80691, 128, 128, 1)
 X_test = X_test[..., np.newaxis]
@@ -66,13 +73,7 @@ print(f"X_train_2d shape: {X_train.shape}")
 
 print(tf.config.list_physical_devices('GPU'))
 
-sample_idx = 0
-# Plot the Recurrence Plot
-plt.figure(figsize=(5, 5))
-plt.imshow(X_train[sample_idx, :, :, 0], cmap='viridis', origin='lower')
-plt.title(f"Recurrence Plot for Sample {sample_idx}")
-plt.colorbar()
-plt.show()
+
 # Model based on the
 model = keras.Sequential([
     layers.Conv2D(filters=4, kernel_size=8, strides=2, padding="same", activation="relu",input_shape=(240, 240, 1)),

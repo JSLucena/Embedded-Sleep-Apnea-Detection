@@ -1,223 +1,248 @@
 import pandas as pd
 import numpy as np
 from tqdm.notebook import tqdm
-from matplotlib import pyplot as plt
-from functools import partial
-import multiprocessing as mp
+import os
+from pathlib import Path
 
-# Constants for the segment splits
+# Original constants
 FS = 128  # Original sampling rate (Hz)
-TARGET_FREQUENCY = 8 # Desired sampling frequency (Hz)
-LENGTH = 30
-#WINDOW_SIZE = int(FS * LENGTH / (FS // TARGET_FREQUENCY))  # Adjusted window size
-WINDOW_OVERLAP = 0.5
-HALF_WINDOW = int(LENGTH * FS * WINDOW_OVERLAP)  # 50% overlap
 APNEA_RATIO = 1.0  # Desired balance between apnea and non-apnea events
-SAMPLE_INTERVAL = FS // TARGET_FREQUENCY  # How many original samples to skip
+
+# Define different configurations for ablation study
+TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
+SEGMENT_LENGTHS = [ 11, 15, 20, 25, 30]  # seconds
+WINDOW_OVERLAPS = [0.75, 0.5, 0.25]  # 25%, 50%, 75% overlap
+EVENT_THRESHOLD = 10  # seconds - minimum duration for relevant events
 
 spo2_min_threshold = 80  # Not sure what to use here
 apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
 hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
 other_types = ['PB', 'POSSIBLE']
 
-#patient split for train/test
+
+
+# Patient split for train/test (same as original)
 train_patients = [
     "ucddb002", "ucddb003", "ucddb006", "ucddb007", "ucddb009",
-    "ucddb010", "ucddb011", "ucddb012", "ucddb013", "ucddb017", "ucddb018", "ucddb019", "ucddb020", "ucddb022",
+    "ucddb010", "ucddb012", "ucddb019", "ucddb020", "ucddb022",
     "ucddb023", "ucddb025", "ucddb027", "ucddb028"
 ]
 
 test_patients = [
     "ucddb005", "ucddb014", "ucddb015", "ucddb021", "ucddb024",
-    "ucddb008", "ucddb026"
+    "ucddb026"
 ]
 
-def one_hot_encode_labels(df):
-    """
-    Adds one-hot encoded labels for Apnea, Hypopnea, and Other categories.
-    
-    Parameters:
-        df (pd.DataFrame): Input DataFrame with a 'Type' column.
-    
-    Returns:
-        pd.DataFrame: Updated DataFrame with new one-hot encoded columns.
-    """
-    df = df.copy()  # Avoid modifying the original dataset
-    
-    # Define category groups
-    apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
-    hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
-    other_types = ['PB', 'POSSIBLE']
+def generate_segments(df, patients, length, target_frequency, window_overlap, balance_method='duplicate'):
 
-    # One-hot encode labels
-    df['Apnea'] = df['Type'].apply(lambda x: 1 if x in apnea_types else 0)
-    df['Hypopnea'] = df['Type'].apply(lambda x: 1 if x in hypopnea_types else 0)
-    df['Other'] = df['Type'].apply(lambda x: 1 if x in other_types else 0)
+    segments = []  # Store all segments
+    apnea_segments = []  # Store apnea segments separately
 
-    return df
+    # Calculate derived parameters
+    sample_interval = FS // target_frequency
+    window_size = length * FS
+    step_size = int(window_size * (1 - window_overlap))  # Convert overlap to step size
 
+    # Event detection threshold in samples
+    event_threshold_samples = EVENT_THRESHOLD * target_frequency
 
-def get_random_apnea_segment(df):
-    """
-    Get a random apnea segment with sampling at specified frequency.
-    
-    Parameters:
-    df (pd.DataFrame): Input DataFrame
-    target_frequency (int): Desired sampling frequency in Hz. Default is 1 Hz.
-    original_fs (int): Original sampling frequency. Default is 128 Hz.
-    
-    Returns:
-    Tuple: (sampled segment, random index) or -1 if segment cannot be extracted
-    """
-    
-    # Recalculate window size based on target frequency
-
-    # Get all apnea row indices
-    apnea_indices = df[df["Label"] == 1].index.to_list()
-
-    # Pick a random apnea index
-    random_idx = np.random.choice(apnea_indices)
-
-    # Calculate start and end indices
-    start_idx = random_idx - LENGTH*FS//2
-    end_idx = random_idx + LENGTH*FS//2 - 1
-    segment_indices = range(int(start_idx), int(end_idx), SAMPLE_INTERVAL)
-    # Ensure we stay within dataset bounds
-    if start_idx >= 0 and end_idx < len(df):
-        # Extract full segment
-        sampled_segment = df.iloc[segment_indices]["SpO2"].values
-        
-        
-        return sampled_segment, random_idx
-    else:
-        return sampled_segment, -1
-
-def extract_segment(df, batch_size, counter, lock):
-    """Extract multiple apnea segments in a batch with progress tracking."""
-    results = []
-    process_name = mp.current_process().name
-    process_id = int(process_name.split("-")[-1])
-    seed = process_id * 1000
-    np.random.seed(seed)
-    for _ in range(batch_size):
-        segment, random_idx = get_random_apnea_segment(df)
-        if random_idx != -1:  # Discard invalid segments
-            results.append((segment, random_idx))
-
-        # Update progress using shared counter
-        #with lock:
-        #    counter.value += 1
-        #if counter.value % 100 == 0:  # Print progress every 100 segments
-        #    print(f"Progress: {counter.value} segments processed")
-
-    print(f"{process_name} process processed  {batch_size} segments", flush=True)
-    return results
-
-def generate_segments(df, patients, target_frequency=1):
-    """
-    Extracts sliding window segments with specified sampling frequency and balances apnea cases.
-    
-    Parameters:
-        df (pd.DataFrame): Preprocessed DataFrame with SpO₂ values and labels.
-        patients (list): List of patient IDs to process.
-        target_frequency (int): Desired sampling frequency in Hz. Default is 1 Hz.
-    
-    Returns:
-        pd.DataFrame: DataFrame containing extracted segments.
-    """
-    segments = []  # Store final segments
-    apnea_segments = []  # Store apnea-heavy segments separately
-
-    # Recalculate window size and sampling interval based on target frequency
-    #sample_interval = FS // target_frequency
-    #window_size = int(FS * 60 / sample_interval)
-    #half_window = window_size // 2
-
+    # Process each patient
     for patient in patients:
         patient_df = df[df["Patient"] == patient].reset_index(drop=True)
 
-        # Generate sliding window segments (50% overlap)
-        for start in range(0, len(patient_df) - (LENGTH*FS), HALF_WINDOW):
+        # Generate sliding window segments with overlap
+        for start in range(0, len(patient_df) - window_size, step_size):
             # Sample every nth point based on target frequency
-            segment_indices = range(start, start + (LENGTH*FS), SAMPLE_INTERVAL)
-            #print(segment_indices)
+            segment_indices = range(start, start + window_size, sample_interval)
             segment_df = patient_df.iloc[segment_indices]
 
             # Extract sampled SpO2 values
             spo2_values = segment_df["SpO2"].values
 
-            # Labels are now precomputed from the dataset
-            binary_label = 1 if segment_df["Label"].sum() > 10*TARGET_FREQUENCY else 0
-            apnea_label = 1 if segment_df["Apnea"].sum() > 10*TARGET_FREQUENCY else 0  # If any Apnea in segment, set to 1
-            hypopnea_label = 1 if segment_df["Hypopnea"].sum() > 10*TARGET_FREQUENCY else 0   # If any Hypopnea, set to 1
+            # Labels using the threshold based on EVENT_THRESHOLD
+            binary_label = 1 if segment_df["Label"].sum() > event_threshold_samples else 0
+            apnea_label = 1 if segment_df["Apnea"].sum() > event_threshold_samples else 0
+            hypopnea_label = 1 if segment_df["Hypopnea"].sum() > event_threshold_samples else 0
+            
             if apnea_label == 0 and hypopnea_label == 0:
-                other_label = segment_df["Other"].max()  # If none, set Other = 1
+                other_label = segment_df["Other"].max()
             else:
                 other_label = 0
 
-            segments.append((spo2_values, binary_label, apnea_label, hypopnea_label, other_label))
-
-            # Store apnea segments separately for augmentation
+            segment_data = (spo2_values, binary_label, apnea_label, hypopnea_label, other_label)
+            segments.append(segment_data)
+            
+            # Store positive samples separately for balancing
             if binary_label == 1:
-                apnea_segments.append(spo2_values)
+                apnea_segments.append(segment_data)
 
-    count = int((len(segments) - len(apnea_segments)) * APNEA_RATIO)
+    # Balance dataset if needed
+    balanced_segments = balance_dataset(segments, apnea_segments, balance_method)
+    
+    # Create DataFrame from segments
+    result_df = pd.DataFrame(balanced_segments, columns=["Segment", "Label", "Apnea", "Hypopnea", "Other"])
+    
+    # Add class weights if using weight method
+    if balance_method == 'weight':
+        # Calculate class weights inversely proportional to class frequencies
+        class_counts = result_df['Label'].value_counts()
+        total = len(result_df)
+        weights = {}
+        for cls, count in class_counts.items():
+            weights[cls] = total / (len(class_counts) * count)
+        
+        # Add weight column
+        result_df['Weight'] = result_df['Label'].map(weights)
+    
+    return result_df
+
+def balance_dataset(segments, apnea_segments, method):
+
     print(f"Total segments: {len(segments)}, Apnea segments: {len(apnea_segments)}")
+    
+    # Return original segments if no balancing requested
+    if method == 'none' or not apnea_segments:
+        print("No balancing performed")
+        return segments
+    
+    # Calculate target number of apnea segments based on APNEA_RATIO
+    non_apnea_count = len(segments) - len(apnea_segments)
+    target_apnea_count = int(non_apnea_count * APNEA_RATIO)
+    
+    if method == 'duplicate':
+        # Simple duplication of existing apnea segments
+        if target_apnea_count <= len(apnea_segments):
+            # We already have enough apnea segments
+            print("No duplication needed - already balanced")
+            return segments
+        
+        # How many times to duplicate each apnea segment on average
+        duplication_factor = target_apnea_count / len(apnea_segments)
+        full_copies = int(duplication_factor)
+        remainder = duplication_factor - full_copies
+        
+        # Add full copies of all apnea segments
+        additional_segments = []
+        for _ in range(full_copies):
+            additional_segments.extend(apnea_segments)
+        
+        # Add partial copies for remainder
+        remainder_count = int(remainder * len(apnea_segments))
+        if remainder_count > 0:
+            # Randomly select segments to duplicate
+            np.random.seed(42)  # For reproducibility
+            remainder_indices = np.random.choice(
+                range(len(apnea_segments)), 
+                size=remainder_count, 
+                replace=False
+            )
+            for idx in remainder_indices:
+                additional_segments.append(apnea_segments[idx])
+        
+        print(f"Added {len(additional_segments)} duplicate apnea segments")
+        return segments + additional_segments
+    
+    elif method == 'weight':
+        # No need to add segments when using weights
+        print("Using class weights for balancing")
+        return segments
+    
+    else:
+        print(f"Unknown balancing method: {method}, returning original segments")
+        return segments
 
-    num_processes = 6  # Number of processes in the pool
-    batch_size = 128  # Number of segments to process per batch
-    num_batches = (count + batch_size - 1) // batch_size  # Calculate number of batches
+def generate_ablation_datasets():
+    """Generate multiple datasets for ablation study."""
+    # Load source datasets
+    train_path = 'datasets/trainset-labeled.feather'
+    test_path = 'datasets/testset-labeled.feather'
+    
+    if not os.path.exists(train_path) or not os.path.exists(test_path):
+        print(f"Error: Source datasets not found at {train_path} or {test_path}")
+        return
+    
+    train = pd.read_feather(train_path)
+    test = pd.read_feather(test_path)
+    
+    # Create output directory for ablation datasets
+    output_dir = Path('datasets/ablation_study')
+    output_dir.mkdir(exist_ok=True, parents=True)
+    
+    # Track dataset statistics for summary
+    dataset_stats = []
+    
+    # Generate datasets for each configuration
+    for freq in TARGET_FREQUENCIES:
+        for length in SEGMENT_LENGTHS:
+            for overlap in WINDOW_OVERLAPS:
+                print(f"\n{'='*50}")
+                print(f"Generating datasets with frequency={freq}Hz, length={length}s, overlap={overlap:.2f}")
+                print(f"{'='*50}")
+                
+                # Define output filenames
+                train_output = output_dir / f"train_freq{freq}_len{length}_overlap{int(overlap*100)}.feather"
+                test_output = output_dir / f"test_freq{freq}_len{length}_overlap{int(overlap*100)}.feather"
+                
+                # Skip if files already exist
+                if train_output.exists() and test_output.exists():
+                    print(f"Datasets already exist for freq={freq}Hz, length={length}s, overlap={overlap:.2f}. Skipping...")
+                    
+                    # Load existing files to get stats
+                    train_segments = pd.read_feather(train_output)
+                    test_segments = pd.read_feather(test_output)
+                    
+                    dataset_stats.append({
+                        'frequency': freq,
+                        'length': length,
+                        'overlap': overlap,
+                        'train_segments': len(train_segments),
+                        'train_apnea': train_segments['Label'].sum(),
+                        'train_apnea_pct': train_segments['Label'].mean() * 100,
+                        'test_segments': len(test_segments),
+                        'test_apnea': test_segments['Label'].sum(),
+                        'test_apnea_pct': test_segments['Label'].mean() * 100,
+                        'sequence_length': len(train_segments['Segment'].iloc[0])
+                    })
+                    continue
+                
+                # Generate segments - use simple duplication for train, no balancing for test
+                train_segments = generate_segments(train, train_patients, length, freq, overlap, balance_method='none')
+                test_segments = generate_segments(test, test_patients, length, freq, overlap, balance_method='none')
+                
+                # Save datasets as feather files
+                train_segments.to_feather(train_output)
+                test_segments.to_feather(test_output)
+                
+                # Record statistics
+                dataset_stats.append({
+                    'frequency': freq,
+                    'length': length,
+                    'overlap': overlap,
+                    'train_segments': len(train_segments),
+                    'train_apnea': train_segments['Label'].sum(),
+                    'train_apnea_pct': train_segments['Label'].mean() * 100,
+                    'test_segments': len(test_segments),
+                    'test_apnea': test_segments['Label'].sum(),
+                    'test_apnea_pct': test_segments['Label'].mean() * 100,
+                    'sequence_length': len(train_segments['Segment'].iloc[0]),
+                    'balance_method': 'duplicate'
+                })
+                
+                print(f"Saved datasets to {train_output} and {test_output}")
+    
+    # Create summary dataframe and save
+    summary_df = pd.DataFrame(dataset_stats)
+    summary_path = output_dir / "ablation_summary.feather"
+    summary_df.to_feather(summary_path)  # Save as feather
+    
+    # Also save as CSV for easy viewing
+    summary_df.to_csv(output_dir / "ablation_summary.csv", index=False)
+    
+    print(f"\nSummary saved to {summary_path}")
+    print(summary_df)
+    
+    return summary_df
 
-    print(f"Starting parallel extraction using {num_processes} processes with batch size {batch_size}")
-
-    # Use a global manager to create a shared counter and lock
-    with mp.Manager() as manager:
-        counter = manager.Value("i", 0)  # Shared counter
-        lock = manager.Lock()  # Lock for thread safety
-
-        # Create a process pool
-        with mp.Pool(processes=num_processes) as pool:
-            # Submit batches of work
-            results = [
-                pool.apply_async(extract_segment, args=(df, batch_size, counter, lock))
-                for _ in range(num_batches)
-            ]
-
-            # Collect results
-            for r in results:
-                batch_segments = r.get()  # Get the results from this batch
-                for segment, idx in batch_segments:
-                    if segment is not None:  # Only add valid segments
-                        segments.append((segment, 1 , df.iloc[idx]['Apnea'], 
-                             df.iloc[idx]['Hypopnea'], 
-                             df.iloc[idx]['Other']))
-
-    print(f"Final segments: {len(segments)}")
-
-    return pd.DataFrame(segments, columns=["Segment", "Label", "Apnea", "Hypopnea", "Other"])
-
-
-
-train = 'datasets/trainset-labeled.feather'
-test = 'datasets/testset-labeled.feather'
-pd.set_option('display.max_columns', None)  # or 1000
-#pd.set_option('display.max_rows', None)  # or 1000
-pd.set_option('display.max_colwidth', None)  # or 199
-
-train = pd.read_feather(train)  
-test = pd.read_feather(test)
-
-
-
-# Generate segments for training and testing separately
-train_segments = generate_segments(train, train_patients)
-test_segments = generate_segments(test, test_patients) 
-
-
-print(f"Training set: {len(train_segments)} segments")
-print(f"Test set: {len(test_segments)} segments")
-
-
-
-train_segments.to_feather('datasets/trainset-segments.feather')
-test_segments.to_feather('datasets/testset-segments.feather')
+if __name__ == "__main__":
+    # Generate all ablation study datasets
+    summary = generate_ablation_datasets()
