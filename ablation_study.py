@@ -13,11 +13,31 @@ import os
 import gc
 import time
 import sys
-
+from sklearn.utils import class_weight
+from sklearn.utils import resample
+from sklearn.preprocessing import StandardScaler
 # Define all combinations to test
 TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [11, 15, 20, 25, 30]  # seconds
-WINDOW_OVERLAPS = [0.75, 0.5, 0.25]  # 75%, 50%, 25% overlap
+SEGMENT_LENGTHS = [20, 25, 30]  # seconds
+WINDOW_OVERLAPS = [0.5]  # 75%, 50%, 25% overlap
+
+
+test = {
+    20: (4,5),
+    25: (5,5),
+    30: (6,5),
+    80: (10,8),
+    100: (10,10),
+    120: (12,10),
+    160: (16,10),
+    200: (20,10),
+    240: (16,15),
+    320: (20,16),
+    400: (20,20),
+    480: (24,20)
+}
+
+
 
 # Set up pandas display options
 pd.set_option('display.max_columns', None)
@@ -66,40 +86,68 @@ for freq in TARGET_FREQUENCIES:
             
             # Load data
             try:
+                # Load data
                 train = pd.read_feather(train_file)
                 test = pd.read_feather(test_file)
-                combined = pd.concat([train, test], axis=0, ignore_index=True)
-                combined = shuffle(combined, random_state=42)
-                # Split into train and validation
+
+                # Split into train and test
                 X_train, X_test = train_test_split(train, test_size=0.2, random_state=42)
-                
+
                 # Extract labels
                 y_train = X_train[["Label"]].values
-                #y_valid = X_valid[["Label"]].values
                 y_test = test[["Label"]].values
-                
+
                 # Convert features to numpy arrays
                 X_train = np.stack(X_train["Segment"].values)
-                #X_valid = np.stack(X_valid["Segment"].values)
                 X_test = np.stack(test["Segment"].values)
-                
+
                 # Normalize SpO₂ data
                 X_train = X_train / 100.0
-                #X_valid = X_valid / 100.0
                 X_test = X_test / 100.0
-                
-                print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
-                print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
-                
+
                 # Reshape for Keras
                 X_train = X_train.reshape(-1, X_train.shape[1], 1)
-                #X_valid = X_valid.reshape(-1, X_valid.shape[1], 1)
                 X_test = X_test.reshape(-1, X_test.shape[1], 1)
-                
+
+                # Oversample the minority class
+                df_majority = X_train[y_train.flatten() == 0]
+                df_minority = X_train[y_train.flatten() == 1]
+                df_minority_oversampled = resample(
+                    df_minority,
+                    replace=True,
+                    n_samples=len(df_majority),
+                    random_state=42
+                )
+                X_train_oversampled = np.concatenate([df_majority, df_minority_oversampled])
+                y_train_oversampled = np.concatenate([np.zeros(len(df_majority)), np.ones(len(df_minority_oversampled))])
+                shuffle_idx = np.random.permutation(len(X_train_oversampled))
+                X_train_oversampled = X_train_oversampled[shuffle_idx]
+                y_train_oversampled = y_train_oversampled[shuffle_idx].reshape(-1, 1)
+
+                # Print shapes
+                print("Oversampled X_train shape:", X_train_oversampled.shape)
+                print("Oversampled y_train shape:", y_train_oversampled.shape)
+                X_train = X_train_oversampled
+                y_train = y_train_oversampled
+                # Initialize the scaler
+                scaler = StandardScaler()
+
+                # Fit on the training data and transform it
+                X_train= scaler.fit_transform(X_train.reshape(X_train.shape[0], -1))
+
+                # Transform the test data using the same scaler
+                X_test = scaler.transform(X_test.reshape(X_test.shape[0], -1))
+
+                # Reshape back to original shape
+                X_train = X_train.reshape(-1, X_train.shape[1], 1)
+                X_test = X_test.reshape(-1, X_test.shape[1], 1)
+
+                #desired_shape = test[X_train.shape[1]]
+                #X__train.reshape
                 # Create model
                 model = keras.Sequential([
                     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-                    layers.Conv1D(filters=6, kernel_size=25, strides=1, padding="same", activation="relu"),
+                    layers.Conv1D(filters=6, kernel_size=20, strides=1, padding="same", activation="relu"),
                     layers.MaxPooling1D(pool_size=2),
                     layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu"),
                     layers.MaxPooling1D(pool_size=2),
@@ -108,6 +156,7 @@ for freq in TARGET_FREQUENCIES:
                     layers.BatchNormalization(),
                     layers.Flatten(),
                     layers.Dropout(0.25),
+                    
                     layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01))
                 ])
                 
@@ -127,14 +176,9 @@ for freq in TARGET_FREQUENCIES:
                              keras.metrics.F1Score(name="f1_score"),
                              keras.metrics.Recall(name='recall')]
                 )
-                
                 # Get model summary
                 model.summary()
-                
-                # Count trainable parameters
-                #trainable_params = int(np.sum([K.count_params(p) for p in set(model.trainable_weights)]))
-                #print(f"Trainable parameters: {trainable_params}")
-                
+
                 # Get model size in MB
                 model_size = get_model_size(model)
                 print(f"Model size: {model_size:.2f} MB")
@@ -145,17 +189,26 @@ for freq in TARGET_FREQUENCIES:
                     patience=10,
                     restore_best_weights=True
                 )
-                
+                # Calculate class weights
+                class_weights = class_weight.compute_class_weight(
+                    'balanced',
+                    classes=np.unique(y_train.flatten()),
+                    y=y_train.flatten()
+                )
+                class_weights = dict(enumerate(class_weights))
+
+                # Print class weights
+                print("Class weights:", class_weights)
                 # Train model with timing
                 start_time = time.time()
                 history = model.fit(
                     X_train, y_train,
-                    epochs=100,  # Reduced from 200 for faster iteration
+                    epochs=200,  # Reduced from 200 for faster iteration
                     batch_size=256,
                     validation_split=0.1,
                     callbacks=[early_stopping],
-                    class_weight={0: 1.0, 1: 1.0},
-                    verbose=1
+                    class_weight={0 : 1.0, 1 : 2},
+                    verbose=0
                 )
                 training_time = time.time() - start_time
                 print(f"Training time: {training_time:.2f} seconds")
@@ -243,7 +296,7 @@ for freq in TARGET_FREQUENCIES:
                     plt.close()
                 
                 # Clean up to prevent memory issues
-                del model, X_train, X_valid, X_test, y_train, y_valid, y_test
+                del model, X_train, X_test, y_train, y_test
                 gc.collect()
                 tf.keras.backend.clear_session()
                 
@@ -309,3 +362,6 @@ plt.xlabel('Model Size (MB)')
 plt.ylabel('Accuracy')
 plt.title('Accuracy vs Model Size')
 plt.grid(True)
+plt.tight_layout()
+plt.savefig(f'images/ablation_overall.png')
+plt.close()
