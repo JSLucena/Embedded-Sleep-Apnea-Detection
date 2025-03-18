@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
 from keras import layers
-from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc
+from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc,classification_report, roc_auc_score
 from sklearn.utils import shuffle
 from keras import regularizers
 from sklearn.model_selection import train_test_split
@@ -16,9 +16,10 @@ import sys
 from sklearn.utils import class_weight
 from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
+from imblearn.over_sampling import SMOTE
 # Define all combinations to test
-TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [20, 25, 30]  # seconds
+TARGET_FREQUENCIES = [4, 8, 16]  # Hz
+SEGMENT_LENGTHS = [20, 30]  # seconds
 WINDOW_OVERLAPS = [0.5]  # 75%, 50%, 25% overlap
 
 
@@ -53,6 +54,14 @@ def get_model_size(model):
     # Remove temporary file
     os.remove('temp_model.h5')
     return size_mb
+
+def focal_loss(gamma=2., alpha=0.25):
+    def focal_loss_fn(y_true, y_pred):
+        epsilon = keras.backend.epsilon()
+        y_pred = keras.backend.clip(y_pred, epsilon, 1. - epsilon)
+        pt = tf.where(keras.backend.equal(y_true, 1), y_pred, 1 - y_pred)
+        return -keras.backend.sum(alpha * keras.backend.pow(1. - pt, gamma) * keras.backend.log(pt))
+    return focal_loss_fn
 
 # Create a results DataFrame
 results_df = pd.DataFrame(columns=[
@@ -91,82 +100,64 @@ for freq in TARGET_FREQUENCIES:
                 test = pd.read_feather(test_file)
 
                 # Split into train and test
-                X_train, X_test = train_test_split(train, test_size=0.2, random_state=42)
+                combined = pd.concat([train, test], axis=0, ignore_index=True)
+                combined = shuffle(combined, random_state=42)
+                X_train, X_test = train_test_split(combined, test_size=0.2, random_state=42, stratify=combined["Label"])
 
                 # Extract labels
                 y_train = X_train[["Label"]].values
-                y_test = test[["Label"]].values
+                y_test = X_test[["Label"]].values
 
                 # Convert features to numpy arrays
                 X_train = np.stack(X_train["Segment"].values)
-                X_test = np.stack(test["Segment"].values)
-
-                # Normalize SpO₂ data
-                X_train = X_train / 100.0
-                X_test = X_test / 100.0
+                X_test = np.stack(X_test["Segment"].values)
 
                 # Reshape for Keras
                 X_train = X_train.reshape(-1, X_train.shape[1], 1)
                 X_test = X_test.reshape(-1, X_test.shape[1], 1)
 
-                # Oversample the minority class
-                df_majority = X_train[y_train.flatten() == 0]
-                df_minority = X_train[y_train.flatten() == 1]
-                df_minority_oversampled = resample(
-                    df_minority,
-                    replace=True,
-                    n_samples=len(df_majority),
-                    random_state=42
-                )
-                X_train_oversampled = np.concatenate([df_majority, df_minority_oversampled])
-                y_train_oversampled = np.concatenate([np.zeros(len(df_majority)), np.ones(len(df_minority_oversampled))])
-                shuffle_idx = np.random.permutation(len(X_train_oversampled))
-                X_train_oversampled = X_train_oversampled[shuffle_idx]
-                y_train_oversampled = y_train_oversampled[shuffle_idx].reshape(-1, 1)
-
-                # Print shapes
-                print("Oversampled X_train shape:", X_train_oversampled.shape)
-                print("Oversampled y_train shape:", y_train_oversampled.shape)
-                X_train = X_train_oversampled
-                y_train = y_train_oversampled
-                # Initialize the scaler
+                # Scaling data
                 scaler = StandardScaler()
-
-                # Fit on the training data and transform it
                 X_train= scaler.fit_transform(X_train.reshape(X_train.shape[0], -1))
-
-                # Transform the test data using the same scaler
                 X_test = scaler.transform(X_test.reshape(X_test.shape[0], -1))
 
-                # Reshape back to original shape
-                X_train = X_train.reshape(-1, X_train.shape[1], 1)
-                X_test = X_test.reshape(-1, X_test.shape[1], 1)
+                # Store the segment length for proper reshaping later
+                
+                segment_length = X_train.shape[1]
+                # Apply SMOTE on the scaled data
+                #smote = SMOTE(random_state=42)
+                #X_train_resampled, y_train_resampled = smote.fit_resample(
+                #    X_train,
+                #    y_train.flatten()
+                #)
 
-                #desired_shape = test[X_train.shape[1]]
-                #X__train.reshape
-                # Create model
+                X_train = X_train.reshape(-1, segment_length, 1)
+                y_train = y_train.reshape(-1, 1)
+                X_test = X_test.reshape(-1, segment_length, 1)
+
                 model = keras.Sequential([
                     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-                    layers.Conv1D(filters=6, kernel_size=20, strides=1, padding="same", activation="relu"),
+                    layers.Conv1D(filters=5, kernel_size=3, strides=1, padding="valid", activation="relu"),
                     layers.MaxPooling1D(pool_size=2),
-                    layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu"),
+                    layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu"),
                     layers.MaxPooling1D(pool_size=2),
-                    layers.Conv1D(filters=30, kernel_size=15, padding="same", activation="relu"),
+                    layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu"),
                     layers.MaxPooling1D(pool_size=2),
                     layers.BatchNormalization(),
                     layers.Flatten(),
-                    layers.Dropout(0.25),
                     
+                    #layers.Dropout(0.25),
+                    layers.Dense(16, activation="relu", kernel_regularizer=regularizers.L2(0.01)),
                     layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01))
                 ])
                 
                 # Set up optimizer and compile
                 lr_schedule = keras.optimizers.schedules.ExponentialDecay(
-                    initial_learning_rate=5e-4,
+                    initial_learning_rate=0.001,
                     decay_steps=10000,
                     decay_rate=0.9
                 )
-                opt = keras.optimizers.Adam(learning_rate=lr_schedule)
+                opt = keras.optimizers.Adam(learning_rate=lr_schedule,clipvalue=1.0)
                 model.compile(
                     optimizer=opt,
                     loss="binary_crossentropy",
@@ -186,7 +177,7 @@ for freq in TARGET_FREQUENCIES:
                 # Prepare callbacks
                 early_stopping = keras.callbacks.EarlyStopping(
                     monitor='val_loss',
-                    patience=10,
+                    patience=20,
                     restore_best_weights=True
                 )
                 # Calculate class weights
@@ -204,11 +195,11 @@ for freq in TARGET_FREQUENCIES:
                 history = model.fit(
                     X_train, y_train,
                     epochs=200,  # Reduced from 200 for faster iteration
-                    batch_size=256,
+                    batch_size=64,
                     validation_split=0.1,
                     callbacks=[early_stopping],
-                    class_weight={0 : 1.0, 1 : 2},
-                    verbose=0
+                    class_weight=class_weights,
+                    verbose=1
                 )
                 training_time = time.time() - start_time
                 print(f"Training time: {training_time:.2f} seconds")
@@ -295,6 +286,22 @@ for freq in TARGET_FREQUENCIES:
                     plt.savefig(f'images/ablation_model_freq{freq}_len{length}_overlap{overlap_pct}.png')
                     plt.close()
                 
+                
+                # Evaluate on the test set
+                y_pred = model.predict(X_test)
+                y_pred_classes = (y_pred > 0.5).astype("int32")  # Convert probabilities to binary predictions
+
+                # Classification report
+                print("Classification Report:")
+                print(classification_report(y_test, y_pred_classes, target_names=["Normal (0)", "Abnormal (1)"]))
+
+                # Confusion matrix
+                print("Confusion Matrix:")
+                print(confusion_matrix(y_test, y_pred_classes))
+
+                # AUC-ROC score
+                auc_score = roc_auc_score(y_test, y_pred)
+                print(f"AUC-ROC Score: {auc_score:.4f}")
                 # Clean up to prevent memory issues
                 del model, X_train, X_test, y_train, y_test
                 gc.collect()
@@ -310,13 +317,13 @@ results_df.to_csv('ablation_study_results.csv', index=False)
 
 # Display summary of best models
 print("\nTop 5 models by AUC:")
-print(results_df.sort_values(by='auc', ascending=False).head(5)[['frequency', 'segment_length', 'overlap', 'auc', 'accuracy', 'recall', 'f1_score']])
+print(results_df.sort_values(by='auc', ascending=False).head(5)[['frequency', 'segment_length', 'overlap', 'auc', 'accuracy', 'recall', 'precision']])
 
 print("\nTop 5 models by Recall:")
-print(results_df.sort_values(by='recall', ascending=False).head(5)[['frequency', 'segment_length', 'overlap', 'auc', 'accuracy', 'recall', 'f1_score']])
+print(results_df.sort_values(by='recall', ascending=False).head(5)[['frequency', 'segment_length', 'overlap', 'auc', 'accuracy', 'recall', 'precision']])
 
-print("\nTop 5 models by F1-score:")
-print(results_df.sort_values(by='f1_score', ascending=False).head(5)[['frequency', 'segment_length', 'overlap', 'auc', 'accuracy', 'recall', 'f1_score']])
+print("\nTop 5 models by Precision:")
+print(results_df.sort_values(by='precision', ascending=False).head(5)[['frequency', 'segment_length', 'overlap', 'auc', 'accuracy', 'recall', 'precision']])
 
 # Create visualization of results
 plt.figure(figsize=(15, 10))
