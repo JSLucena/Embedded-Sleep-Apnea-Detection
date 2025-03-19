@@ -19,7 +19,7 @@ from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 # Define all combinations to test
 TARGET_FREQUENCIES = [4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [20, 30]  # seconds
+SEGMENT_LENGTHS = [ 30]  # seconds
 WINDOW_OVERLAPS = [0.5]  # 75%, 50%, 25% overlap
 
 
@@ -63,6 +63,46 @@ def focal_loss(gamma=2., alpha=0.25):
         return -keras.backend.sum(alpha * keras.backend.pow(1. - pt, gamma) * keras.backend.log(pt))
     return focal_loss_fn
 
+
+def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2):
+    """
+    Simple duplication-based oversampling for imbalanced datasets.
+    
+    Parameters:
+    -----------
+    X : numpy array
+        Feature matrix
+    y : numpy array
+        Target labels
+    minority_class : int, default=1
+        The class to oversample
+    duplication_factor : int, default=2
+        How many times to duplicate minority samples
+    
+    Returns:
+    --------
+    X_resampled : numpy array
+        Oversampled feature matrix
+    y_resampled : numpy array
+        Oversampled target labels
+    """
+    # Find indices of minority class
+    minority_indices = np.where(y.flatten() == minority_class)[0]
+    
+    # Create duplication indices (repeat minority samples)
+    duplication_indices = np.tile(minority_indices, duplication_factor)
+    
+    # Combine original data with duplicated minority samples
+    all_indices = np.concatenate([np.arange(len(y)), duplication_indices])
+    
+    # Create new oversampled dataset
+    X_resampled = X[all_indices]
+    y_resampled = y.flatten()[all_indices]
+    
+    return X_resampled, y_resampled
+
+
+
 # Create a results DataFrame
 results_df = pd.DataFrame(columns=[
     'frequency', 'segment_length', 'overlap', 'trainable_params', 'model_size_mb',
@@ -103,61 +143,82 @@ for freq in TARGET_FREQUENCIES:
                 combined = pd.concat([train, test], axis=0, ignore_index=True)
                 combined = shuffle(combined, random_state=42)
                 X_train, X_test = train_test_split(combined, test_size=0.2, random_state=42, stratify=combined["Label"])
-
+                X_train, X_val = train_test_split(X_train, test_size=0.1, random_state=42, stratify=X_train["Label"])
                 # Extract labels
                 y_train = X_train[["Label"]].values
+                y_val = X_val[["Label"]].values
                 y_test = X_test[["Label"]].values
 
                 # Convert features to numpy arrays
                 X_train = np.stack(X_train["Segment"].values)
+                X_val = np.stack(X_val["Segment"].values)
                 X_test = np.stack(X_test["Segment"].values)
 
                 # Reshape for Keras
-                X_train = X_train.reshape(-1, X_train.shape[1], 1)
-                X_test = X_test.reshape(-1, X_test.shape[1], 1)
+                #X_train = X_train.reshape(-1, X_train.shape[1], 1)
+                #X_val = X_val.reshape(-1, X_val.shape[1], 1)
+                #X_test = X_test.reshape(-1, X_test.shape[1], 1)
 
+
+                X_train = X_train / 100.0
+                X_val = X_val / 100.0
+                X_test = X_test / 100.0
                 # Scaling data
-                scaler = StandardScaler()
-                X_train= scaler.fit_transform(X_train.reshape(X_train.shape[0], -1))
-                X_test = scaler.transform(X_test.reshape(X_test.shape[0], -1))
+                #scaler = StandardScaler()
+                #X_train= scaler.fit_transform(X_train.reshape(X_train.shape[0], -1))
+                #X_val= scaler.transform(X_val.reshape(X_val.shape[0], -1))
+                #X_test = scaler.transform(X_test.reshape(X_test.shape[0], -1))
 
                 # Store the segment length for proper reshaping later
                 
                 segment_length = X_train.shape[1]
                 # Apply SMOTE on the scaled data
-                #smote = SMOTE(random_state=42)
-                #X_train_resampled, y_train_resampled = smote.fit_resample(
-                #    X_train,
-                #    y_train.flatten()
+                smote = SMOTE(random_state=42)
+                X_train_resampled, y_train_resampled = smote.fit_resample(
+                    X_train,
+                    y_train.flatten()
+                )
+                # Example usage in your workflow
+                #X_train_flat = X_train.reshape(X_train.shape[0], -1)
+                #X_train_resampled, y_train_resampled = simple_duplication_oversampling(
+                #    X_train_flat, 
+                #    y_train, 
+                #    minority_class=1, 
+                #    duplication_factor=2  # Duplicate minority samples 2 times
                 #)
-
-                X_train = X_train.reshape(-1, segment_length, 1)
-                y_train = y_train.reshape(-1, 1)
-                X_test = X_test.reshape(-1, segment_length, 1)
+                #X_train = X_train_resampled
+                #y_train = y_train_resampled
+                X_train = X_train_resampled.reshape(-1, X_train_resampled.shape[1], 1)
+                y_train = y_train_resampled.reshape(-1, 1)
+                X_test = X_test.reshape(-1, X_test.shape[1], 1)
+                X_val = X_val.reshape(-1, X_val.shape[1], 1)
 
                 model = keras.Sequential([
                     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-                    layers.Conv1D(filters=5, kernel_size=3, strides=1, padding="valid", activation="relu"),
-                    layers.MaxPooling1D(pool_size=2),
-                    layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu"),
-                    layers.MaxPooling1D(pool_size=2),
-                    layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu"),
-                    layers.MaxPooling1D(pool_size=2),
+                    layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.AveragePooling1D(pool_size=2),
+                    layers.Conv1D(filters=32, kernel_size=7, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.AveragePooling1D(pool_size=2),
+                    layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.AveragePooling1D(pool_size=2),
+                    layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.AveragePooling1D(pool_size=2),
                     layers.BatchNormalization(),
                     layers.Flatten(),
                     
                     #layers.Dropout(0.25),
-                    layers.Dense(16, activation="relu", kernel_regularizer=regularizers.L2(0.01)),
-                    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01))
+                    layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
+                    layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
+                    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
                 ])
                 
                 # Set up optimizer and compile
                 lr_schedule = keras.optimizers.schedules.ExponentialDecay(
-                    initial_learning_rate=0.001,
+                    initial_learning_rate=0.01,
                     decay_steps=10000,
                     decay_rate=0.9
                 )
-                opt = keras.optimizers.Adam(learning_rate=lr_schedule,clipvalue=1.0)
+                opt = keras.optimizers.Adadelta(learning_rate=lr_schedule,clipvalue=1.0)
                 model.compile(
                     optimizer=opt,
                     loss="binary_crossentropy",
@@ -194,9 +255,9 @@ for freq in TARGET_FREQUENCIES:
                 start_time = time.time()
                 history = model.fit(
                     X_train, y_train,
-                    epochs=200,  # Reduced from 200 for faster iteration
-                    batch_size=64,
-                    validation_split=0.1,
+                    epochs=300,  # Reduced from 200 for faster iteration
+                    batch_size=128,
+                    validation_data=(X_val,y_val),
                     callbacks=[early_stopping],
                     class_weight=class_weights,
                     verbose=1
@@ -302,6 +363,10 @@ for freq in TARGET_FREQUENCIES:
                 # AUC-ROC score
                 auc_score = roc_auc_score(y_test, y_pred)
                 print(f"AUC-ROC Score: {auc_score:.4f}")
+
+                raw_predictions = model.predict(X_test)
+                print("Prediction distribution:", np.histogram(y_pred, bins=10))
+                print("Mean prediction value:", np.mean(y_pred))
                 # Clean up to prevent memory issues
                 del model, X_train, X_test, y_train, y_test
                 gc.collect()
