@@ -17,10 +17,11 @@ from sklearn.utils import class_weight
 from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
+import keras.backend as K
 # Define all combinations to test
-TARGET_FREQUENCIES = [4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [ 30]  # seconds
-WINDOW_OVERLAPS = [0.5]  # 75%, 50%, 25% overlap
+TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
+SEGMENT_LENGTHS = [11, 15, 20, 25, 30]  # seconds
+WINDOW_OVERLAPS = [0.25, 0.5, 0.75]  # 75%, 50%, 25% overlap
 
 
 test = {
@@ -63,22 +64,32 @@ def focal_loss(gamma=2., alpha=0.25):
         return -keras.backend.sum(alpha * keras.backend.pow(1. - pt, gamma) * keras.backend.log(pt))
     return focal_loss_fn
 
+def moving_average(data, window_size=5):
+    """Applies a moving average filter to each time series in the dataset."""
+    kernel = np.ones(window_size) / window_size  # Define averaging kernel
+    smoothed = np.apply_along_axis(lambda x: np.convolve(x, kernel, mode='same'), axis=1, arr=data)  
+    return smoothed  # Keeps shape (samples, timesteps)
 
-def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2):
+
+def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2, noise_std=0.005, noise_max=0.01):
     """
-    Simple duplication-based oversampling for imbalanced datasets.
-    
+    Simple duplication-based oversampling with small jitter to maintain medical significance.
+
     Parameters:
     -----------
     X : numpy array
-        Feature matrix
+        Feature matrix (samples, features)
     y : numpy array
         Target labels
     minority_class : int, default=1
         The class to oversample
     duplication_factor : int, default=2
         How many times to duplicate minority samples
-    
+    noise_std : float, default=0.005
+        Standard deviation of Gaussian noise (default ~0.5% change)
+    noise_max : float, default=0.01
+        Maximum allowed absolute noise (default ±1%)
+
     Returns:
     --------
     X_resampled : numpy array
@@ -86,21 +97,27 @@ def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2
     y_resampled : numpy array
         Oversampled target labels
     """
+
     # Find indices of minority class
     minority_indices = np.where(y.flatten() == minority_class)[0]
-    
-    # Create duplication indices (repeat minority samples)
-    duplication_indices = np.tile(minority_indices, duplication_factor)
-    
-    # Combine original data with duplicated minority samples
-    all_indices = np.concatenate([np.arange(len(y)), duplication_indices])
-    
-    # Create new oversampled dataset
-    X_resampled = X[all_indices]
-    y_resampled = y.flatten()[all_indices]
-    
-    return X_resampled, y_resampled
 
+    # Duplicate the minority samples
+    duplication_indices = np.tile(minority_indices, duplication_factor)
+
+    # Apply small Gaussian noise
+    noise = np.random.normal(loc=0, scale=noise_std, size=X[duplication_indices].shape)
+    
+    # Limit max noise range (avoid extreme outliers)
+    noise = np.clip(noise, -noise_max, noise_max)
+
+    # Add noise and ensure values remain in [0,1]
+    X_augmented = np.clip(X[duplication_indices] + noise, 0, 1)
+
+    # Combine original data with augmented minority samples
+    X_resampled = np.vstack([X, X_augmented])
+    y_resampled = np.concatenate([y.flatten(), np.full(len(X_augmented), minority_class)])
+
+    return X_resampled, y_resampled
 
 
 # Create a results DataFrame
@@ -163,29 +180,29 @@ for freq in TARGET_FREQUENCIES:
                 X_train = X_train / 100.0
                 X_val = X_val / 100.0
                 X_test = X_test / 100.0
-                # Scaling data
-                #scaler = StandardScaler()
-                #X_train= scaler.fit_transform(X_train.reshape(X_train.shape[0], -1))
-                #X_val= scaler.transform(X_val.reshape(X_val.shape[0], -1))
-                #X_test = scaler.transform(X_test.reshape(X_test.shape[0], -1))
+                # Apply Moving Average (Window Size = 5)
+                #X_train = moving_average(X_train, window_size=freq*3)
+                #X_val = moving_average(X_val, window_size=freq*3)
+                #X_test = moving_average(X_test, window_size=freq*3)
+
 
                 # Store the segment length for proper reshaping later
                 
-                segment_length = X_train.shape[1]
+                #segment_length = X_train.shape[1]
                 # Apply SMOTE on the scaled data
-                smote = SMOTE(random_state=42)
-                X_train_resampled, y_train_resampled = smote.fit_resample(
-                    X_train,
-                    y_train.flatten()
-                )
-                # Example usage in your workflow
-                #X_train_flat = X_train.reshape(X_train.shape[0], -1)
-                #X_train_resampled, y_train_resampled = simple_duplication_oversampling(
-                #    X_train_flat, 
-                #    y_train, 
-                #    minority_class=1, 
-                #    duplication_factor=2  # Duplicate minority samples 2 times
+                #smote = SMOTE(random_state=42)
+                #X_train_resampled, y_train_resampled = smote.fit_resample(
+                #    X_train,
+                #    y_train.flatten()
                 #)
+                # Example usage in your workflow
+                X_train_flat = X_train.reshape(X_train.shape[0], -1)
+                X_train_resampled, y_train_resampled = simple_duplication_oversampling(
+                    X_train_flat, 
+                    y_train, 
+                    minority_class=1, 
+                    duplication_factor=3 
+                )
                 #X_train = X_train_resampled
                 #y_train = y_train_resampled
                 X_train = X_train_resampled.reshape(-1, X_train_resampled.shape[1], 1)
@@ -196,7 +213,7 @@ for freq in TARGET_FREQUENCIES:
                 model = keras.Sequential([
                     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
                     layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.AveragePooling1D(pool_size=2),
+                    #layers.AveragePooling1D(pool_size=2),
                     layers.Conv1D(filters=32, kernel_size=7, padding="same", activation="relu",kernel_initializer='he_normal'),
                     layers.AveragePooling1D(pool_size=2),
                     layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal'),
@@ -206,7 +223,7 @@ for freq in TARGET_FREQUENCIES:
                     layers.BatchNormalization(),
                     layers.Flatten(),
                     
-                    #layers.Dropout(0.25),
+                    layers.Dropout(0.25),
                     layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
                     layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
                     layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
@@ -238,7 +255,7 @@ for freq in TARGET_FREQUENCIES:
                 # Prepare callbacks
                 early_stopping = keras.callbacks.EarlyStopping(
                     monitor='val_loss',
-                    patience=20,
+                    patience=10,
                     restore_best_weights=True
                 )
                 # Calculate class weights
@@ -259,8 +276,8 @@ for freq in TARGET_FREQUENCIES:
                     batch_size=128,
                     validation_data=(X_val,y_val),
                     callbacks=[early_stopping],
-                    class_weight=class_weights,
-                    verbose=1
+                    class_weight={0 : 1.0, 1: 3.0},
+                    verbose=0
                 )
                 training_time = time.time() - start_time
                 print(f"Training time: {training_time:.2f} seconds")
@@ -276,6 +293,8 @@ for freq in TARGET_FREQUENCIES:
                 print(f"Test Precision: {results['precision']:.4f}")
                 print(f"Test F1-score: {results['f1_score']:.4f}")
                 
+                trainable_count = model.count_params()
+                #print(trainable_count)
                 # Add results to DataFrame
                 new_row = {
                     'frequency': freq,
@@ -283,6 +302,7 @@ for freq in TARGET_FREQUENCIES:
                     'overlap': overlap,
                     'model_size_mb': model_size,
                     'training_time': training_time,
+                    'trainable_parameters' : trainable_count,
                     'accuracy': results['accuracy'],
                     'auc': results['auc'],
                     'recall': results['recall'],
