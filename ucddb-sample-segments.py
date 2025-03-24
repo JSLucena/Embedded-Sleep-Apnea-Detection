@@ -3,7 +3,7 @@ import numpy as np
 from tqdm.notebook import tqdm
 import os
 from pathlib import Path
-
+import itertools
 # Original constants
 FS = 128  # Original sampling rate (Hz)
 APNEA_RATIO = 1.0  # Desired balance between apnea and non-apnea events
@@ -11,10 +11,9 @@ APNEA_RATIO = 1.0  # Desired balance between apnea and non-apnea events
 # Define different configurations for ablation study
 TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
 SEGMENT_LENGTHS = [ 11, 15, 20, 25, 30]  # seconds
-WINDOW_OVERLAPS = [0.75, 0.5, 0.25]  # 25%, 50%, 75% overlap
+WINDOW_OVERLAPS = [0.25, 0.5, 0.75]  # 25%, 50%, 75% overlap
 EVENT_THRESHOLD = 10  # seconds - minimum duration for relevant events
 
-spo2_min_threshold = 80  # Not sure what to use here
 apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
 hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
 other_types = ['PB', 'POSSIBLE']
@@ -32,6 +31,27 @@ test_patients = [
     "ucddb005", "ucddb014", "ucddb015", "ucddb021", "ucddb024",
     "ucddb026"
 ]
+
+def has_consecutive_events(event_series, threshold):
+    """
+    Checks if there is a sequence of at least 'threshold' consecutive ones in a binary array.
+    
+    Parameters:
+    -----------
+    event_series : numpy array
+        Binary array where 1 represents an apnea/hypopnea event, and 0 represents normal.
+    threshold : int
+        Minimum number of consecutive 1s required for a valid event.
+    
+    Returns:
+    --------
+    bool : True if threshold is met, False otherwise.
+    """
+    # Group consecutive 1s and count their lengths
+    for key, group in itertools.groupby(event_series):
+        if key == 1 and sum(1 for _ in group) >= threshold:
+            return True  # Found a valid event
+    return False  # No valid event found
 
 def generate_segments(df, patients, length, target_frequency, window_overlap, balance_method='duplicate'):
 
@@ -51,30 +71,38 @@ def generate_segments(df, patients, length, target_frequency, window_overlap, ba
         patient_df = df[df["Patient"] == patient].reset_index(drop=True)
 
         # Generate sliding window segments with overlap
-        for start in range(0, len(patient_df) - window_size, step_size):
+        for start in tqdm(range(0, len(patient_df) - window_size, step_size), desc="Processing"):
             # Sample every nth point based on target frequency
             segment_indices = range(start, start + window_size, sample_interval)
             segment_df = patient_df.iloc[segment_indices]
+            if segment_df['Hypopnea'].max() != 1 and segment_df['Other'].max() != 1:
+                # Extract sampled SpO2 values
+                spo2_values = segment_df["SpO2"].values
 
-            # Extract sampled SpO2 values
-            spo2_values = segment_df["SpO2"].values
+                # Convert label sequence to binary (0s and 1s)
+                label_sequence = segment_df["Label"].values.astype(int)
 
-            # Labels using the threshold based on EVENT_THRESHOLD
-            binary_label = 1 if segment_df["Label"].sum() > event_threshold_samples else 0
-            apnea_label = 1 if segment_df["Apnea"].sum() > event_threshold_samples else 0
-            hypopnea_label = 1 if segment_df["Hypopnea"].sum() > event_threshold_samples else 0
-            
-            if apnea_label == 0 and hypopnea_label == 0:
-                other_label = segment_df["Other"].max()
-            else:
-                other_label = 0
+                # Check for at least 'event_threshold_samples' consecutive 1s
+                binary_label = 1 if has_consecutive_events(label_sequence, event_threshold_samples) else 0
 
-            segment_data = (spo2_values, binary_label, apnea_label, hypopnea_label, other_label)
-            segments.append(segment_data)
-            
-            # Store positive samples separately for balancing
-            if binary_label == 1:
-                apnea_segments.append(segment_data)
+                # Repeat for apnea and hypopnea
+                apnea_sequence = segment_df["Apnea"].values.astype(int)
+                hypopnea_sequence = segment_df["Hypopnea"].values.astype(int)
+                
+                apnea_label = 1 if has_consecutive_events(apnea_sequence, event_threshold_samples) else 0
+                hypopnea_label = 1 if has_consecutive_events(hypopnea_sequence, event_threshold_samples) else 0
+                
+                if apnea_label == 0 and hypopnea_label == 0:
+                    other_label = segment_df["Other"].max()
+                else:
+                    other_label = 0
+
+                segment_data = (spo2_values, binary_label, apnea_label, hypopnea_label, other_label)
+                segments.append(segment_data)
+                
+                # Store positive samples separately for balancing
+                if binary_label == 1:
+                    apnea_segments.append(segment_data)
 
     # Balance dataset if needed
     balanced_segments = balance_dataset(segments, apnea_segments, balance_method)

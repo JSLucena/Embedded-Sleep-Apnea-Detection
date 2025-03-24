@@ -17,12 +17,12 @@ spo2_min_threshold = 68 #Not sure what to use here
 apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
 hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
 other_types = ['PB', 'POSSIBLE']
-
+#,  "ucddb008", "ucddb011", "ucddb013" , "ucddb017", "ucddb018"
 #patient split for train/test
 train_patients = [
     "ucddb002", "ucddb003", "ucddb006", "ucddb007", "ucddb009",
     "ucddb010", "ucddb012", "ucddb019", "ucddb020", "ucddb022",
-    "ucddb023", "ucddb025", "ucddb027", "ucddb028",  "ucddb008", "ucddb011", "ucddb013" , "ucddb017", "ucddb018"
+    "ucddb023", "ucddb025", "ucddb027", "ucddb028"
 ]
 
 test_patients = [
