@@ -16,8 +16,9 @@ dataset = pd.read_pickle(path)
 print(dataset["SpO2(%)"])
 print(dataset.dtypes)
 
-smaller_df = dataset[['patient', 'timestamp_datetime', 'SpO2(%)', 'PI(%)', 'event', 'anomaly', 'signal_pleth']]
+smaller_df = dataset[['patient', 'timestamp_datetime', 'SpO2(%)',  'event', 'anomaly']]
 smaller_df.to_feather('datasets/dataset_OSAS.feather')
+print(smaller_df.head())
 # Print some validation results
 """
 print("Number of rows:", dataset.shape[0])

@@ -24,7 +24,6 @@ def convert_measure_time(info):
         meas_date = datetime.datetime.fromtimestamp(meas_date, tz=datetime.timezone.utc)
 
     return meas_date
-
 def load_respiratory_events(file_path, meas_date, patient):
     # Read the file
     with open(file_path, 'r') as file:
@@ -63,7 +62,6 @@ def load_respiratory_events(file_path, meas_date, patient):
                     event_datetime = meas_date.replace(hour=hh, minute=mm, second=ss)
                     if meas_date > event_datetime:
                         event_datetime += datetime.timedelta(days=1)
-                    # Calculate the time difference in seconds from meas_date
                     time_diff = (event_datetime - meas_date).total_seconds()
                 data.append([patient, time_diff, event_type, duration, low, percent_drop])
     

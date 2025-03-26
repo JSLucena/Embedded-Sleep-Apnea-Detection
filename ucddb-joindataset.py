@@ -13,18 +13,19 @@ HALF_WINDOW = WINDOW_SIZE // 2  # 50% overlap
 APNEA_RATIO = 0.8  # Desired balance between apnea and non-apnea events
 SAMPLE_INTERVAL = FS // TARGET_FREQUENCY  # How many original samples to skip
 
-spo2_min_threshold = 68 #Not sure what to use here
+spo2_min_threshold = 50 #Not sure what to use here
 apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
 hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
 other_types = ['PB', 'POSSIBLE']
-#,  "ucddb008", "ucddb011", "ucddb013" , "ucddb017", "ucddb018"
+#
 #patient split for train/test
 train_patients = [
     "ucddb002", "ucddb003", "ucddb006", "ucddb007", "ucddb009",
     "ucddb010", "ucddb012", "ucddb019", "ucddb020", "ucddb022",
-    "ucddb023", "ucddb025", "ucddb027", "ucddb028"
+    "ucddb023", "ucddb025", "ucddb027", "ucddb028",  "ucddb008", "ucddb011", "ucddb013" , "ucddb017", "ucddb018"
 ]
-
+#train_patients = ["ucddb027"]
+#test_patients = []
 test_patients = [
     "ucddb005", "ucddb014", "ucddb015", "ucddb021", "ucddb024",
     "ucddb026"
@@ -75,15 +76,23 @@ print(events['Type'].unique())
 dataset['Label'] = 0  # Default label
 # Display the labeled dataframe
 dataset = dataset[dataset["SpO2"] >= spo2_min_threshold].reset_index(drop=True)
-
+dataset = dataset.groupby('Patient', group_keys=False).apply(
+    lambda x: x.iloc[1280:-1280] if len(x) > 2560 else x
+)
 # Get unique patients
 patients = events['Patient'].unique()
 
-# Iterate through each patient
 for patient in patients:
     # Filter events and SpO2 data for the current patient
     patient_events = events[events['Patient'] == patient]
     patient_spo2 = dataset[dataset['Patient'] == patient]
+    
+    # Skip if the patient has fewer than 2560 samples (1280*2)
+    if len(patient_spo2) <= 2560:
+        continue  # or handle small datasets differently
+    
+    # Trim first and last 1280 samples (10 seconds at 128Hz)
+    trimmed_spo2 = patient_spo2.iloc[1280:-1280]
     
     # Iterate through each event for the current patient
     for _, event in patient_events.iterrows():
@@ -93,12 +102,14 @@ for patient in patients:
         event_type = 1
         
         # Find SpO2 measurements within the event's time range
-        mask = (patient_spo2['Time'] >= start_time) & (patient_spo2['Time'] <= end_time)
-        # Update the labels in the main dataset
-        dataset.loc[patient_spo2[mask].index, 'Label'] = event_type
-        dataset.loc[patient_spo2[mask].index, 'Type'] = apnea_type
+        mask = (trimmed_spo2['Time'] >= start_time) & (trimmed_spo2['Time'] <= end_time)
+        
+        # Update the labels in the main dataset (using the original indices)
+        dataset.loc[trimmed_spo2[mask].index, 'Label'] = event_type
+        dataset.loc[trimmed_spo2[mask].index, 'Type'] = apnea_type
 
 
+print(dataset.head())
 print(dataset.loc[dataset['Label'] == 1])
 train_df = dataset[dataset["Patient"].isin(train_patients)].reset_index(drop=True)
 test_df = dataset[dataset["Patient"].isin(test_patients)].reset_index(drop=True)

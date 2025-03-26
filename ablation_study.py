@@ -19,8 +19,8 @@ from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 import keras.backend as K
 # Define all combinations to test
-TARGET_FREQUENCIES = [8, 16]  # Hz
-SEGMENT_LENGTHS = [30]  # seconds
+TARGET_FREQUENCIES = [1,4, 8, 16]  # Hz
+SEGMENT_LENGTHS = [11, 15, 20, 30]  # seconds
 WINDOW_OVERLAPS = [0.5]  # 75%, 50%, 25% overlap
 
 
@@ -71,7 +71,18 @@ def moving_average(data, window_size=5):
     return smoothed  # Keeps shape (samples, timesteps)
 
 def normalize(X):
-    return (X - 68) / (100 - 68 + 1e-8) 
+    # Reshape to (num_samples, timesteps) if needed
+    original_shape = X.shape
+    X_reshaped = X.reshape(len(X), -1)  # Shape: (N, timesteps)
+    
+    # Compute min/max per segment (keepdims for broadcasting)
+    mins = np.min(X_reshaped, axis=1, keepdims=True)
+    maxs = np.max(X_reshaped, axis=1, keepdims=True)
+    
+    # Normalize per segment
+    X_normalized = (X_reshaped - mins) / (maxs - mins + 1e-8)
+    
+    return X_normalized.reshape(original_shape)
 
 def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2, noise_std=0.005, noise_max=0.01):
 
@@ -85,10 +96,10 @@ def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2
     noise = np.random.normal(loc=0, scale=noise_std, size=X[duplication_indices].shape)
     
     # Limit max noise range (avoid extreme outliers)
-    noise = np.clip(noise, -noise_max, noise_max)
+    #noise = np.clip(noise, -noise_max, noise_max)
 
     # Add noise and ensure values remain in [0,1]
-    X_augmented = np.clip(X[duplication_indices] + noise, 0, 1)
+    X_augmented = np.clip(X[duplication_indices], 0, 1)
 
     # Combine original data with augmented minority samples
     X_resampled = np.vstack([X, X_augmented])
@@ -135,7 +146,10 @@ for freq in TARGET_FREQUENCIES:
 
                 # Split into train and test
                 combined = pd.concat([train, test], axis=0, ignore_index=True)
+                #combined = normalize(combined)
+
                 combined = shuffle(combined, random_state=42)
+                
                 X_train, X_test = train_test_split(combined, test_size=0.1, random_state=42, stratify=combined["Label"])
                 X_train, X_val = train_test_split(X_train, test_size=0.1, random_state=42, stratify=X_train["Label"])
                 #X_test = test
@@ -158,6 +172,7 @@ for freq in TARGET_FREQUENCIES:
                 X_train = normalize(X_train)
                 X_val = normalize(X_val)
                 X_test = normalize(X_test)
+                
                 # Apply Moving Average (Window Size = 5)
                 #X_train = moving_average(X_train, window_size=freq*3)
                 #X_val = moving_average(X_val, window_size=freq*3)
@@ -179,7 +194,7 @@ for freq in TARGET_FREQUENCIES:
                     X_train_flat, 
                     y_train, 
                     minority_class=1, 
-                    duplication_factor=5
+                    duplication_factor=3
                 )
                 X_train = X_train_resampled
                 y_train = y_train_resampled
@@ -190,14 +205,14 @@ for freq in TARGET_FREQUENCIES:
 
                 model = keras.Sequential([
                     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-                    layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.Conv1D(filters=6, kernel_size=25, strides=1, padding="same", activation="relu",kernel_initializer='he_normal'),
                     #layers.AveragePooling1D(pool_size=2),
-                    layers.Conv1D(filters=32, kernel_size=7, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.MaxPool1D(pool_size=2),
-                    layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.MaxPool1D(pool_size=2),
+                    layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.AveragePooling1D(pool_size=2),
+                    layers.Conv1D(filters=30, kernel_size=15, padding="same", activation="relu",kernel_initializer='he_normal'),
+                    layers.AveragePooling1D(pool_size=2),
                     layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.MaxPool1D(pool_size=2),
+                    layers.AveragePooling1D(pool_size=2),
                     layers.BatchNormalization(),
                     layers.Flatten(),
                     
@@ -233,7 +248,7 @@ for freq in TARGET_FREQUENCIES:
                 # Prepare callbacks
                 early_stopping = keras.callbacks.EarlyStopping(
                     monitor='val_loss',
-                    patience=10,
+                    patience=20,
                     restore_best_weights=True
                 )
                 # Calculate class weights
