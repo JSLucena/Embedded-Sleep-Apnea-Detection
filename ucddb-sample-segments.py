@@ -10,7 +10,7 @@ APNEA_RATIO = 1.0  # Desired balance between apnea and non-apnea events
 
 # Define different configurations for ablation study
 TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [ 11, 15, 20, 25, 30]  # seconds
+SEGMENT_LENGTHS = [ 11, 15, 20, 25, 30, 60]  # seconds
 WINDOW_OVERLAPS = [0.25, 0.5, 0.75]  # 25%, 50%, 75% overlap
 EVENT_THRESHOLD = 10  # seconds - minimum duration for relevant events
 
@@ -20,17 +20,16 @@ other_types = ['PB', 'POSSIBLE']
 
 
 
-# Patient split for train/test (same as original)
 train_patients = [
-    "ucddb002", "ucddb003", "ucddb006", "ucddb007", "ucddb009",
+    "ucddb002", "ucddb003",  "ucddb007", "ucddb009",
     "ucddb010", "ucddb012", "ucddb019", "ucddb020", "ucddb022",
-    "ucddb023", "ucddb025", "ucddb027", "ucddb028"
+    "ucddb023", "ucddb025", "ucddb027", "ucddb028",   "ucddb011", "ucddb013" , "ucddb017", "ucddb018"
 ]
-
 test_patients = [
     "ucddb005", "ucddb014", "ucddb015", "ucddb021", "ucddb024",
     "ucddb026"
 ]
+
 
 def has_consecutive_events(event_series, threshold):
     """

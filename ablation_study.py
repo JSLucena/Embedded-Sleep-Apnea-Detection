@@ -17,11 +17,11 @@ from sklearn.utils import class_weight
 from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
-import keras.backend as K
+from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 # Define all combinations to test
 TARGET_FREQUENCIES = [1,4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [11, 15, 20, 30]  # seconds
-WINDOW_OVERLAPS = [0.5]  # 75%, 50%, 25% overlap
+SEGMENT_LENGTHS = [11,15,20,30,60]  # seconds
+WINDOW_OVERLAPS = [0.75]  # 75%, 50%, 25% overlap
 
 
 test = {
@@ -71,6 +71,9 @@ def moving_average(data, window_size=5):
     return smoothed  # Keeps shape (samples, timesteps)
 
 def normalize(X):
+    return np.clip((X - 50) / (100 - 50 + 1e-8), 0, 1)
+
+def normalize2(X):
     # Reshape to (num_samples, timesteps) if needed
     original_shape = X.shape
     X_reshaped = X.reshape(len(X), -1)  # Shape: (N, timesteps)
@@ -96,7 +99,7 @@ def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2
     noise = np.random.normal(loc=0, scale=noise_std, size=X[duplication_indices].shape)
     
     # Limit max noise range (avoid extreme outliers)
-    #noise = np.clip(noise, -noise_max, noise_max)
+    noise = np.clip(noise, -noise_max, noise_max)
 
     # Add noise and ensure values remain in [0,1]
     X_augmented = np.clip(X[duplication_indices], 0, 1)
@@ -145,22 +148,23 @@ for freq in TARGET_FREQUENCIES:
                 test = pd.read_feather(test_file)
 
                 # Split into train and test
-                combined = pd.concat([train, test], axis=0, ignore_index=True)
+                #combined = pd.concat([train, test], axis=0, ignore_index=True)
                 #combined = normalize(combined)
 
-                combined = shuffle(combined, random_state=42)
-                
-                X_train, X_test = train_test_split(combined, test_size=0.1, random_state=42, stratify=combined["Label"])
-                X_train, X_val = train_test_split(X_train, test_size=0.1, random_state=42, stratify=X_train["Label"])
+                #combined = shuffle(combined, random_state=42)
+                X_train = train
+                X_test = test
+                #X_train, X_test = train_test_split(combined, test_size=0.1, random_state=42, stratify=combined["Label"])
+                #X_train, X_val = train_test_split(X_train, test_size=0.1, random_state=42, stratify=X_train["Label"])
                 #X_test = test
                 # Extract labels
                 y_train = X_train[["Label"]].values
-                y_val = X_val[["Label"]].values
+                #y_val = X_val[["Label"]].values
                 y_test = X_test[["Label"]].values
 
                 # Convert features to numpy arrays
                 X_train = np.stack(X_train["Segment"].values)
-                X_val = np.stack(X_val["Segment"].values)
+                #X_val = np.stack(X_val["Segment"].values)
                 X_test = np.stack(X_test["Segment"].values)
 
                 # Reshape for Keras
@@ -170,7 +174,6 @@ for freq in TARGET_FREQUENCIES:
 
 
                 X_train = normalize(X_train)
-                X_val = normalize(X_val)
                 X_test = normalize(X_test)
                 
                 # Apply Moving Average (Window Size = 5)
@@ -201,34 +204,33 @@ for freq in TARGET_FREQUENCIES:
                 X_train = X_train_resampled.reshape(-1, X_train_resampled.shape[1], 1)
                 y_train = y_train_resampled.reshape(-1, 1)
                 X_test = X_test.reshape(-1, X_test.shape[1], 1)
-                X_val = X_val.reshape(-1, X_val.shape[1], 1)
+                #X_val = X_val.reshape(-1, X_val.shape[1], 1)
 
                 model = keras.Sequential([
                     layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-                    layers.Conv1D(filters=6, kernel_size=25, strides=1, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    #layers.AveragePooling1D(pool_size=2),
-                    layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.AveragePooling1D(pool_size=2),
-                    layers.Conv1D(filters=30, kernel_size=15, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.AveragePooling1D(pool_size=2),
-                    layers.Conv1D(filters=32, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal'),
-                    layers.AveragePooling1D(pool_size=2),
+                    layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
                     layers.BatchNormalization(),
+                    layers.MaxPool1D(pool_size=2),
+                    layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
+                    layers.BatchNormalization(),
+                    layers.MaxPool1D(pool_size=2),
+                    layers.Conv1D(filters=64, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
+                    layers.BatchNormalization(),
+                    layers.MaxPool1D(pool_size=2),
+                    #layers.GlobalAveragePooling1D(),
                     layers.Flatten(),
                     
                     layers.Dropout(0.25),
                     layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
-                    layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
                     layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
                 ])
-                
-                # Set up optimizer and compile
-                lr_schedule = keras.optimizers.schedules.ExponentialDecay(
-                    initial_learning_rate=0.01,
-                    decay_steps=10000,
-                    decay_rate=0.9
+                reduce_lr = ReduceLROnPlateau(
+                    monitor='val_loss', 
+                    factor=0.5, 
+                    patience=5, 
+                    min_lr=1e-5
                 )
-                opt = keras.optimizers.Adadelta(learning_rate=lr_schedule,clipvalue=1.0)
+                opt = keras.optimizers.Adam(learning_rate=0.001,clipvalue=1.0)
                 model.compile(
                     optimizer=opt,
                     loss="binary_crossentropy",
@@ -248,7 +250,7 @@ for freq in TARGET_FREQUENCIES:
                 # Prepare callbacks
                 early_stopping = keras.callbacks.EarlyStopping(
                     monitor='val_loss',
-                    patience=20,
+                    patience=30,
                     restore_best_weights=True
                 )
                 # Calculate class weights
@@ -267,8 +269,8 @@ for freq in TARGET_FREQUENCIES:
                     X_train, y_train,
                     epochs=300,  # Reduced from 200 for faster iteration
                     batch_size=128,
-                    validation_data=(X_val,y_val),
-                    callbacks=[early_stopping],
+                    validation_data=(X_test,y_test),
+                    callbacks=[early_stopping,reduce_lr],
                     class_weight=class_weights,
                     verbose=1
                 )
@@ -341,10 +343,27 @@ for freq in TARGET_FREQUENCIES:
                     # Confusion Matrix
                     y_pred = (model.predict(X_test) > 0.5).astype("int32")
                     cm = confusion_matrix(y_test, y_pred)
-                    axs[1, 1].imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+
+                    # Plot confusion matrix with values
+                    im = axs[1, 1].imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+
+                    # Add text annotations
+                    for i in range(cm.shape[0]):
+                        for j in range(cm.shape[1]):
+                            axs[1, 1].text(j, i, f'{cm[i, j]}', 
+                                        ha='center', 
+                                        va='center', 
+                                        color='white' if cm[i, j] > cm.max() / 2 else 'black')
+
                     axs[1, 1].set_title('Confusion Matrix')
                     axs[1, 1].set_xlabel('Predicted')
                     axs[1, 1].set_ylabel('True')
+
+                    # Optional: Add axis labels
+                    axs[1, 1].set_xticks([0, 1])
+                    axs[1, 1].set_yticks([0, 1])
+                    axs[1, 1].set_xticklabels(['Negative', 'Positive'])
+                    axs[1, 1].set_yticklabels(['Negative', 'Positive'])
                     
                     # ROC Curve
                     y_pred_prob = model.predict(X_test)
