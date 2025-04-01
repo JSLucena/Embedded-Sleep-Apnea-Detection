@@ -207,22 +207,26 @@ for freq in TARGET_FREQUENCIES:
                 #X_val = X_val.reshape(-1, X_val.shape[1], 1)
 
                 model = keras.Sequential([
-                    layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-                    layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
-                    layers.BatchNormalization(),
-                    layers.MaxPool1D(pool_size=2),
-                    layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
-                    layers.BatchNormalization(),
-                    layers.MaxPool1D(pool_size=2),
-                    layers.Conv1D(filters=64, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
-                    layers.BatchNormalization(),
-                    layers.MaxPool1D(pool_size=2),
-                    #layers.GlobalAveragePooling1D(),
+                    layers.Reshape((1, X_train.shape[1], 1), input_shape=(X_train.shape[1], 1)),
+                    # Replace Conv1D with Conv2D
+                    layers.Conv2D(filters=16, kernel_size=(1, 9), strides=(1, 1), 
+                                    padding="same", activation="relu",
+                                    kernel_initializer='he_normal'),
+                    layers.MaxPool2D(pool_size=(1, 2)),
+                    layers.Dropout(0.1),
+                    layers.Conv2D(filters=32, kernel_size=(1, 5), padding="same", 
+                                    activation="relu", kernel_initializer='he_normal'),
+                    layers.MaxPool2D(pool_size=(1, 2)),
+                    layers.Dropout(0.1),
+                    layers.Conv2D(filters=64, kernel_size=(1, 3), padding="same", 
+                                    activation="relu", kernel_initializer='he_normal'),
+                    layers.MaxPool2D(pool_size=(1, 2)),
+                    layers.Dropout(0.1),
                     layers.Flatten(),
-                    
                     layers.Dropout(0.25),
-                    layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
-                    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
+                    layers.Dense(16, activation="relu", kernel_initializer='he_normal'),
+                    layers.Dense(1, activation="sigmoid",
+                                    kernel_initializer='glorot_uniform')
                 ])
                 reduce_lr = ReduceLROnPlateau(
                     monitor='val_loss', 
@@ -250,7 +254,7 @@ for freq in TARGET_FREQUENCIES:
                 # Prepare callbacks
                 early_stopping = keras.callbacks.EarlyStopping(
                     monitor='val_loss',
-                    patience=30,
+                    patience=20,
                     restore_best_weights=True
                 )
                 # Calculate class weights
@@ -271,7 +275,7 @@ for freq in TARGET_FREQUENCIES:
                     batch_size=128,
                     validation_data=(X_test,y_test),
                     callbacks=[early_stopping,reduce_lr],
-                    class_weight=class_weights,
+                    class_weight={0 : 1, 1 : 2},
                     verbose=1
                 )
                 training_time = time.time() - start_time
@@ -376,7 +380,7 @@ for freq in TARGET_FREQUENCIES:
                     axs[1, 2].set_xlabel('False Positive Rate', fontsize=12)
                     axs[1, 2].set_ylabel('True Positive Rate', fontsize=12)
                     plt.tight_layout()
-                    plt.savefig(f'images/ablation_model_freq{freq}_len{length}_overlap{overlap_pct}.png')
+                    plt.savefig(f'images/ablation_model_freq{freq}_len{length}_overlap{overlap_pct}.pdf')
                     plt.close()
                 
                 
@@ -467,5 +471,5 @@ plt.ylabel('Accuracy')
 plt.title('Accuracy vs Model Size')
 plt.grid(True)
 plt.tight_layout()
-plt.savefig(f'images/ablation_overall.png')
+plt.savefig(f'images/ablation_overall.pdf')
 plt.close()

@@ -1,249 +1,191 @@
 import pandas as pd
 import numpy as np
-from tqdm.notebook import tqdm
-from matplotlib import pyplot as plt
+from tqdm import tqdm
+import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
 from keras import layers
-from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc
+from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc,classification_report, roc_auc_score
 from sklearn.utils import shuffle
 from keras import regularizers
 from sklearn.model_selection import train_test_split
-train = 'datasets/ablation_study/train_freq4_len20_overlap75.feather'
-test = 'datasets/ablation_study/test_freq4_len20_overlap75.feather'
-pd.set_option('display.max_columns', None)  # or 1000
-#pd.set_option('display.max_rows', None)  # or 1000
-pd.set_option('display.max_colwidth', None)  # or 199
+import os
+import gc
+import time
+import sys
+from sklearn.utils import class_weight
+from sklearn.utils import resample
+from sklearn.preprocessing import StandardScaler
+from imblearn.over_sampling import SMOTE
+from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
+# Define all combinations to test
+FREQ = 8  # Hz
+LENGTH = 60 # seconds
+OVERLAP = 75 # 75%, 50%, 25% overlap
 
-train = pd.read_feather(train)  
-test = pd.read_feather(test)
+# Set up pandas display options
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_colwidth', None)
 
-#combined = pd.concat([train, test], axis=0, ignore_index=True)
-#combined = shuffle(combined, random_state=42)
-X_train, X_valid = train_test_split(
-    train, test_size=0.2, random_state=42  # Adjust test_size as needed
-)
+
+def normalize(X):
+    return np.clip((X - 50) / (100 - 50 + 1e-8), 0, 1)
+
+def simple_duplication_oversampling(X, y, minority_class=1, duplication_factor=2, noise_std=0.005, noise_max=0.01):
+
+    # Find indices of minority class
+    minority_indices = np.where(y.flatten() == minority_class)[0]
+
+    # Duplicate the minority samples
+    duplication_indices = np.tile(minority_indices, duplication_factor)
+
+    # Apply small Gaussian noise
+    noise = np.random.normal(loc=0, scale=noise_std, size=X[duplication_indices].shape)
+    
+    # Limit max noise range (avoid extreme outliers)
+    noise = np.clip(noise, -noise_max, noise_max)
+
+    # Add noise and ensure values remain in [0,1]
+    X_augmented = np.clip(X[duplication_indices], 0, 1)
+
+    # Combine original data with augmented minority samples
+    X_resampled = np.vstack([X, X_augmented])
+    y_resampled = np.concatenate([y.flatten(), np.full(len(X_augmented), minority_class)])
+
+    return X_resampled, y_resampled
+
+
+
+# Check for GPU availability
+print(f"TensorFlow version: {tf.__version__}")
+print(f"Available GPUs: {tf.config.list_physical_devices('GPU')}")
+
+            
+# Create filenames
+train_file = f'datasets/ablation_study/train_freq{FREQ}_len{LENGTH}_overlap{OVERLAP}.feather'
+test_file = f'datasets/ablation_study/test_freq{FREQ}_len{LENGTH}_overlap{OVERLAP}.feather'
+
+
+# Load data
+train = pd.read_feather(train_file)
+test = pd.read_feather(test_file)
 X_train = train
 X_test = test
-#X_train, X_test = train_test_split(
-#    combined, test_size=0.2, random_state=42  # Adjust test_size as needed
-#)
 
-
-y_train = X_train[["Label"]].values  # For Binary Classification (Apnea vs. Normal)
-y_valid = X_valid[["Label"]].values
+# Extract labels
+y_train = X_train[["Label"]].values
 y_test = X_test[["Label"]].values
-X_train = np.stack(X_train["Segment"].values)  # Convert to NumPy array
-X_valid = np.stack(X_valid["Segment"].values) 
 
-
+# Convert features to numpy arrays
+X_train = np.stack(X_train["Segment"].values)
 X_test = np.stack(X_test["Segment"].values)
 
 
-print(f"X_train shape: {X_train.shape}, y_train shape: {y_train.shape}")
-print(f"X_test shape: {X_test.shape}, y_test shape: {y_test.shape}")
+#Normalize data based on global values
+X_train = normalize(X_train)
+X_test = normalize(X_test)
 
-X_train = X_train / 100.0  # Normalize SpO₂ (assuming max 100%)
-X_valid = X_valid / 100.0 
-X_test = X_test / 100.0
-
-print(tf.config.list_physical_devices('GPU'))
-
-# Model based on the
+#Oversampling based on duplication with added noise
+X_train_flat = X_train.reshape(X_train.shape[0], -1)
+X_train_resampled, y_train_resampled = simple_duplication_oversampling(
+    X_train_flat, 
+    y_train, 
+    minority_class=1, 
+    duplication_factor=3
+)
+X_train = X_train_resampled
+y_train = y_train_resampled
+X_train = X_train_resampled.reshape(-1, X_train_resampled.shape[1], 1)
+y_train = y_train_resampled.reshape(-1, 1)
+X_test = X_test.reshape(-1, X_test.shape[1], 1)
 model = keras.Sequential([
-
-    layers.BatchNormalization(input_shape=(X_train.shape[1], 1)),
-  # First conv block - more filters
-    layers.Conv1D(filters=6, kernel_size=25, strides=1, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2),
-    #layers.Dropout(0.2),
-    # Second conv block
-    layers.Conv1D(filters=50, kernel_size=10, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2),
-    #layers.Dropout(0.2),
-    # Third conv block
-    layers.Conv1D(filters=30, kernel_size=15, padding="same", activation="relu"),
-    layers.MaxPooling1D(pool_size=2),
-    #layers.Dropout(0.2),
-    layers.BatchNormalization(), 
-    # Add LSTM layer to capture temporal dependencies
-    #layers.Bidirectional(layers.LSTM(64, return_sequences=False)),
+    layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
+    layers.MaxPool1D(pool_size=2),
+    layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001)),
+    layers.MaxPool1D(pool_size=2),
+    layers.Conv1D(filters=64, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001)),
+    layers.MaxPool1D(pool_size=2),
     layers.Flatten(),
-    # Fully connected layers
-    #layers.Dense(128, activation="relu"),
-    #layers.Dropout(0.5),
-    #layers.Dense(16, activation="relu"),
     layers.Dropout(0.25),
-    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01))
+    layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
+    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
 ])
-
-lr_schedule = keras.optimizers.schedules.ExponentialDecay(
-    initial_learning_rate=5e-4,
-    decay_steps=10000,
-    decay_rate=0.9)
-opt = keras.optimizers.Adam(learning_rate=lr_schedule)
+reduce_lr = ReduceLROnPlateau(
+    monitor='val_loss', 
+    factor=0.5, 
+    patience=5, 
+    min_lr=1e-5
+)
+opt = keras.optimizers.Adam(learning_rate=0.001,clipvalue=1.0)
 model.compile(
-        optimizer=opt,
-        loss="binary_crossentropy",
-        metrics=["accuracy",
-                 keras.metrics.AUC(name='auc'),  # Additional metrics
-                 keras.metrics.Precision(name='precision'),
-                 keras.metrics.F1Score(name="f1_score"),
-                 keras.metrics.Recall(name='recall')]
-    )
-    
+    optimizer=opt,
+    loss="binary_crossentropy",
+    metrics=["accuracy",
+                keras.metrics.AUC(name='auc'),
+                keras.metrics.Precision(name='precision'),
+                keras.metrics.F1Score(name="f1_score"),
+                keras.metrics.Recall(name='recall')]
+)
 
 model.summary()
-# Reshape X to match Keras expectations (batch_size, timesteps, features)
-X_train, y_train = shuffle(X_train, y_train, random_state=42)
 
-
-X_train = X_train.reshape(-1, X_train.shape[1], 1)
-X_valid = X_valid.reshape(-1, X_valid.shape[1], 1)
-X_test = X_test.reshape(-1, X_test.shape[1], 1)
-
-
-# Train Model
 early_stopping = keras.callbacks.EarlyStopping(
     monitor='val_loss',
-    patience=10,
+    patience=30,
     restore_best_weights=True
 )
-class_weights = {0: 1.0, 1: 1.0}
-history = model.fit(X_train, y_train, epochs=200, batch_size=256, validation_data=(X_valid, y_valid), callbacks=[early_stopping], class_weight=class_weights)
+class_weights = class_weight.compute_class_weight(
+    'balanced',
+    classes=np.unique(y_train.flatten()),
+    y=y_train.flatten()
+)
+class_weights = dict(enumerate(class_weights))
+print("Class weights:", class_weights)
+# Train model with timing
+start_time = time.time()
+history = model.fit(
+    X_train, y_train,
+    epochs=300,
+    batch_size=128,
+    validation_data=(X_test,y_test),
+    callbacks=[early_stopping,reduce_lr],
+    class_weight=class_weights,
+    verbose=1
+)
+training_time = time.time() - start_time
+print(f"Training time: {training_time:.2f} seconds")
 
-raw_predictions = model.predict(X_test)
-print("Prediction distribution:", np.histogram(raw_predictions, bins=10))
-print("Mean prediction value:", np.mean(raw_predictions))
-# Evaluate on Test Set
+# Evaluate on test set
 results = model.evaluate(X_test, y_test, return_dict=True)
+
+# Print results
 print(f"Test Loss: {results['loss']:.4f}")
 print(f"Test Accuracy: {results['accuracy']:.4f}")
 print(f"Test AUC: {results['auc']:.4f}")
 print(f"Test Recall: {results['recall']:.4f}")
 print(f"Test Precision: {results['precision']:.4f}")
 print(f"Test F1-score: {results['f1_score']:.4f}")
+            
+# Evaluate on the test set
+y_pred = model.predict(X_test)
+y_pred_classes = (y_pred > 0.5).astype("int32")  # Convert probabilities to binary predictions
 
-# Set up the figure size and style
-plt.figure(figsize=(20, 15))
-plt.style.use('seaborn-v0_8-whitegrid')
+# Classification report
+print("Classification Report:")
+print(classification_report(y_test, y_pred_classes, target_names=["Normal (0)", "Abnormal (1)"]))
 
-# Plot 1: Accuracy
-plt.subplot(2, 3, 1)
-plt.plot(history.history["accuracy"], label="Train Accuracy", linewidth=2)
-plt.plot(history.history["val_accuracy"], label="Val Accuracy", linewidth=2)
-plt.xlabel("Epochs", fontsize=12)
-plt.ylabel("Accuracy", fontsize=12)
-plt.legend(loc="lower right")
-plt.title("Training vs Validation Accuracy", fontsize=14)
-plt.grid(True)
+# Confusion matrix
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred_classes))
 
-# Plot 2: Loss
-plt.subplot(2, 3, 2)
-plt.plot(history.history["loss"], label="Train Loss", color='red', linewidth=2)
-plt.plot(history.history["val_loss"], label="Val Loss", color='orange', linewidth=2)
-plt.xlabel("Epochs", fontsize=12)
-plt.ylabel("Loss", fontsize=12)
-plt.legend(loc="upper right")
-plt.title("Training vs Validation Loss", fontsize=14)
-plt.grid(True)
+# AUC-ROC score
+auc_score = roc_auc_score(y_test, y_pred)
+print(f"AUC-ROC Score: {auc_score:.4f}")
 
-# Plot 3: AUC
-plt.subplot(2, 3, 3)
-plt.plot(history.history["auc"], label="Train AUC", color='green', linewidth=2)
-plt.plot(history.history["val_auc"], label="Val AUC", color='lime', linewidth=2)
-plt.xlabel("Epochs", fontsize=12)
-plt.ylabel("AUC", fontsize=12)
-plt.legend(loc="lower right")
-plt.title("Training vs Validation AUC", fontsize=14)
-plt.grid(True)
+raw_predictions = model.predict(X_test)
+print("Prediction distribution:", np.histogram(y_pred, bins=10))
+print("Mean prediction value:", np.mean(y_pred))
 
-# Plot 4: Precision/Recall
-plt.subplot(2, 3, 4)
-plt.plot(history.history["precision"], label="Train Precision", color='purple', linewidth=2)
-plt.plot(history.history["val_precision"], label="Val Precision", color='magenta', linewidth=2)
-plt.plot(history.history["recall"], label="Train Recall", color='blue', linewidth=2, linestyle='--')
-plt.plot(history.history["val_recall"], label="Val Recall", color='cyan', linewidth=2, linestyle='--')
-plt.xlabel("Epochs", fontsize=12)
-plt.ylabel("Score", fontsize=12)
-plt.legend(loc="lower right")
-plt.title("Precision and Recall", fontsize=14)
-plt.grid(True)
 
-# Plot 5: Confusion Matrix
-plt.subplot(2, 3, 5)
-y_pred = (model.predict(X_test) > 0.5).astype("int32")
-cm = confusion_matrix(y_test, y_pred)
-plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
-plt.title('Confusion Matrix', fontsize=14)
-plt.colorbar()
-tick_marks = np.arange(2)
-plt.xticks(tick_marks, ['Normal', 'Apnea'], rotation=45)
-plt.yticks(tick_marks, ['Normal', 'Apnea'])
-
-thresh = cm.max() / 2.
-for i in range(cm.shape[0]):
-    for j in range(cm.shape[1]):
-        plt.text(j, i, format(cm[i, j], 'd'),
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-plt.ylabel('True Label', fontsize=12)
-plt.xlabel('Predicted Label', fontsize=12)
-
-# Plot 6: ROC Curve
-plt.subplot(2, 3, 6)
-y_pred_prob = model.predict(X_test)
-fpr, tpr, _ = roc_curve(y_test, y_pred_prob)
-roc_auc = auc(fpr, tpr)
-
-plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.2f})')
-plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
-plt.xlabel('False Positive Rate', fontsize=12)
-plt.ylabel('True Positive Rate', fontsize=12)
-plt.title('Receiver Operating Characteristic', fontsize=14)
-plt.legend(loc="lower right")
-plt.grid(True)
-
-plt.tight_layout()
-plt.show()
-
-"""
-# Learning Curves - Combined plot showing both accuracy and loss
-plt.figure(figsize=(12, 6))
-plt.subplot(1, 2, 1)
-plt.plot(history.history["accuracy"], label="Train Accuracy", color='blue', linewidth=2)
-plt.plot(history.history["val_accuracy"], label="Val Accuracy", color='skyblue', linewidth=2)
-plt.xlabel("Epochs", fontsize=12)
-plt.ylabel("Accuracy", fontsize=12)
-plt.legend(loc="lower right")
-plt.title("Accuracy Curves", fontsize=14)
-plt.grid(True)
-
-plt.subplot(1, 2, 2)
-plt.plot(history.history["loss"], label="Train Loss", color='red', linewidth=2)
-plt.plot(history.history["val_loss"], label="Val Loss", color='salmon', linewidth=2)
-plt.xlabel("Epochs", fontsize=12)
-plt.ylabel("Loss", fontsize=12)
-plt.legend(loc="upper right")
-plt.title("Loss Curves", fontsize=14)
-plt.grid(True)
-
-plt.tight_layout()
-plt.show()
-
-# Precision-Recall Curve (more detailed)
-plt.figure(figsize=(10, 8))
-precision, recall, _ = precision_recall_curve(y_test, y_pred_prob)
-pr_auc = auc(recall, precision)
-
-plt.plot(recall, precision, color='blue', lw=2, label=f'PR curve (area = {pr_auc:.2f})')
-plt.xlabel('Recall', fontsize=12)
-plt.ylabel('Precision', fontsize=12)
-plt.title('Precision-Recall Curve', fontsize=14)
-plt.legend(loc="lower left")
-plt.grid(True)
-plt.show()
-
-"""
+model_path = f"models/{FREQ}-{LENGTH}.keras"
+model.save(model_path)              
