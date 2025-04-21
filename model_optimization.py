@@ -24,9 +24,9 @@ import tempfile
 #from keras import layers
 #from keras import regularizers
 # Define all combinations to test
-FREQ = 4  # Hz
+FREQ = 1  # Hz
 LENGTH = 60 # seconds
-OVERLAP = 75 # 75%, 50%, 25% overlap
+OVERLAP = 50 # 75%, 50%, 25% overlap
 FINE_TUNE_EPOCHS = 4  # Epochs for fine-tuning after pruning
 RESULTS_FILE = "pruning_quant_results.csv"
 
@@ -302,6 +302,15 @@ int_tflite_model = converter_int.convert()
 interpreter_int = tf.lite.Interpreter(model_content=int_tflite_model)
 interpreter_int.allocate_tensors()
 
+converter_int2= tf.lite.TFLiteConverter.from_keras_model(model)
+converter_int2.optimizations = [tf.lite.Optimize.DEFAULT]
+converter_int2.target_spec.supported_ops = [tf.lite.OpsSet.EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8]
+#converter_int2.inference_input_type = tf.int16
+#converter_int2.inference_output_type = tf.int16
+converter_int2.representative_dataset = representative_dataset
+int2_tflite_model = converter_int2.convert()
+interpreter_int2 = tf.lite.Interpreter(model_content=int2_tflite_model)
+interpreter_int2.allocate_tensors()
 
 q_aware_converter = tf.lite.TFLiteConverter.from_keras_model(q_aware_model)
 q_aware_converter.optimizations = [tf.lite.Optimize.DEFAULT]
@@ -311,6 +320,7 @@ q_aware_interpreter.allocate_tensors()
 print("baseline", evaluate_tflite_metrics(interpreter, X_test, y_test))
 print("dynamic", evaluate_tflite_metrics(interpreter_post, X_test, y_test))
 print("full-int", evaluate_tflite_metrics(interpreter_int, X_test, y_test))
+print("Act16-weight8", evaluate_tflite_metrics(interpreter_int2, X_test, y_test))
 print("q-aware", evaluate_tflite_metrics(q_aware_interpreter, X_test, y_test))
 
 
@@ -330,6 +340,9 @@ tflite_model_quant_file.write_bytes(q_aware_tflite_model)
 tflite_model_int_file = tflite_models_dir/"int8.tflite"
 tflite_model_int_file.write_bytes(int_tflite_model)
 
+tflite_model_int2_file = tflite_models_dir/"w8-a16.tflite"
+tflite_model_int2_file.write_bytes(int2_tflite_model)
+
 # Save the quantized model:
 tflite_model_post_file = tflite_models_dir/"dynamic.tflite"
 tflite_model_post_file.write_bytes(quantized_tflite_model)
@@ -337,4 +350,5 @@ tflite_model_post_file.write_bytes(quantized_tflite_model)
 print("Original model size:", os.path.getsize(tflite_model_file) / 1024, "KB")
 print("Q-aware model size:", os.path.getsize(tflite_model_quant_file) / 1024, "KB")
 print("Full integer model size:", os.path.getsize(tflite_model_int_file) / 1024, "KB")
+print("Activation16 Weight8 size:", os.path.getsize(tflite_model_int2_file) / 1024, "KB")
 print("Post quantization size:", os.path.getsize(tflite_model_post_file) / 1024, "KB")

@@ -9,8 +9,8 @@ FS = 128  # Original sampling rate (Hz)
 APNEA_RATIO = 1.0  # Desired balance between apnea and non-apnea events
 
 # Define different configurations for ablation study
-TARGET_FREQUENCIES = [1, 4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [ 11, 15, 20, 25, 30, 60]  # seconds
+TARGET_FREQUENCIES = [1, 2,4, 8, 16]  # Hz
+SEGMENT_LENGTHS = [ 11, 15, 20, 25, 30, 60, 120]  # seconds
 WINDOW_OVERLAPS = [0.25, 0.5, 0.75]  # 25%, 50%, 75% overlap
 EVENT_THRESHOLD = 10  # seconds - minimum duration for relevant events
 
