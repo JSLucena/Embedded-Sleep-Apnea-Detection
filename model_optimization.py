@@ -18,7 +18,7 @@ from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 import tensorflow_model_optimization as tfmot
 from tensorflow_model_optimization.python.core.keras.compat import keras
 from sklearn.metrics import (roc_auc_score, precision_score, 
-                           recall_score, accuracy_score)
+                           recall_score, accuracy_score, confusion_matrix)
 import tempfile
 
 #from keras import layers
@@ -35,7 +35,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
 
 
-def evaluate_tflite_metrics(interpreter, x_test, y_test):
+def evaluate_tflite_metrics(interpreter, x_test, y_test, threshold=0.5):
     input_details = interpreter.get_input_details()[0]
     output_details = interpreter.get_output_details()[0]
     
@@ -43,37 +43,39 @@ def evaluate_tflite_metrics(interpreter, x_test, y_test):
     y_pred = []
     
     for i in range(len(x_test)):
-        # Prepare input data
-        if input_details['dtype'] == np.float32:
-            input_data = x_test[i:i+1].astype(np.float32)
-        else:
-            input_data = x_test[i:i+1].astype(np.uint8)
-            
+        # Prepare input data with type checking
+        input_data = np.expand_dims(x_test[i], axis=0).astype(input_details['dtype'])
         interpreter.set_tensor(input_details['index'], input_data)
         interpreter.invoke()
         
-        # Get predictions (assuming binary classification)
+        # Get prediction (assuming single output with sigmoid activation)
         pred = interpreter.get_tensor(output_details['index'])
-        y_pred.append(pred[0][0])  # Sigmoid output
+        y_pred.append(pred[0][0])
         y_true.append(y_test[i][0])
     
     y_true = np.array(y_true)
     y_pred = np.array(y_pred)
+    y_pred_binary = (y_pred > threshold).astype(int)
     
-    # Calculate metrics
-    auc = roc_auc_score(y_true, y_pred)
-    precision = precision_score(y_true, (y_pred > 0.5).astype(int))
-    recall = recall_score(y_true, (y_pred > 0.5).astype(int))
-    accuracy = accuracy_score(y_true, (y_pred > 0.5).astype(int))
-    f1 = 2 * (precision * recall) / (precision + recall + 1e-7)
+    # Calculate all metrics
+    tn, fp, fn, tp = confusion_matrix(y_true, y_pred_binary).ravel()
     
-    return {
-        'accuracy': accuracy,
-        'auc': auc,
-        'precision': precision,
-        'recall': recall,
-        'f1_score': f1
+    metrics = {
+        'accuracy': accuracy_score(y_true, y_pred_binary),
+        'auc': roc_auc_score(y_true, y_pred),
+        'precision': precision_score(y_true, y_pred_binary, zero_division=0),
+        'recall': recall_score(y_true, y_pred_binary),  # sensitivity
+        'specificity': tn / (tn + fp + 1e-7),  # True Negative Rate
+        'f1_score': 2 * tp / (2 * tp + fp + fn + 1e-7),  # direct calculation
+        'confusion_matrix': {
+            'true_negative': int(tn),
+            'false_positive': int(fp),
+            'false_negative': int(fn),
+            'true_positive': int(tp)
+        }
     }
+    
+    return metrics
 
 
 # Benchmark function for TFLite models
@@ -232,7 +234,7 @@ history = model.fit(
     batch_size=128,
     validation_data=(X_test,y_test),
     callbacks=[early_stopping,reduce_lr],
-    #class_weight=class_weights,
+    class_weight={0 : 1, 1 : 2},
     verbose=1
 )
 model_path = f"models/{FREQ}-{LENGTH}.keras"
@@ -263,7 +265,7 @@ history_q = q_aware_model.fit(
     batch_size=128,
     validation_data=(X_test,y_test),
     callbacks=[early_stopping,reduce_lr],
-    class_weight=class_weights,
+    class_weight={0 : 1, 1 : 2},
     verbose=1
 )
 # ----------------------------
@@ -312,6 +314,16 @@ int2_tflite_model = converter_int2.convert()
 interpreter_int2 = tf.lite.Interpreter(model_content=int2_tflite_model)
 interpreter_int2.allocate_tensors()
 
+
+converter_float= tf.lite.TFLiteConverter.from_keras_model(model)
+converter_float.optimizations = [tf.lite.Optimize.DEFAULT]
+converter_float.target_spec.supported_types = [tf.float16]
+float_tflite_model = converter_float.convert()
+interpreter_float = tf.lite.Interpreter(model_content=float_tflite_model)
+interpreter_float.allocate_tensors()
+
+
+
 q_aware_converter = tf.lite.TFLiteConverter.from_keras_model(q_aware_model)
 q_aware_converter.optimizations = [tf.lite.Optimize.DEFAULT]
 q_aware_tflite_model = q_aware_converter.convert()
@@ -320,6 +332,7 @@ q_aware_interpreter.allocate_tensors()
 print("baseline", evaluate_tflite_metrics(interpreter, X_test, y_test))
 print("dynamic", evaluate_tflite_metrics(interpreter_post, X_test, y_test))
 print("full-int", evaluate_tflite_metrics(interpreter_int, X_test, y_test))
+print("float16", evaluate_tflite_metrics(interpreter_float, X_test, y_test))
 print("Act16-weight8", evaluate_tflite_metrics(interpreter_int2, X_test, y_test))
 print("q-aware", evaluate_tflite_metrics(q_aware_interpreter, X_test, y_test))
 
@@ -347,8 +360,14 @@ tflite_model_int2_file.write_bytes(int2_tflite_model)
 tflite_model_post_file = tflite_models_dir/"dynamic.tflite"
 tflite_model_post_file.write_bytes(quantized_tflite_model)
 
+
+# Save the quantized model:
+tflite_model_float_file = tflite_models_dir/"float16.tflite"
+tflite_model_float_file.write_bytes(float_tflite_model)
+
 print("Original model size:", os.path.getsize(tflite_model_file) / 1024, "KB")
 print("Q-aware model size:", os.path.getsize(tflite_model_quant_file) / 1024, "KB")
 print("Full integer model size:", os.path.getsize(tflite_model_int_file) / 1024, "KB")
 print("Activation16 Weight8 size:", os.path.getsize(tflite_model_int2_file) / 1024, "KB")
 print("Post quantization size:", os.path.getsize(tflite_model_post_file) / 1024, "KB")
+print("Float16 quantization size:", os.path.getsize(tflite_model_float_file) / 1024, "KB")

@@ -1,0 +1,14 @@
+# Target labels
+ picotoolBuild
+# Source files and their labels
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/picotoolBuild
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/picotoolBuild.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/picotoolBuild-complete.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-build.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-configure.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-download.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-install.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-mkdir.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-patch.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-test.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-update.rule

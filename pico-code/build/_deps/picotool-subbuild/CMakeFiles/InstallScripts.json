@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps/picotool-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

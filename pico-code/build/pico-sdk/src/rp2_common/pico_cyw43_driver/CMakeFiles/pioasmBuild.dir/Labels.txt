@@ -1,0 +1,13 @@
+# Target labels
+ pioasmBuild
+# Source files and their labels
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/pioasmBuild
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/pioasmBuild.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/pioasmBuild-complete.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-build.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-configure.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-download.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-install.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-mkdir.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-patch.rule
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/pioasmBuild-stamp/pioasmBuild-update.rule
