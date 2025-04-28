@@ -30,7 +30,8 @@ test_patients = [
     "ucddb026"
 ]
 
-
+#train_patients = ["ucddb008"]
+#test_patients = ["ucddb006"]
 def has_consecutive_events(event_series, threshold):
     """
     Checks if there is a sequence of at least 'threshold' consecutive ones in a binary array.
@@ -182,6 +183,10 @@ def generate_ablation_datasets():
     # Load source datasets
     train_path = 'datasets/trainset-labeled.feather'
     test_path = 'datasets/testset-labeled.feather'
+
+    #For generation of segments for target hardware
+    #train_path = 'datasets/embedded1.feather'
+    #test_path = 'datasets/embedded2.feather'
     
     if not os.path.exists(train_path) or not os.path.exists(test_path):
         print(f"Error: Source datasets not found at {train_path} or {test_path}")
@@ -259,10 +264,12 @@ def generate_ablation_datasets():
     # Create summary dataframe and save
     summary_df = pd.DataFrame(dataset_stats)
     summary_path = output_dir / "ablation_summary.feather"
+    #summary_path = output_dir / "inference.feather"
     summary_df.to_feather(summary_path)  # Save as feather
     
     # Also save as CSV for easy viewing
     summary_df.to_csv(output_dir / "ablation_summary.csv", index=False)
+    #summary_df.to_csv(output_dir / "inference_summary.csv", index=False)
     
     print(f"\nSummary saved to {summary_path}")
     print(summary_df)

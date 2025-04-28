@@ -17,19 +17,22 @@ spo2_min_threshold = 50 #Not sure what to use here
 apnea_types = ['APNEA-O', 'APNEA-C', 'APNEA-M']
 hypopnea_types = ['HYP-O', 'HYP-C', 'HYP-M']
 other_types = ['PB', 'POSSIBLE']
-#"ucddb008", "ucddb006",
 #patient split for train/test
 train_patients = [
     "ucddb002", "ucddb003",  "ucddb007", "ucddb009",
     "ucddb010", "ucddb012", "ucddb019", "ucddb020", "ucddb022",
     "ucddb023", "ucddb025", "ucddb027", "ucddb028",   "ucddb011", "ucddb013" , "ucddb017", "ucddb018"
 ]
-#train_patients = ["ucddb027"]
-#test_patients = []
+
 test_patients = [
     "ucddb005", "ucddb014", "ucddb015", "ucddb021", "ucddb024",
     "ucddb026"
 ]
+
+#to create the sets for inference on target hardware
+#train_patients = ["ucddb008"]
+#test_patients = ["ucddb006"]
+
 
 def one_hot_encode_labels(df):
     """
@@ -120,6 +123,7 @@ test_df = one_hot_encode_labels(test_df)  # Apply one-hot encoding
 
 print(f"Training set: {train_df.shape[0]} rows, {train_df['Patient'].nunique()} patients")
 print(f"Test set: {test_df.shape[0]} rows, {test_df['Patient'].nunique()} patients")
+
 
 train_df.to_feather('datasets/trainset-labeled.feather')
 test_df.to_feather('datasets/testset-labeled.feather')
