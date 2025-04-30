@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "cstdint": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "any": "cpp",
+        "complex": "cpp"
     }
 }

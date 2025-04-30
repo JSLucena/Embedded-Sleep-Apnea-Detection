@@ -4,14 +4,18 @@
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
+#include "tensorflow/lite/schema/schema_generated.h"
+#include "tensorflow/lite/core/api/error_reporter.h" // Base class might still be needed by interpreter header
+#include "tensorflow/lite/micro/micro_log.h" // Include for potential MicroPrintf
 
 // Model headers generated for each quantization type
-#include "models/baseline.h"
-//#include "models/q-aware.h"
+//#include "models/baseline.h"
+#include "models/q-aware.h"
 //#include "models/int8.h" 
 //#include "models/float16.h"
 //#include "models/w8_16.h"
 
+#define TF_LITE_STATIC_MEMORY
 typedef struct {
     const unsigned char* model_data;
     unsigned int model_len;
@@ -20,9 +24,9 @@ typedef struct {
   } ModelConfig;
 
 const ModelConfig baseline_config = {
-  .model_data = models_baseline_tflite,
-  .model_len = models_baseline_tflite_len,
-  .model_name = "Baseline (float32)",
+  .model_data = models_q_aware_tflite,
+  .model_len = models_q_aware_tflite_len,
+  .model_name = "qat",
   .is_quantized = false
 };
   
@@ -33,6 +37,37 @@ const ModelConfig baseline_config = {
 float received_data[SEGMENT_LENGTH];
 double average_runtime = 0.0;
 uint32_t data_length = 0;
+
+
+static tflite::MicroMutableOpResolver<10> resolver;  // Adjust size if needed
+
+const tflite::Model* model;
+tflite::MicroInterpreter* interpreter;
+constexpr int kTensorArenaSize = 16 * 1024;
+uint8_t tensor_arena[kTensorArenaSize];
+
+void normalize(float* X, int length) {
+    const float min_val = 50.0f;
+    const float max_val = 100.0f;
+    const float epsilon = 1e-8f; // Small value to avoid division by zero
+    
+    for (int i = 0; i < length; i++) {
+        // Clip the normalized value between 0 and 1
+        float normalized = (X[i] - min_val) / (max_val - min_val + epsilon);
+        
+        // Apply clipping to ensure value is between 0 and 1
+        if (normalized < 0.0f) {
+            normalized = 0.0f;
+        } else if (normalized > 1.0f) {
+            normalized = 1.0f;
+        }
+        
+        X[i] = normalized;
+    }
+}
+
+
+
 
 bool receive_float_array() {
   printf("Waiting to receive %d floats (%d bytes)...\n", SEGMENT_LENGTH, SEGMENT_LENGTH * sizeof(float));
@@ -52,7 +87,7 @@ bool receive_float_array() {
   }
 
   data_length = SEGMENT_LENGTH;
-  printf("Received %d floats successfully\n", data_length);
+  //printf("Received %d floats successfully\n", data_length);
 
   printf("First 5 values: ");
   for (uint32_t i = 0; i < (data_length < 5 ? data_length : 5); i++) {
@@ -63,71 +98,93 @@ bool receive_float_array() {
   return true;
 }
 
+void setup(const ModelConfig* config){
+  // Initialize TFLite Micro
+  tflite::InitializeTarget();
+  printf("TFLite Micro initialized successfully!\n");
+  // Load model
+  model = tflite::GetModel(config->model_data);
+  // --- Model Load Check ---
+  if (model == nullptr || model->version() != TFLITE_SCHEMA_VERSION) {
+    printf("ERROR: Failed to load model or version mismatch for %s!\n", config->model_name);
+    MicroPrintf("ERROR: Failed to load model or version mismatch for %s!\n", config->model_name); // Try MicroPrintf too
+    stdio_flush();
+    return; // Exit early
+  }
+  printf("Model loaded successfully. Version: %d\n", model->version());
+  stdio_flush();
+
+  // Add ops based on your model's requirements:
+  resolver.AddFullyConnected();      // For FULLY_CONNECTED layers
+  resolver.AddConv2D();              // For CONV_2D layers
+  resolver.AddMaxPool2D();           // For MAX_POOL_2D layers
+  resolver.AddLogistic();            // For LOGISTIC (sigmoid) activation
+  resolver.AddReshape();             // For RESHAPE operations
+  resolver.AddStridedSlice();        // For STRIDED_SLICE ops
+  resolver.AddPack();                // For PACK ops (if used in model)
+  resolver.AddShape();               // For SHAPE ops (if used in model)
+
+  // Quantization-related ops (if your model is quantized)
+  resolver.AddQuantize();            // For QUANTIZE ops
+  resolver.AddDequantize();          // For DEQUANTIZE ops
+
+
+  static tflite::MicroInterpreter static_interpreter(model, resolver, tensor_arena, kTensorArenaSize);
+  interpreter = &static_interpreter;
+  // --- Allocate Tensors ---
+  printf("Allocating tensors...\n");
+  stdio_flush();
+  if (interpreter->AllocateTensors() != kTfLiteOk) {
+    printf("ERROR: AllocateTensors() failed for %s!\n", config->model_name);
+    MicroPrintf("ERROR: AllocateTensors() failed for %s!\n", config->model_name);
+    stdio_flush();
+    return;
+  }
+  printf("Tensor allocation successful. Arena used: %d bytes\n", (int)interpreter->arena_used_bytes()); // Cast size_t to int for printf
+  printf("Model inputs: %d, Model outputs: %d\n", (int)interpreter->inputs_size(), (int)interpreter->outputs_size()); // Cast size_t
+  stdio_flush();
+
+  
+}
 void run_benchmark(const ModelConfig* config) {
+  // Get input/output tensors
+    TfLiteTensor* input = interpreter->input(0);
+    TfLiteTensor* output = interpreter->output(0);
     printf("\nBenchmarking %s model...\n", config->model_name);
-    
-    // Load model
-    const tflite::Model* model = tflite::GetModel(config->model_data);
-    
-    // Initialize resolver with all operations needed for your model
-    static tflite::MicroMutableOpResolver<10> resolver;  // Adjust size if needed
-
-    // Add ops based on your model's requirements:
-    resolver.AddFullyConnected();      // For FULLY_CONNECTED layers
-    resolver.AddConv2D();              // For CONV_2D layers
-    resolver.AddMaxPool2D();           // For MAX_POOL_2D layers
-    resolver.AddLogistic();            // For LOGISTIC (sigmoid) activation
-    resolver.AddReshape();             // For RESHAPE operations
-    resolver.AddStridedSlice();        // For STRIDED_SLICE ops
-    resolver.AddPack();                // For PACK ops (if used in model)
-    resolver.AddShape();               // For SHAPE ops (if used in model)
-
-    // Quantization-related ops (if your model is quantized)
-    //resolver.AddQuantize();            // For QUANTIZE ops
-    //resolver.AddDequantize();          // For DEQUANTIZE ops
-  
-    // Allocate arena (adjust size per model if needed)
-    constexpr int kTensorArenaSize = 16 * 1024;
-    uint8_t tensor_arena[kTensorArenaSize];
-  
-    tflite::MicroInterpreter interpreter(model, resolver, tensor_arena, kTensorArenaSize);
-    
-    if (interpreter.AllocateTensors() != kTfLiteOk) {
-      printf("Allocation failed for %s!\n", config->model_name);
-      return;
-    }
-  
-    // Get input/output tensors
-    TfLiteTensor* input = interpreter.input(0);
-    TfLiteTensor* output = interpreter.output(0);
-  
-    // Benchmark loop
     uint32_t start_time = to_ms_since_boot(get_absolute_time());
-    for (int i = 0; i < 100; i++) { // Run 100 inferences
-      // Fill input with test data (adjust for your model)
-      if (config->is_quantized) {
-        // For quantized models
-
-        //for (int j = 0; j < input->bytes; j++) {
-        //  input->data.int8[j] = ...; // Your quantized input
-        //}
-      } else {
-        // For float models
-        for (int j = 0; j < input->bytes / sizeof(float); j++) {
-          input->data.f[j] = received_data[j]; // Your float input
-        }
-      }
-  
-      if (interpreter.Invoke() != kTfLiteOk) {
-        printf("Inference failed!\n");
-        break;
-      }
+    normalize(received_data, SEGMENT_LENGTH);
+    printf("First 5 values: ");
+    for (uint32_t i = 0; i < (data_length < 5 ? data_length : 5); i++) {
+        printf("%.6f ", received_data[i]);
     }
+    if (config->is_quantized) {
+      // For quantized models
+
+      //for (int j = 0; j < input->bytes; j++) {
+      //  input->data.int8[j] = ...; // Your quantized input
+      //}
+    } else {
+      // For float models
+      memcpy(input->data.f, received_data, input->bytes);
+    }
+    if (interpreter->Invoke() != kTfLiteOk) {
+      printf("Inference failed!\n");
+    }
+    printf("Output type: %d, bytes: %d\n", output->type, output->bytes);
+
     uint32_t duration = to_ms_since_boot(get_absolute_time()) - start_time;
     
-    printf("Avg latency: %.2f ms\n", duration / 100.0f);
-    printf("Model size: %d KB\n", config->model_len / 1024);
-    printf("Arena used bytes: %d", interpreter.arena_used_bytes());
+    printf("Latency: %d\n", duration);
+    //printf("Model size: %d KB\n", config->model_len / 1024);
+    //printf("Arena used bytes: %d\n", interpreter.arena_used_bytes());
+    printf("Result: ");
+    for (int j = 0; j < output->bytes / sizeof(float); j++) {
+      printf("%f ", output->data.f[j]);
+    }
+    printf("\n");
+
+    fflush(stdout);
+    stdio_flush();
 }
 
 const int led_pin = 25;
@@ -135,17 +192,16 @@ int main() {
     // Initialize LED pin...
     gpio_init(led_pin);
     gpio_set_dir(led_pin, GPIO_OUT);
-    gpio_put(led_pin, true);
+    
 
     stdio_init_all();
     printf("Initializing TFLite Micro...\n");
     sleep_ms(5000); // Wait for USB to initialize
-
+    gpio_put(led_pin, true);
     printf("Testing pico-tflmicro...\n");
-
-    // Initialize TFLite Micro
-    tflite::InitializeTarget();
-    printf("TFLite Micro initialized successfully!\n");
+    sleep_ms(5000); // Wait for USB to initialize
+    setup(&baseline_config);
+    
 
 
     //run_benchmark(baseline_config);
@@ -160,7 +216,10 @@ int main() {
     printf("Pico ready to receive data...\n");
     while (true) {
         if (receive_float_array()) {
-            printf("data recieved\n");
+            gpio_put(led_pin, false);
+            run_benchmark(&baseline_config);
+            printf("Benchmark Complete\n");
+            gpio_put(led_pin, true);
         }
     }
 

@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 # Load your TFLite model
-model_path = 'models/int8.tflite'
+model_path = 'models/q-aware.tflite'
 interpreter = tf.lite.Interpreter(model_path=model_path)
 
 input_details = interpreter.get_input_details()

@@ -8,7 +8,7 @@ events:
       - "CMakeLists.txt:7 (project)"
     message: |
       The target system is: PICO -  - cortex-m0plus
-      The host system is: Linux - 6.14.2-arch1-1 - x86_64
+      The host system is: Linux - 6.14.4-arch1-1 - x86_64
   -
     kind: "message-v1"
     backtrace:
@@ -135,8 +135,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ"
-      binary: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ"
+      source: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7"
+      binary: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7"
     cmakeVariables:
       CMAKE_C_FLAGS: "-mcpu=cortex-m0plus -mthumb"
       CMAKE_C_FLAGS_DEBUG: "-Og -g"
@@ -146,13 +146,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ'
+        Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_48906/fast
-        /usr/bin/make  -f CMakeFiles/cmTC_48906.dir/build.make CMakeFiles/cmTC_48906.dir/build
-        make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ'
-        Building C object CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o
-        /usr/bin/arm-none-eabi-gcc   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_1d6e6/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_1d6e6.dir/build.make CMakeFiles/cmTC_1d6e6.dir/build
+        make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7'
+        Building C object CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o
+        /usr/bin/arm-none-eabi-gcc   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/arm-none-eabi-gcc
         Target: arm-none-eabi
@@ -160,8 +160,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_48906.dir/'
-         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1 -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_48906.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/cckJnGjZ.s
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_1d6e6.dir/'
+         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1 -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_1d6e6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/ccdSgj9Y.s
         GNU C17 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) version 14.2.1 20241119 (arm-none-eabi)
         	compiled by GNU C version 9.2.1 20191120 (Red Hat 9.2.1-2), GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-1-g835ea3a-GMP
         
@@ -178,14 +178,14 @@ events:
          /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/include
         End of search list.
         Compiler executable checksum: e89038eedc6170daa7e4ecd67cd2deb0
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_48906.dir/'
-         /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o /tmp/cckJnGjZ.s
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_1d6e6.dir/'
+         /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o /tmp/ccdSgj9Y.s
         GNU assembler version 2.43.1 (arm-none-eabi) using BFD version (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 2.43.1.20241119
         COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_48906.elf
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48906.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_1d6e6.elf
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d6e6.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/arm-none-eabi-gcc
         COLLECT_LTO_WRAPPER=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper
@@ -196,12 +196,12 @@ events:
         gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 
         COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_48906.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_48906.elf.'
-         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccA4Cb2j.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_48906.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_1d6e6.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_1d6e6.elf.'
+         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cci9apKF.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_1d6e6.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o
         /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol _start; defaulting to 00008000
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_48906.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_48906.elf.'
-        /usr/bin/arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb  -Wl,--build-id=none -nostdlib  -v CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o -o cmTC_48906.elf
-        make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ'
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_1d6e6.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_1d6e6.elf.'
+        /usr/bin/arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb  -Wl,--build-id=none -nostdlib  -v CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o -o cmTC_1d6e6.elf
+        make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7'
         
       exitCode: 0
   -
@@ -234,13 +234,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ']
+        ignore line: [Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_48906/fast]
-        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_48906.dir/build.make CMakeFiles/cmTC_48906.dir/build]
-        ignore line: [make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ']
-        ignore line: [Building C object CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/arm-none-eabi-gcc   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_1d6e6/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_1d6e6.dir/build.make CMakeFiles/cmTC_1d6e6.dir/build]
+        ignore line: [make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7']
+        ignore line: [Building C object CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/arm-none-eabi-gcc   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-gcc]
         ignore line: [Target: arm-none-eabi]
@@ -248,8 +248,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_48906.dir/']
-        ignore line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1 -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_48906.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/cckJnGjZ.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_1d6e6.dir/']
+        ignore line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1 -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_1d6e6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/ccdSgj9Y.s]
         ignore line: [GNU C17 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) version 14.2.1 20241119 (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 9.2.1 20191120 (Red Hat 9.2.1-2)  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-1-g835ea3a-GMP]
         ignore line: []
@@ -266,14 +266,14 @@ events:
         ignore line: [ /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: e89038eedc6170daa7e4ecd67cd2deb0]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_48906.dir/']
-        ignore line: [ /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o /tmp/cckJnGjZ.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_1d6e6.dir/']
+        ignore line: [ /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o /tmp/ccdSgj9Y.s]
         ignore line: [GNU assembler version 2.43.1 (arm-none-eabi) using BFD version (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 2.43.1.20241119]
         ignore line: [COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_48906.elf]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48906.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_1d6e6.elf]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d6e6.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-gcc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper]
@@ -284,17 +284,17 @@ events:
         ignore line: [gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) ]
         ignore line: [COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_48906.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_48906.elf.']
-        link line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccA4Cb2j.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_48906.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_1d6e6.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_1d6e6.elf.']
+        link line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cci9apKF.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_1d6e6.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o]
           arg [/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccA4Cb2j.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cci9apKF.res] ==> ignore
           arg [--sysroot=/usr/bin/../arm-none-eabi] ==> ignore
           arg [-X] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_48906.elf] ==> ignore
+          arg [cmTC_1d6e6.elf] ==> ignore
           arg [-L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp]
           arg [-L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp]
           arg [-L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp] ==> dir [/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp]
@@ -303,12 +303,12 @@ events:
           arg [-L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib]
           arg [-L/usr/bin/../arm-none-eabi/lib] ==> dir [/usr/bin/../arm-none-eabi/lib]
           arg [--build-id=none] ==> ignore
-          arg [CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o] ==> ignore
         ignore line: [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol _start]
         ignore line: [ defaulting to 00008000]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_48906.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_48906.elf.']
-        ignore line: [/usr/bin/arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb  -Wl --build-id=none -nostdlib  -v CMakeFiles/cmTC_48906.dir/CMakeCCompilerABI.c.o -o cmTC_48906.elf]
-        ignore line: [make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-HuBvCQ']
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_1d6e6.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_1d6e6.elf.']
+        ignore line: [/usr/bin/arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb  -Wl --build-id=none -nostdlib  -v CMakeFiles/cmTC_1d6e6.dir/CMakeCCompilerABI.c.o -o cmTC_1d6e6.elf]
+        ignore line: [make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-ll6ZP7']
         ignore line: []
         ignore line: []
         collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp] ==> [/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp]
@@ -333,8 +333,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx"
-      binary: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx"
+      source: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp"
+      binary: "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-mcpu=cortex-m0plus -mthumb"
       CMAKE_CXX_FLAGS_DEBUG: "-Og -g"
@@ -345,13 +345,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx'
+        Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_ce639/fast
-        /usr/bin/make  -f CMakeFiles/cmTC_ce639.dir/build.make CMakeFiles/cmTC_ce639.dir/build
-        make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx'
-        Building CXX object CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/arm-none-eabi-g++   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_dacdd/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_dacdd.dir/build.make CMakeFiles/cmTC_dacdd.dir/build
+        make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp'
+        Building CXX object CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/arm-none-eabi-g++   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/arm-none-eabi-g++
         Target: arm-none-eabi
@@ -359,8 +359,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_ce639.dir/'
-         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1plus -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ce639.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/ccmmExMO.s
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_dacdd.dir/'
+         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1plus -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_dacdd.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/ccwi595x.s
         GNU C++17 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) version 14.2.1 20241119 (arm-none-eabi)
         	compiled by GNU C version 9.2.1 20191120 (Red Hat 9.2.1-2), GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-1-g835ea3a-GMP
         
@@ -383,14 +383,14 @@ events:
          /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/include
         End of search list.
         Compiler executable checksum: 761a3593099dc796ffc611563edb6c2e
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_ce639.dir/'
-         /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccmmExMO.s
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_dacdd.dir/'
+         /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccwi595x.s
         GNU assembler version 2.43.1 (arm-none-eabi) using BFD version (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 2.43.1.20241119
         COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_ce639.elf
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce639.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_dacdd.elf
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dacdd.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/arm-none-eabi-g++
         COLLECT_LTO_WRAPPER=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper
@@ -401,12 +401,12 @@ events:
         gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 
         COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_ce639.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_ce639.elf.'
-         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccd4y3qN.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_ce639.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_dacdd.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_dacdd.elf.'
+         /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4coZ40.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_dacdd.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o
         /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol _start; defaulting to 00008000
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_ce639.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_ce639.elf.'
-        /usr/bin/arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb  -Wl,--build-id=none -nostdlib  -v CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ce639.elf
-        make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx'
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_dacdd.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_dacdd.elf.'
+        /usr/bin/arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb  -Wl,--build-id=none -nostdlib  -v CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_dacdd.elf
+        make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp'
         
       exitCode: 0
   -
@@ -445,13 +445,13 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx']
+        ignore line: [Change Dir: '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_ce639/fast]
-        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_ce639.dir/build.make CMakeFiles/cmTC_ce639.dir/build]
-        ignore line: [make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx']
-        ignore line: [Building CXX object CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/arm-none-eabi-g++   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_dacdd/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_dacdd.dir/build.make CMakeFiles/cmTC_dacdd.dir/build]
+        ignore line: [make[1]: Entering directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp']
+        ignore line: [Building CXX object CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/arm-none-eabi-g++   -mcpu=cortex-m0plus -mthumb    -v -o CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-g++]
         ignore line: [Target: arm-none-eabi]
@@ -459,8 +459,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_ce639.dir/']
-        ignore line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1plus -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ce639.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/ccmmExMO.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_dacdd.dir/']
+        ignore line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/cc1plus -quiet -v -imultilib thumb/v6-m/nofp -iprefix /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/ -isysroot /usr/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_dacdd.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -mlibarch=armv6s-m -march=armv6s-m -version -o /tmp/ccwi595x.s]
         ignore line: [GNU C++17 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) version 14.2.1 20241119 (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 9.2.1 20191120 (Red Hat 9.2.1-2)  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-1-g835ea3a-GMP]
         ignore line: []
@@ -483,14 +483,14 @@ events:
         ignore line: [ /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 761a3593099dc796ffc611563edb6c2e]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_ce639.dir/']
-        ignore line: [ /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccmmExMO.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_dacdd.dir/']
+        ignore line: [ /usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/as -v -march=armv6s-m -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccwi595x.s]
         ignore line: [GNU assembler version 2.43.1 (arm-none-eabi) using BFD version (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 2.43.1.20241119]
         ignore line: [COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_ce639.elf]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce639.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-v' '-o' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_dacdd.elf]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dacdd.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-g++]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper]
@@ -501,17 +501,17 @@ events:
         ignore line: [gcc version 14.2.1 20241119 (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) ]
         ignore line: [COMPILER_PATH=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/:/usr/bin/../libexec/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/:/usr/bin/../lib/gcc/:/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/:/usr/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_ce639.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_ce639.elf.']
-        link line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccd4y3qN.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_ce639.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_dacdd.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_dacdd.elf.']
+        link line: [ /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2 -plugin /usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so -plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4coZ40.res --sysroot=/usr/bin/../arm-none-eabi -X -o cmTC_dacdd.elf -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1 -L/usr/bin/../lib/gcc -L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib -L/usr/bin/../arm-none-eabi/lib --build-id=none CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o]
           arg [/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/bin/../libexec/gcc/arm-none-eabi/14.2.1/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccd4y3qN.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc4coZ40.res] ==> ignore
           arg [--sysroot=/usr/bin/../arm-none-eabi] ==> ignore
           arg [-X] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_ce639.elf] ==> ignore
+          arg [cmTC_dacdd.elf] ==> ignore
           arg [-L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp]
           arg [-L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp]
           arg [-L/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp] ==> dir [/usr/bin/../arm-none-eabi/lib/thumb/v6-m/nofp]
@@ -520,12 +520,12 @@ events:
           arg [-L/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib] ==> dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib]
           arg [-L/usr/bin/../arm-none-eabi/lib] ==> dir [/usr/bin/../arm-none-eabi/lib]
           arg [--build-id=none] ==> ignore
-          arg [CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
         ignore line: [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol _start]
         ignore line: [ defaulting to 00008000]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_ce639.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_ce639.elf.']
-        ignore line: [/usr/bin/arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb  -Wl --build-id=none -nostdlib  -v CMakeFiles/cmTC_ce639.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ce639.elf]
-        ignore line: [make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-FGXrMx']
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m0plus' '-mthumb' '-nostdlib' '-v' '-o' 'cmTC_dacdd.elf' '-mfloat-abi=soft' '-mlibarch=armv6s-m' '-march=armv6s-m' '-dumpdir' 'cmTC_dacdd.elf.']
+        ignore line: [/usr/bin/arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb  -Wl --build-id=none -nostdlib  -v CMakeFiles/cmTC_dacdd.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_dacdd.elf]
+        ignore line: [make[1]: Leaving directory '/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles/CMakeScratch/TryCompile-IKhzMp']
         ignore line: []
         ignore line: []
         collapse library dir [/usr/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp] ==> [/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp]

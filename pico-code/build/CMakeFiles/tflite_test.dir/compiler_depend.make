@@ -3496,7 +3496,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_uniqu
 CMakeFiles/tflite_test.dir/main.cpp.o: /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/main.cpp \
   generated/pico_base/pico/config_autogen.h \
   generated/pico_base/pico/version.h \
-  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/models/baseline.h \
+  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/models/q-aware.h \
   /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico.h \
   /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico.h \
   /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/assert.h \
@@ -4096,6 +4096,8 @@ CMakeFiles/tflite_test.dir/main.cpp.o: /home/jslucena/Work/Embedded-Sleep-Apnea-
 
 /home/jslucena/Work/tflite-micro/signal/micro/kernels/rfft.h:
 
+/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/models/q-aware.h:
+
 /home/jslucena/Work/pico-sdk/src/common/pico_stdlib_headers/include/pico/stdlib.h:
 
 /usr/arm-none-eabi/include/locale.h:
@@ -4641,8 +4643,6 @@ generated/pico_base/pico/version.h:
 /usr/arm-none-eabi/include/c++/14.2.1/bits/locale_classes.tcc:
 
 /home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c:
-
-/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/models/baseline.h:
 
 /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h:
 

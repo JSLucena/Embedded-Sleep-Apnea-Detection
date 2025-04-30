@@ -8,6 +8,40 @@ import sys
 import threading
 import queue
 from datetime import datetime
+import tqdm
+from sklearn.metrics import (
+    confusion_matrix, roc_auc_score, accuracy_score, 
+    precision_score, recall_score
+)
+import numpy as np
+
+def evaluate_predictions(y_true, y_pred, threshold=0.5):
+    y_true = np.array(y_true)
+    y_pred = np.array(y_pred)
+    
+    y_pred_binary = (y_pred > threshold).astype(int)
+
+    tn, fp, fn, tp = confusion_matrix(y_true, y_pred_binary).ravel()
+
+    metrics = {
+        'accuracy': accuracy_score(y_true, y_pred_binary),
+        'auc': roc_auc_score(y_true, y_pred),
+        'precision': precision_score(y_true, y_pred_binary, zero_division=0),
+        'recall': recall_score(y_true, y_pred_binary),
+        'specificity': tn / (tn + fp + 1e-7),
+        'f1_score': 2 * tp / (2 * tp + fp + fn + 1e-7),
+        'confusion_matrix': {
+            'true_negative': int(tn),
+            'false_positive': int(fp),
+            'false_negative': int(fn),
+            'true_positive': int(tp)
+        }
+    }
+
+    return metrics
+
+
+
 
 class PicoSerialInterface:
     def __init__(self, port, baud_rate=115200, timeout=1):
@@ -19,6 +53,8 @@ class PicoSerialInterface:
         self.stop_thread = False
         self.receive_queue = queue.Queue()
         self.receive_thread = None
+        self.prediction_queue = queue.Queue()
+        self.latency_queue = queue.Queue()
         
     def connect(self):
         """Establish serial connection."""
@@ -58,33 +94,43 @@ class PicoSerialInterface:
             self.ser.close()
             print(f"Disconnected from {self.port}")
     
+
+
+    
+
     def _receive_loop(self):
-        """Background thread to continuously read from serial port."""
+        buffer = b""
         while not self.stop_thread:
             if not self.ser or not self.ser.is_open:
                 time.sleep(0.1)
                 continue
-                
+
             try:
-                # Check if data is available
                 if self.ser.in_waiting > 0:
-                    line = self.ser.readline()
-                    if line:
+                    byte = self.ser.read(1)
+                    if byte == b'\n':
                         try:
-                            decoded = line.decode('utf-8').strip()
+                            decoded = buffer.decode('utf-8').strip()
                             timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]
-                            self.receive_queue.put(f"[{timestamp}] {decoded}")
+                            print(f"[{timestamp}] {decoded}")  # For logging
+
+                            # Check for model output (e.g., "Result0.56" or "Result: 0.56")
+                            if decoded.startswith("Result"):
+                                self.prediction_queue.put(decoded)
+                            if decoded.startswith("Latency"):
+                                self.latency_queue.put(decoded)
                         except UnicodeDecodeError:
-                            # Handle binary data
-                            self.receive_queue.put(f"[Binary data received: {len(line)} bytes]")
+                            pass
+                        buffer = b""
+                    else:
+                        buffer += byte
                 else:
-                    time.sleep(0.01)  # Short sleep to prevent CPU hogging
-            except serial.SerialException as e:
-                print(f"Serial error: {e}")
-                break
+                    time.sleep(0.005)
             except Exception as e:
-                print(f"Error in receive loop: {e}")
+                print(f"Receive loop error: {e}")
                 time.sleep(0.1)
+
+
     
     def get_received_data(self):
         """Get any received data from the queue (non-blocking)."""
@@ -154,18 +200,21 @@ def main():
                 sys.exit(1)
         
         # Main interaction loop
+        positive_indices = df.index[df["Label"] == 1][:5]
+        print(positive_indices)
         while True:
             # Check for any received messages
-            messages = pico.get_received_data()
-            for msg in messages:
-                print(msg)
+            #messages = pico.get_received_data()
+            #for msg in messages:
+            #    print(msg)
             
             # Command menu
             print("\nCommands:")
             print("1. Send test data (random)")
             print("2. Send sample from feather file")
             print("3. Enter float values manually")
-            print("4. Quit")
+            print("4. Run Complete Benchmark")
+            print("5. Quit")
             
             choice = input("Enter choice (1-4): ").strip()
             
@@ -202,7 +251,49 @@ def main():
                 except ValueError:
                     print("Invalid input. Please enter valid comma-separated float values.")
             
+
             elif choice == '4':
+                if df is None:
+                    print("No feather file loaded. Use --feather option when starting the program.")
+                    continue
+                results = {}
+                latency = 0.0
+                # Choose range
+                start_idx = 300
+                end_idx = 600
+
+                # Slice only the desired rows
+                subset_df = df.iloc[start_idx:end_idx]
+                for idx, row in tqdm.tqdm(subset_df.iterrows(), total=len(subset_df)):
+                    sample = row['Segment'].astype(np.float32)
+                    pico.send_float_array(sample)
+
+                    try:
+                        response = pico.prediction_queue.get(timeout=35) # Wait for result
+                        lat = pico.latency_queue.get(timeout=35)
+                        # Extract float from string like "Result0.56" or "Result: 0.56"
+                        pred_str = response.split()[-1]  # or use regex
+                        pred = float(pred_str)
+                        lat = lat.split()[-1]
+                        lat = int(lat)
+                    except Exception as e:
+                        print(f"No response for sample {idx}: {e}")
+                        pred = None  # Handle error or retry
+
+                    results[idx] = (row['Label'], pred)
+                    latency += lat
+
+
+                print("Benchmark Complete")
+                y_true = [res[0] for res in results.values()]
+                y_pred = [res[1] for res in results.values()]
+
+                metrics = evaluate_predictions(y_true, y_pred)
+                print(metrics)
+                latency /= len(subset_df)
+                print("Average Latency: " , latency)
+
+            elif choice == '5':
                 break
             
             else:
