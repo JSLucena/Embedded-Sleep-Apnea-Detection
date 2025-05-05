@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
-
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
@@ -9,8 +8,8 @@
 #include "tensorflow/lite/micro/micro_log.h" // Include for potential MicroPrintf
 
 // Model headers generated for each quantization type
+#include "models/baseline.h"
 //#include "models/baseline.h"
-#include "models/q-aware.h"
 //#include "models/int8.h" 
 //#include "models/float16.h"
 //#include "models/w8_16.h"
@@ -24,9 +23,9 @@ typedef struct {
   } ModelConfig;
 
 const ModelConfig baseline_config = {
-  .model_data = models_q_aware_tflite,
-  .model_len = models_q_aware_tflite_len,
-  .model_name = "qat",
+  .model_data = models_baseline_tflite,
+  .model_len = models_baseline_tflite_len,
+  .model_name = "baseline",
   .is_quantized = false
 };
   
@@ -45,6 +44,11 @@ const tflite::Model* model;
 tflite::MicroInterpreter* interpreter;
 constexpr int kTensorArenaSize = 16 * 1024;
 uint8_t tensor_arena[kTensorArenaSize];
+
+//void set_clock_speed_khz(uint32_t khz) {
+//  set_sys_clock_khz(khz, true);  // true = allow overclocking
+//}
+
 
 void normalize(float* X, int length) {
     const float min_val = 50.0f;
@@ -158,13 +162,18 @@ void run_benchmark(const ModelConfig* config) {
         printf("%.6f ", received_data[i]);
     }
     if (config->is_quantized) {
-      // For quantized models
+       // Quantize input: float → uint8
+      float scale = input->params.scale;
+      int zero_point = input->params.zero_point;
+      uint8_t* quant_input = input->data.uint8;
 
-      //for (int j = 0; j < input->bytes; j++) {
-      //  input->data.int8[j] = ...; // Your quantized input
-      //}
+      for (int i = 0; i < SEGMENT_LENGTH; i++) {
+          int32_t quantized_val = (int32_t)(roundf(received_data[i] / scale) + zero_point);
+          if (quantized_val > 255) quantized_val = 255;
+          if (quantized_val < 0) quantized_val = 0;
+          quant_input[i] = (uint8_t)quantized_val;
+      }
     } else {
-      // For float models
       memcpy(input->data.f, received_data, input->bytes);
     }
     if (interpreter->Invoke() != kTfLiteOk) {
@@ -178,10 +187,22 @@ void run_benchmark(const ModelConfig* config) {
     //printf("Model size: %d KB\n", config->model_len / 1024);
     //printf("Arena used bytes: %d\n", interpreter.arena_used_bytes());
     printf("Result: ");
-    for (int j = 0; j < output->bytes / sizeof(float); j++) {
-      printf("%f ", output->data.f[j]);
+    if (config->is_quantized) {
+        // Dequantize output: uint8 → float
+        float scale = output->params.scale;
+        int zero_point = output->params.zero_point;
+        uint8_t* quant_output = output->data.uint8;
+
+        for (int j = 0; j < output->bytes; j++) {
+            float value = scale * ((int)quant_output[j] - zero_point);
+            printf("%f ", value);
+        }
+    } else {
+        for (int j = 0; j < output->bytes / sizeof(float); j++) {
+            printf("%f ", output->data.f[j]);
+        }
     }
-    printf("\n");
+        printf("\n");
 
     fflush(stdout);
     stdio_flush();

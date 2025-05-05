@@ -214,7 +214,8 @@ def main():
             print("2. Send sample from feather file")
             print("3. Enter float values manually")
             print("4. Run Complete Benchmark")
-            print("5. Quit")
+            print("5. Change pico clock frequency")
+            print("6. Quit")
             
             choice = input("Enter choice (1-4): ").strip()
             
@@ -263,7 +264,16 @@ def main():
                 end_idx = 600
 
                 # Slice only the desired rows
-                subset_df = df.iloc[start_idx:end_idx]
+                #subset_df = df.iloc[start_idx:end_idx]
+                subset_df = df
+                min_threshold = 0
+                max_threshold = 0
+                last = False
+                patient = args.feather
+                if "inference1" in patient:
+                    sleep_length = 6.4
+                else:
+                    sleep_length = 6.7
                 for idx, row in tqdm.tqdm(subset_df.iterrows(), total=len(subset_df)):
                     sample = row['Segment'].astype(np.float32)
                     pico.send_float_array(sample)
@@ -274,6 +284,20 @@ def main():
                         # Extract float from string like "Result0.56" or "Result: 0.56"
                         pred_str = response.split()[-1]  # or use regex
                         pred = float(pred_str)
+
+                        if pred > 0.5:
+                            apnea = True
+                        else:
+                            apnea = 0
+
+                        if apnea == True and last == False:
+                            min_threshold += 1
+                            max_threshold += 1
+                        elif apnea == True and last == True:
+                            max_threshold += 1
+
+
+                        last = apnea
                         lat = lat.split()[-1]
                         lat = int(lat)
                     except Exception as e:
@@ -292,8 +316,13 @@ def main():
                 print(metrics)
                 latency /= len(subset_df)
                 print("Average Latency: " , latency)
+                print("Minimum AHI:" , min_threshold / sleep_length, " Maximum AHI:" , max_threshold / sleep_length)
 
-            elif choice == '5':
+            elif choice == '6':
+                break
+
+
+            elif choice == '6':
                 break
             
             else:

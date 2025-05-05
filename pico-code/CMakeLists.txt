@@ -41,6 +41,9 @@ target_compile_definitions(tflite_test PRIVATE
     TF_LITE_STATIC_MEMORY
     TF_LITE_MCU_DEBUG_LOG
 )
+target_compile_options(tflite_test PRIVATE
+    -O3
+)
 
 # Compiler flags (note: -static has no effect here, optional)
 set_target_properties(tflite_test PROPERTIES

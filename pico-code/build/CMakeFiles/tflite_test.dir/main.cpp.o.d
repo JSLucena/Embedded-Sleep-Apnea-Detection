@@ -323,4 +323,4 @@ CMakeFiles/tflite_test.dir/main.cpp.o: \
  /home/jslucena/Work/tflite-micro/tensorflow/lite/micro/kernels/svdf.h \
  /home/jslucena/Work/tflite-micro/tensorflow/lite/micro/kernels/transpose_conv.h \
  /home/jslucena/Work/tflite-micro/tensorflow/lite/micro/kernels/unidirectional_sequence_lstm.h \
- /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/models/q-aware.h
+ /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/models/int8.h
