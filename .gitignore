@@ -2,6 +2,7 @@
 datasets/
 images/
 pico-code/build
+pico-code/build2
 #Python
 
 # Byte-compiled / optimized / DLL files

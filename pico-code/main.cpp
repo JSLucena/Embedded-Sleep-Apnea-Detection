@@ -9,10 +9,11 @@
 
 // Model headers generated for each quantization type
 #include "models/baseline.h"
-//#include "models/baseline.h"
+//#include "models/dynamic.h"
+//#include "models/q-aware.h"
 //#include "models/int8.h" 
 //#include "models/float16.h"
-//#include "models/w8_16.h"
+//#include "models/w8_a16.h"
 
 #define TF_LITE_STATIC_MEMORY
 typedef struct {
@@ -25,7 +26,7 @@ typedef struct {
 const ModelConfig baseline_config = {
   .model_data = models_baseline_tflite,
   .model_len = models_baseline_tflite_len,
-  .model_name = "baseline",
+  .model_name = "qat",
   .is_quantized = false
 };
   
@@ -177,7 +178,7 @@ void run_benchmark(const ModelConfig* config) {
       memcpy(input->data.f, received_data, input->bytes);
     }
     if (interpreter->Invoke() != kTfLiteOk) {
-      printf("Inference failed!\n");
+      printf("Invoke Failed!\n");
     }
     printf("Output type: %d, bytes: %d\n", output->type, output->bytes);
 

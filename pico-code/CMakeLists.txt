@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.13)
 
 # Include the Pico SDK
+# Set these variables BEFORE pico_sdk_init
+set(PICO_PLATFORM "rp2350")  # Or appropriate platform for RP2350
+set(PICO_BOARD "pico2_w")     # Replace with the correct board type for RP2350
+set(PICO_TARGET_PROCESSOR "cortex-m33")
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # Project setup
@@ -8,12 +12,12 @@ project(tflite_test C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-# Initialize the Pico SDK
 pico_sdk_init()
 
 # Set paths
 set(TFLITE_MICRO_DIR "/home/jslucena/Work/tflite-micro")
-set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m0plus_default_gcc/lib")
+#set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m0plus_default_gcc/lib")
+set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m33_default_gcc/lib")
 set(TFLITE_MICRO_LIB "${TFLITE_MICRO_LIB_DIR}/libtensorflow-microlite.a")
 
 message(STATUS "Using TensorFlow Lite Micro static library: ${TFLITE_MICRO_LIB}")
