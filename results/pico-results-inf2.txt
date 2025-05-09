@@ -9,3 +9,8 @@ Minimum AHI: 9.402985074626866  Maximum AHI: 51.492537313432834
 int8 {'accuracy': 0.4140127388535032, 'auc': 0.8135614785086954, 'precision': 0.36426592797783935, 'recall': 0.9962121212121212, 'specificity': 0.1190019193629555, 'f1_score': 0.533468559783624, 'confusion_matrix': {'true_negative': 62, 'false_positive': 459, 'false_negative': 1, 'true_positive': 263}}
 Average Latency:  197.9515923566879
 Minimum AHI: 6.865671641791044  Maximum AHI: 107.76119402985074
+
+
+qat cmsisnn{'accuracy': 0.8229299363057325, 'auc': 0.8959387541441285, 'precision': 0.6811594202898551, 'recall': 0.8901515151515151, 'specificity': 0.7888675622286243, 'f1_score': 0.7717569785268051, 'confusion_matrix': {'true_negative': 411, 'false_positive': 110, 'false_negative': 29, 'true_positive': 235}}
+Average Latency:  19.21528662420382
+Minimum AHI: 9.402985074626866  Maximum AHI: 51.492537313432834

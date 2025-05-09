@@ -32,7 +32,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/phea
  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/generated/pico_base/pico/version.h \
  /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/generated/pico_base/pico/config_autogen.h \
- /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico.h \
+ /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico2_w.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \

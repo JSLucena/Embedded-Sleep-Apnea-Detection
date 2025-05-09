@@ -20,7 +20,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runti
  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/generated/pico_base/pico/version.h \
  /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/generated/pico_base/pico/config_autogen.h \
- /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico.h \
+ /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico2_w.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \
@@ -44,6 +44,13 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runti
  /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/include/hardware/watchdog.h \
  /home/jslucena/Work/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/watchdog.h \
  /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/watchdog.h \
+ /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+ /home/jslucena/Work/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+ /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+ /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+ /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/include/hardware/vreg.h \
+ /home/jslucena/Work/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/vreg_and_chip_reset.h \
+ /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/vreg_and_chip_reset.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/include/hardware/xosc.h \
  /home/jslucena/Work/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/xosc.h \
  /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/xosc.h \

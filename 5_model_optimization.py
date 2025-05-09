@@ -3,7 +3,6 @@ import numpy as np
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc,classification_report, roc_auc_score
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 import os
@@ -18,7 +17,7 @@ from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 import tensorflow_model_optimization as tfmot
 from tensorflow_model_optimization.python.core.keras.compat import keras
 from sklearn.metrics import (roc_auc_score, precision_score, 
-                           recall_score, accuracy_score, confusion_matrix)
+                           recall_score, accuracy_score, confusion_matrix, roc_curve, precision_recall_curve, auc,classification_report)
 import tempfile
 
 #from keras import layers
@@ -35,7 +34,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
 
 
-def evaluate_tflite_metrics(interpreter, x_test, y_test, threshold=0.5, convert=False):
+def evaluate_tflite_metrics(interpreter, x_test, y_test, threshold=0.5, convert=False, plot_roc=True):
     input_details = interpreter.get_input_details()[0]
     output_details = interpreter.get_output_details()[0]
     y_pred = []
@@ -87,7 +86,22 @@ def evaluate_tflite_metrics(interpreter, x_test, y_test, threshold=0.5, convert=
             'true_positive': int(tp)
         }
     }
-    
+    # Plot ROC curve if requested
+    if plot_roc:
+        fpr, tpr, thresholds = roc_curve(y_true, y_pred)
+        roc_auc = auc(fpr, tpr)
+        
+        plt.figure(figsize=(8, 6))
+        plt.plot(fpr, tpr, color='darkorange', lw=2, 
+                 label=f'ROC curve (AUC = {roc_auc:.2f})')
+        plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('Receiver Operating Characteristic')
+        plt.legend(loc="lower right")
+        plt.show()
     return metrics
 
 
@@ -187,27 +201,54 @@ y_train = y_train.astype(np.float32)
 y_test = y_test.astype(np.float32)
 
 model = keras.Sequential([
-                    keras.layers.Reshape((1, X_train.shape[1], 1), input_shape=(X_train.shape[1], 1)),
-                    # Replace Conv1D with Conv2D
-                    keras.layers.Conv2D(filters=16, kernel_size=(1, 9), strides=(1, 1), 
-                                    padding="same", activation="relu",
-                                    kernel_initializer='he_normal'),
-                    keras.layers.MaxPool2D(pool_size=(1, 2)),
-                    keras.layers.Dropout(0.1),
-                    keras.layers.Conv2D(filters=32, kernel_size=(1, 5), padding="same", 
-                                    activation="relu", kernel_initializer='he_normal'),
-                    keras.layers.MaxPool2D(pool_size=(1, 2)),
-                    keras.layers.Dropout(0.1),
-                    keras.layers.Conv2D(filters=64, kernel_size=(1, 3), padding="same", 
-                                    activation="relu", kernel_initializer='he_normal'),
-                    keras.layers.MaxPool2D(pool_size=(1, 2)),
-                    keras.layers.Dropout(0.1),
-                    keras.layers.Flatten(),
-                    keras.layers.Dropout(0.25),
-                    keras.layers.Dense(16, activation="relu", kernel_initializer='he_normal'),
-                    keras.layers.Dense(1, activation="sigmoid",
-                                    kernel_initializer='glorot_uniform')
-                ])
+    # Input layer with reshape
+    keras.layers.Reshape((1, X_train.shape[1], 1), input_shape=(X_train.shape[1], 1)),
+    
+    # First convolutional block (expanded)
+    keras.layers.Conv2D(filters=32, kernel_size=(1, 9), strides=(1, 1), 
+                        padding="same", activation="relu",
+                        kernel_initializer='he_normal'),
+    keras.layers.Conv2D(filters=32, kernel_size=(1, 7), padding="same", 
+                        activation="relu", kernel_initializer='he_normal'),
+    keras.layers.MaxPool2D(pool_size=(1, 2)),
+    keras.layers.Dropout(0.1),
+    
+    # Second convolutional block (expanded)
+    keras.layers.Conv2D(filters=64, kernel_size=(1, 5), padding="same", 
+                        activation="relu", kernel_initializer='he_normal'),
+    keras.layers.Conv2D(filters=64, kernel_size=(1, 5), padding="same", 
+                        activation="relu", kernel_initializer='he_normal'),
+    keras.layers.MaxPool2D(pool_size=(1, 2)),
+    keras.layers.Dropout(0.15),
+    
+    # Third convolutional block (expanded)
+    keras.layers.Conv2D(filters=128, kernel_size=(1, 3), padding="same", 
+                        activation="relu", kernel_initializer='he_normal'),
+    keras.layers.Conv2D(filters=128, kernel_size=(1, 3), padding="same", 
+                        activation="relu", kernel_initializer='he_normal'),
+    keras.layers.MaxPool2D(pool_size=(1, 2)),
+    keras.layers.Dropout(0.2),
+    
+    # Additional convolutional block
+    keras.layers.Conv2D(filters=256, kernel_size=(1, 3), padding="same", 
+                        activation="relu", kernel_initializer='he_normal'),
+    keras.layers.MaxPool2D(pool_size=(1, 2)),
+    keras.layers.Dropout(0.25),
+    
+    # Flatten and dense layers
+    keras.layers.Flatten(),
+    
+    # First dense block
+    keras.layers.Dense(256, activation="relu", kernel_initializer='he_normal'),
+    keras.layers.Dropout(0.3),
+    
+    # Second dense block
+    keras.layers.Dense(128, activation="relu", kernel_initializer='he_normal'),
+    keras.layers.Dropout(0.2),
+    
+    # Output layer
+    keras.layers.Dense(1, activation="sigmoid", kernel_initializer='glorot_uniform')
+])
 reduce_lr = keras.callbacks.ReduceLROnPlateau(
     monitor='val_loss', 
     factor=0.5, 
@@ -229,7 +270,7 @@ model.summary()
 
 early_stopping = keras.callbacks.EarlyStopping(
     monitor='val_loss',
-    patience=20,
+    patience=50,
     restore_best_weights=True
 )
 class_weights = class_weight.compute_class_weight(

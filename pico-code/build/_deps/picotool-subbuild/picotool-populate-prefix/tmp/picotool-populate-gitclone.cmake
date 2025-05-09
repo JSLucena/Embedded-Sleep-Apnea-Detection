@@ -36,7 +36,7 @@ set(number_of_tries 0)
 while(error_code AND number_of_tries LESS 3)
   execute_process(
     COMMAND "/usr/bin/git"
-            clone --no-checkout --progress --config "advice.detachedHead=false" "https://github.com/raspberrypi/picotool.git" "picotool-src"
+            clone --no-checkout --config "advice.detachedHead=false" "https://github.com/raspberrypi/picotool.git" "picotool-src"
     WORKING_DIRECTORY "/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps"
     RESULT_VARIABLE error_code
     ${maybe_show_command}

@@ -127,7 +127,7 @@ picotool/src/picotoolBuild-stamp/picotoolBuild-patch: picotool/src/picotoolBuild
 
 picotool/src/picotoolBuild-stamp/picotoolBuild-test: picotool/src/picotoolBuild-stamp/picotoolBuild-install
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing test step for 'picotoolBuild'"
-	cd /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps/picotool-build && /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps/picotool/picotool version 2.1.0
+	cd /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps/picotool-build && /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps/picotool/picotool version 2.1.1
 	cd /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/_deps/picotool-build && /usr/bin/cmake -E touch /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/picotool/src/picotoolBuild-stamp/picotoolBuild-test
 
 picotool/src/picotoolBuild-stamp/picotoolBuild-install:

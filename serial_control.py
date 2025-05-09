@@ -299,7 +299,7 @@ def main():
 
                         last = apnea
                         lat = lat.split()[-1]
-                        lat = int(lat)
+                        lat = float(lat)
                     except Exception as e:
                         print(f"No response for sample {idx}: {e}")
                         pred = None  # Handle error or retry

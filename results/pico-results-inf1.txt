@@ -1,11 +1,37 @@
 baseline {'accuracy': 0.8683127572016461, 'auc': 0.7108522727272727, 'precision': 0.10112359550561797, 'recall': 0.36, 'specificity': 0.8863636362377325, 'f1_score': 0.15789473670360113, 'confusion_matrix': {'true_negative': 624, 'false_positive': 80, 'false_negative': 16, 'true_positive': 9}}
 Average Latency:  266.34019204389574
 Minimum AHI: 7.1875  Maximum AHI: 13.90625
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      231996 B         4 MB      5.53%
+             RAM:      101160 B       256 KB     38.59%
+
+
 
 qat {'accuracy': 0.8834019204389575, 'auc': 0.7189488636363636, 'precision': 0.125, 'recall': 0.4, 'specificity': 0.9005681816902602, 'f1_score': 0.1904761902947846, 'confusion_matrix': {'true_negative': 634, 'false_positive': 70, 'false_negative': 15, 'true_positive': 10}}
 Average Latency:  198.07270233196158
 Minimum AHI: 5.9375  Maximum AHI: 12.5
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      188300 B         4 MB      4.49%
+             RAM:       57464 B       256 KB     21.92%
+
 
 int8 {'accuracy': 0.4718792866941015, 'auc': 0.675340909090909, 'precision': 0.05, 'recall': 0.8, 'specificity': 0.46022727266189956, 'f1_score': 0.0941176470366782, 'confusion_matrix': {'true_negative': 324, 'false_positive': 380, 'false_negative': 5, 'true_positive': 20}}
 Average Latency:  197.92592592592592
 Minimum AHI: 16.71875  Maximum AHI: 62.5
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      188060 B         4 MB      4.48%
+             RAM:       57224 B       256 KB     21.83%
+
+
+
+####################### CMSIS-NN ####################################
+qat {'accuracy': 0.8834019204389575, 'auc': 0.7189488636363636, 'precision': 0.125, 'recall': 0.4, 'specificity': 0.9005681816902602, 'f1_score': 0.1904761902947846, 'confusion_matrix': {'true_negative': 634, 'false_positive': 70, 'false_negative': 15, 'true_positive': 10}}
+Average Latency:  19.208504801097394
+Minimum AHI: 5.9375  Maximum AHI: 12.5
+
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      209544 B         4 MB      5.00%
+             RAM:       57432 B       256 KB     21.91%
+
+
+

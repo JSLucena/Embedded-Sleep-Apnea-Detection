@@ -8,9 +8,9 @@
 #include "tensorflow/lite/micro/micro_log.h" // Include for potential MicroPrintf
 
 // Model headers generated for each quantization type
-#include "models/baseline.h"
+//#include "models/baseline.h"
 //#include "models/dynamic.h"
-//#include "models/q-aware.h"
+#include "models/q-aware.h"
 //#include "models/int8.h" 
 //#include "models/float16.h"
 //#include "models/w8_a16.h"
@@ -24,8 +24,8 @@ typedef struct {
   } ModelConfig;
 
 const ModelConfig baseline_config = {
-  .model_data = models_baseline_tflite,
-  .model_len = models_baseline_tflite_len,
+  .model_data = models_q_aware_tflite,
+  .model_len = models_q_aware_tflite_len,
   .model_name = "qat",
   .is_quantized = false
 };

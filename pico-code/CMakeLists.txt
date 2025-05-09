@@ -17,7 +17,10 @@ pico_sdk_init()
 # Set paths
 set(TFLITE_MICRO_DIR "/home/jslucena/Work/tflite-micro")
 #set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m0plus_default_gcc/lib")
-set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m33_default_gcc/lib")
+#set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m0plus_default_cmsis_nn_gcc/lib")
+
+#set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m33_default_gcc/lib")
+set(TFLITE_MICRO_LIB_DIR "${TFLITE_MICRO_DIR}/gen/cortex_m_generic_cortex-m33_default_cmsis_nn_gcc/lib")
 set(TFLITE_MICRO_LIB "${TFLITE_MICRO_LIB_DIR}/libtensorflow-microlite.a")
 
 message(STATUS "Using TensorFlow Lite Micro static library: ${TFLITE_MICRO_LIB}")
@@ -47,12 +50,15 @@ target_compile_definitions(tflite_test PRIVATE
 )
 target_compile_options(tflite_test PRIVATE
     -O3
+    -fno-exceptions
 )
-
+target_link_options(tflite_test PRIVATE
+    -Wl,--print-memory-usage
+)
 # Compiler flags (note: -static has no effect here, optional)
-set_target_properties(tflite_test PROPERTIES
-    COMPILE_FLAGS "-fno-exceptions"
-)
+#set_target_properties(tflite_test PROPERTIES
+#    COMPILE_FLAGS "-fno-exceptions"
+#)
 
 # Link libraries
 target_link_libraries(tflite_test

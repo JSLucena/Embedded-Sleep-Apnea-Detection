@@ -258,21 +258,14 @@ FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
 //Enables QUIET option for all content population
 FETCHCONTENT_QUIET:BOOL=ON
 
-//When not empty, overrides where to find pre-populated content
-// for picotool
-FETCHCONTENT_SOURCE_DIR_PICOTOOL:PATH=
-
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
-
-//Enables UPDATE_DISCONNECTED behavior just for population of picotool
-FETCHCONTENT_UPDATES_DISCONNECTED_PICOTOOL:BOOL=OFF
 
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 
 //PICO target board (e.g. pico, pico2)
-PICO_BOARD:STRING=pico
+PICO_BOARD:STRING=pico2_w
 
 //PICO board header directories
 PICO_BOARD_HEADER_DIRS:STRING=
@@ -308,7 +301,7 @@ PICO_OBJCOPY:FILEPATH=/usr/bin/arm-none-eabi-objcopy
 PICO_OBJDUMP:FILEPATH=/usr/bin/arm-none-eabi-objdump
 
 //PICO Build platform (e.g. rp2040, rp2350, rp2350-riscv,  host)
-PICO_PLATFORM:STRING=rp2040
+PICO_PLATFORM:STRING=rp2350-arm-s
 
 //Set to ON to fetch copy of SDK from git if not otherwise locatable
 PICO_SDK_FETCH_FROM_GIT:BOOL=
