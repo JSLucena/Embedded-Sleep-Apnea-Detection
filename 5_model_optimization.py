@@ -14,6 +14,7 @@ from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
+from tensorflow.keras.utils import plot_model
 import tensorflow_model_optimization as tfmot
 from tensorflow_model_optimization.python.core.keras.compat import keras
 from sklearn.metrics import (roc_auc_score, precision_score, 
@@ -201,61 +202,34 @@ y_train = y_train.astype(np.float32)
 y_test = y_test.astype(np.float32)
 
 model = keras.Sequential([
-    # Input layer with reshape
-    keras.layers.Reshape((1, X_train.shape[1], 1), input_shape=(X_train.shape[1], 1)),
-    
-    # First convolutional block (expanded)
-    keras.layers.Conv2D(filters=32, kernel_size=(1, 9), strides=(1, 1), 
-                        padding="same", activation="relu",
-                        kernel_initializer='he_normal'),
-    keras.layers.Conv2D(filters=32, kernel_size=(1, 7), padding="same", 
-                        activation="relu", kernel_initializer='he_normal'),
-    keras.layers.MaxPool2D(pool_size=(1, 2)),
-    keras.layers.Dropout(0.1),
-    
-    # Second convolutional block (expanded)
-    keras.layers.Conv2D(filters=64, kernel_size=(1, 5), padding="same", 
-                        activation="relu", kernel_initializer='he_normal'),
-    keras.layers.Conv2D(filters=64, kernel_size=(1, 5), padding="same", 
-                        activation="relu", kernel_initializer='he_normal'),
-    keras.layers.MaxPool2D(pool_size=(1, 2)),
-    keras.layers.Dropout(0.15),
-    
-    # Third convolutional block (expanded)
-    keras.layers.Conv2D(filters=128, kernel_size=(1, 3), padding="same", 
-                        activation="relu", kernel_initializer='he_normal'),
-    keras.layers.Conv2D(filters=128, kernel_size=(1, 3), padding="same", 
-                        activation="relu", kernel_initializer='he_normal'),
-    keras.layers.MaxPool2D(pool_size=(1, 2)),
-    keras.layers.Dropout(0.2),
-    
-    # Additional convolutional block
-    keras.layers.Conv2D(filters=256, kernel_size=(1, 3), padding="same", 
-                        activation="relu", kernel_initializer='he_normal'),
-    keras.layers.MaxPool2D(pool_size=(1, 2)),
-    keras.layers.Dropout(0.25),
-    
-    # Flatten and dense layers
-    keras.layers.Flatten(),
-    
-    # First dense block
-    keras.layers.Dense(256, activation="relu", kernel_initializer='he_normal'),
-    keras.layers.Dropout(0.3),
-    
-    # Second dense block
-    keras.layers.Dense(128, activation="relu", kernel_initializer='he_normal'),
-    keras.layers.Dropout(0.2),
-    
-    # Output layer
-    keras.layers.Dense(1, activation="sigmoid", kernel_initializer='glorot_uniform')
-])
+                    keras.layers.Reshape((1, X_train.shape[1], 1), input_shape=(X_train.shape[1], 1)),
+                    # Replace Conv1D with Conv2D
+                    keras.layers.Conv2D(filters=16, kernel_size=(1, 9), strides=(1, 1), 
+                                    padding="same", activation="relu",
+                                    kernel_initializer='he_normal'),
+                    keras.layers.MaxPool2D(pool_size=(1, 2)),
+                    keras.layers.Dropout(0.1),
+                    keras.layers.Conv2D(filters=32, kernel_size=(1, 5), padding="same", 
+                                    activation="relu", kernel_initializer='he_normal'),
+                    keras.layers.MaxPool2D(pool_size=(1, 2)),
+                    keras.layers.Dropout(0.1),
+                    keras.layers.Conv2D(filters=64, kernel_size=(1, 3), padding="same", 
+                                    activation="relu", kernel_initializer='he_normal'),
+                    keras.layers.MaxPool2D(pool_size=(1, 2)),
+                    keras.layers.Dropout(0.1),
+                    keras.layers.Flatten(),
+                    keras.layers.Dropout(0.25),
+                    keras.layers.Dense(16, activation="relu", kernel_initializer='he_normal'),
+                    keras.layers.Dense(1, activation="sigmoid",
+                                    kernel_initializer='glorot_uniform')
+                ])
 reduce_lr = keras.callbacks.ReduceLROnPlateau(
     monitor='val_loss', 
     factor=0.5, 
     patience=5, 
     min_lr=1e-5
 )
-opt = keras.optimizers.Adam(learning_rate=0.001,clipvalue=1.0)
+opt = keras.optimizers.Adam(learning_rate=0.01,clipvalue=1.0)
 model.compile(
     optimizer=opt,
     loss="binary_crossentropy",
@@ -270,7 +244,7 @@ model.summary()
 
 early_stopping = keras.callbacks.EarlyStopping(
     monitor='val_loss',
-    patience=50,
+    patience=20,
     restore_best_weights=True
 )
 class_weights = class_weight.compute_class_weight(
@@ -291,9 +265,9 @@ history = model.fit(
     class_weight={0 : 1, 1 : 2},
     verbose=1
 )
-model_path = f"models/{FREQ}-{LENGTH}.keras"
+model_path = f"models/{FREQ}-{LENGTH}.h5"
 model.save(model_path)  
-
+plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
 
 
 ######## Quantization of model#######################

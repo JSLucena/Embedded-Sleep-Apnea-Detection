@@ -25,14 +25,15 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stand
  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/generated/pico_base/pico/config_autogen.h \
  /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico2_w.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/include/pico/platform.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs/include/hardware/platform_defs.h \
  /usr/arm-none-eabi/include/sys/cdefs.h \
  /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h \
  /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/error.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/boot_stage2/include/boot_stage2/config.h
+ /home/jslucena/Work/pico-sdk/src/rp2350/boot_stage2/include/boot_stage2/config.h \
+ /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/config.h

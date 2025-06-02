@@ -177,10 +177,15 @@ def main():
     args = parser.parse_args()
     
     # Initialize serial interface
+    df = load_feather_data(args.feather)
+    sample = df['Segment'].iloc[0].astype(np.float32)
+    for thing in sample:
+        print(thing)
     pico = PicoSerialInterface(args.port, args.baud, args.timeout)
     
     if not pico.connect():
         sys.exit(1)
+    
     
     try:
         # Wait for Pico to initialize

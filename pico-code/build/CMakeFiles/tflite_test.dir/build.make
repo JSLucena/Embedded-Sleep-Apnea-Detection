@@ -114,19 +114,19 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_g
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o: /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o -c /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o: /home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o -c /home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c
@@ -505,18 +505,19 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_x
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c
@@ -587,50 +588,24 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_o
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.s"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.s
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.i
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.s
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.i: cmake_force
@@ -641,63 +616,62 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_doubl
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.s
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.i: cmake_force
@@ -708,18 +682,44 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.i
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.i
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.s
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.s
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.i
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.s
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.i"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.i
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.s"
+	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.s
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c
@@ -735,23 +735,10 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mallo
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s
 
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o: CMakeFiles/tflite_test.dir/flags.make
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing ASM source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.i"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.i
-
-CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling ASM source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.s"
-	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.s
-
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.i: cmake_force
@@ -765,7 +752,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomi
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o"
 	/usr/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.i: cmake_force
@@ -779,7 +766,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_o
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.i: cmake_force
@@ -793,7 +780,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stand
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.i: cmake_force
@@ -806,7 +793,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_print
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building ASM object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o   -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.i: cmake_force
@@ -820,7 +807,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.i: cmake_force
@@ -834,7 +821,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i: cmake_force
@@ -848,7 +835,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i: cmake_force
@@ -862,7 +849,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i: cmake_force
@@ -876,7 +863,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i: cmake_force
@@ -890,7 +877,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i: cmake_force
@@ -904,7 +891,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_uniqu
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.i: cmake_force
@@ -918,7 +905,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_f
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.i: cmake_force
@@ -932,7 +919,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_x
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i: cmake_force
@@ -946,7 +933,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i: cmake_force
@@ -960,7 +947,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/portable/
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd.c.i: cmake_force
@@ -974,7 +961,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/us
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i: cmake_force
@@ -988,7 +975,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/device/us
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i: cmake_force
@@ -1002,7 +989,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/aud
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i: cmake_force
@@ -1016,7 +1003,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/cdc
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i: cmake_force
@@ -1030,7 +1017,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i: cmake_force
@@ -1044,7 +1031,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/dfu
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i: cmake_force
@@ -1058,7 +1045,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/hid
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i: cmake_force
@@ -1072,7 +1059,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/mid
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i: cmake_force
@@ -1086,7 +1073,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/msc
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i: cmake_force
@@ -1100,7 +1087,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i: cmake_force
@@ -1114,7 +1101,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/net
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i: cmake_force
@@ -1128,7 +1115,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/usb
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i: cmake_force
@@ -1142,7 +1129,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/ven
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i: cmake_force
@@ -1156,7 +1143,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/vid
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.i: cmake_force
@@ -1170,7 +1157,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.s:
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: /home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o -c /home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i: cmake_force
@@ -1184,7 +1171,7 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tu
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: CMakeFiles/tflite_test.dir/flags.make
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i: cmake_force
@@ -1195,12 +1182,54 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/r
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
 
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o: /home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o -c /home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o: CMakeFiles/tflite_test.dir/flags.make
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o: CMakeFiles/tflite_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o -MF CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o.d -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o -c /home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c > CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+
+CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c -o CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+
 # Object files for target tflite_test
 tflite_test_OBJECTS = \
 "CMakeFiles/tflite_test.dir/main.cpp.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o" \
@@ -1228,24 +1257,23 @@ tflite_test_OBJECTS = \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o" \
@@ -1277,7 +1305,10 @@ tflite_test_OBJECTS = \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o" \
 "CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o" \
-"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o"
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o" \
+"CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o"
 
 # External object files for target tflite_test
 tflite_test_EXTERNAL_OBJECTS =
@@ -1285,7 +1316,7 @@ tflite_test_EXTERNAL_OBJECTS =
 tflite_test.elf: CMakeFiles/tflite_test.dir/main.cpp.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o
@@ -1313,24 +1344,23 @@ tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o
-tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
@@ -1363,15 +1393,20 @@ tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tiny
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/tusb.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+tflite_test.elf: CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
 tflite_test.elf: CMakeFiles/tflite_test.dir/build.make
-tflite_test.elf: pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/bs2_default_padded_checksummed.S.o
-tflite_test.elf: /home/jslucena/Work/tflite-micro/gen/cortex_m_generic_cortex-m0plus_default_cmsis_nn_gcc/lib/libtensorflow-microlite.a
-tflite_test.elf: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/rp2040/memmap_default.ld
+tflite_test.elf: pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_library.dir/bs2_default_padded_checksummed.S.o
+tflite_test.elf: libpico_sleep_manual.a
+tflite_test.elf: /home/jslucena/Work/tflite-micro/gen/cortex_m_generic_cortex-m33_default_cmsis_nn_gcc/lib/libtensorflow-microlite.a
+tflite_test.elf: /home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/rp2350/memmap_default.ld
 tflite_test.elf: CMakeFiles/tflite_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Linking CXX executable tflite_test.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Linking CXX executable tflite_test.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tflite_test.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/arm-none-eabi-objdump -h /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/tflite_test.elf > tflite_test.dis
 	/usr/bin/arm-none-eabi-objdump -d /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/tflite_test.elf >> tflite_test.dis
+	_deps/picotool/picotool coprodis --quiet tflite_test.dis tflite_test.dis
 	/usr/bin/arm-none-eabi-objcopy -Oihex /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/tflite_test.elf tflite_test.hex
 	/usr/bin/arm-none-eabi-objcopy -Obinary /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/tflite_test.elf tflite_test.bin
 	_deps/picotool/picotool uf2 convert --quiet /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/tflite_test.elf tflite_test.uf2 --family rp2350-arm-s --abs-block

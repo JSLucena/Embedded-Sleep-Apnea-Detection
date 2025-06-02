@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "pico/sleep.h"
+#include "hardware/clocks.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
@@ -7,13 +9,81 @@
 #include "tensorflow/lite/core/api/error_reporter.h" // Base class might still be needed by interpreter header
 #include "tensorflow/lite/micro/micro_log.h" // Include for potential MicroPrintf
 
+
+#define DEBOUNCE_DELAY_MS 100
 // Model headers generated for each quantization type
-//#include "models/baseline.h"
-//#include "models/dynamic.h"
+#include "models/baseline.h"
 #include "models/q-aware.h"
-//#include "models/int8.h" 
-//#include "models/float16.h"
-//#include "models/w8_a16.h"
+#include "models/int8.h" 
+
+const int led_pin = 25;
+const int new_led_pin = 15;
+const int button_pin = 16;
+int buttonState = 0;
+
+float received_data[60] = {
+    94.08645f,
+    92.97314f,
+    92.90208f,
+    92.90208f,
+    92.16776f,
+    92.16776f,
+    92.07301f,
+    91.03077f,
+    91.03077f,
+    90.95971f,
+    90.95971f,
+    90.93602f,
+    90.95971f,
+    90.95971f,
+    90.88864f,
+    90.98339f,
+    90.95971f,
+    91.10183f,
+    90.98339f,
+    90.95971f,
+    90.95971f,
+    90.98339f,
+    90.95971f,
+    90.93602f,
+    90.95971f,
+    90.98339f,
+    92.87839f,
+    92.90208f,
+    92.90208f,
+    92.07301f,
+    92.07301f,
+    90.95971f,
+    90.98339f,
+    90.93602f,
+    90.178024f,
+    90.178024f,
+    90.225395f,
+    90.130646f,
+    90.178024f,
+    90.249084f,
+    90.249084f,
+    90.154335f,
+    90.130646f,
+    90.083275f,
+    90.130646f,
+    90.98339f,
+    90.98339f,
+    90.178024f,
+    90.130646f,
+    90.225395f,
+    90.130646f,
+    90.130646f,
+    90.178024f,
+    90.178024f,
+    90.130646f,
+    91.05446f,
+    90.98339f,
+    90.98339f,
+    90.98339f,
+    91.05446f
+};
+
 
 #define TF_LITE_STATIC_MEMORY
 typedef struct {
@@ -34,7 +104,7 @@ const ModelConfig baseline_config = {
 // Buffer for incoming data
 #define MAX_SEGMENTS 1600
 #define SEGMENT_LENGTH 60
-float received_data[SEGMENT_LENGTH];
+//float received_data[SEGMENT_LENGTH];
 double average_runtime = 0.0;
 uint32_t data_length = 0;
 
@@ -46,9 +116,6 @@ tflite::MicroInterpreter* interpreter;
 constexpr int kTensorArenaSize = 16 * 1024;
 uint8_t tensor_arena[kTensorArenaSize];
 
-//void set_clock_speed_khz(uint32_t khz) {
-//  set_sys_clock_khz(khz, true);  // true = allow overclocking
-//}
 
 
 void normalize(float* X, int length) {
@@ -71,37 +138,6 @@ void normalize(float* X, int length) {
     }
 }
 
-
-
-
-bool receive_float_array() {
-  printf("Waiting to receive %d floats (%d bytes)...\n", SEGMENT_LENGTH, SEGMENT_LENGTH * sizeof(float));
-
-  uint8_t* float_bytes = (uint8_t*)received_data;
-  uint32_t total_bytes = SEGMENT_LENGTH * sizeof(float);
-
-  uint32_t bytes_read = 0;
-  
-  while (bytes_read < total_bytes) {
-      int c = getchar_timeout_us(0);
-      if (c != PICO_ERROR_TIMEOUT) { 
-          float_bytes[bytes_read++] = (uint8_t)c;
-      } else {
-          sleep_ms(1);
-      }
-  }
-
-  data_length = SEGMENT_LENGTH;
-  //printf("Received %d floats successfully\n", data_length);
-
-  printf("First 5 values: ");
-  for (uint32_t i = 0; i < (data_length < 5 ? data_length : 5); i++) {
-      printf("%.6f ", received_data[i]);
-  }
-  printf("\n");
-
-  return true;
-}
 
 void setup(const ModelConfig* config){
   // Initialize TFLite Micro
@@ -151,6 +187,7 @@ void setup(const ModelConfig* config){
 
   
 }
+
 void run_benchmark(const ModelConfig* config) {
   // Get input/output tensors
     TfLiteTensor* input = interpreter->input(0);
@@ -208,42 +245,90 @@ void run_benchmark(const ModelConfig* config) {
     fflush(stdout);
     stdio_flush();
 }
+void wait_for_button_press() {
+    // Wait for button to be released first (in case it's already pressed)
+    while (!gpio_get(button_pin)) {
+        sleep_ms(10);
+    }
+    
+    // Now wait for button press
+    while (gpio_get(button_pin)) {
+        sleep_ms(10);
+    }
+    
+    // Debounce delay - wait for signal to stabilize
+    sleep_ms(DEBOUNCE_DELAY_MS);
+    
+    // Make sure button is still pressed (debounce check)
+    while (!gpio_get(button_pin)) {
+        // Wait for button release to avoid immediate re-trigger
+        sleep_ms(10);
+    }
+}
 
-const int led_pin = 25;
+
+
+
 int main() {
     // Initialize LED pin...
     gpio_init(led_pin);
+    gpio_init(new_led_pin);
+    gpio_init(button_pin);
     gpio_set_dir(led_pin, GPIO_OUT);
+    gpio_set_dir(new_led_pin,GPIO_OUT);
+    gpio_set_dir(button_pin, GPIO_IN);
+    gpio_pull_up(button_pin);
     
 
     stdio_init_all();
     printf("Initializing TFLite Micro...\n");
-    sleep_ms(5000); // Wait for USB to initialize
-    gpio_put(led_pin, true);
+    sleep_ms(500); // Wait for USB to initialize
+    gpio_put(new_led_pin, true);
     printf("Testing pico-tflmicro...\n");
-    sleep_ms(5000); // Wait for USB to initialize
+    sleep_ms(500); // Wait for USB to initialize
     setup(&baseline_config);
     
-
-
+    //wait_for_button_press();
+    
+    //sleep_run_from_rosc();
     //run_benchmark(baseline_config);
-    gpio_put(led_pin, false);
+    wait_for_button_press();
+    gpio_put(new_led_pin, false);
     sleep_ms(500);
-    gpio_put(led_pin, true);
+    gpio_put(new_led_pin, true);
     sleep_ms(500);
-    gpio_put(led_pin, false);
+    gpio_put(new_led_pin, false);
     sleep_ms(500);
-    gpio_put(led_pin, true);
+    gpio_put(new_led_pin, true);
     sleep_ms(500);
     printf("Pico ready to receive data...\n");
+    
+    gpio_put(new_led_pin, false);
+    sleep_ms(500);
+    
+    //set_sys_clock_khz(48000, true);
+    
+    //gpio_acknowledge_irq(button_pin, GPIO_IRQ_EDGE_FALL);
+    
+    //gpio_acknowledge_irq(button_pin, GPIO_IRQ_EDGE_FALL);
+    
+    
     while (true) {
-        if (receive_float_array()) {
-            gpio_put(led_pin, false);
+            //gpio_put(new_led_pin, false);
+            
+            //sleep_goto_sleep_for(100, NULL);
+
+            
+            //gpio_put(new_led_pin, true);
+            //gpio_put(new_led_pin, false);
+            sleep_run_from_dormant_source(DORMANT_SOURCE_ROSC);  
+            sleep_goto_dormant_until_pin(button_pin, true, false);
+            sleep_power_up();
+            //gpio_put(new_led_pin, true);
             run_benchmark(&baseline_config);
-            printf("Benchmark Complete\n");
-            gpio_put(led_pin, true);
+
+           // sleep_goto_sleep_for(500, NULL);
         }
-    }
 
     return 0;
 }

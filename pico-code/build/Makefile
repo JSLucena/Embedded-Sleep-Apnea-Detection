@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named pico_sleep_manual
+
+# Build rule for target.
+pico_sleep_manual: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_sleep_manual
+.PHONY : pico_sleep_manual
+
+# fast build rule for target.
+pico_sleep_manual/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/build
+.PHONY : pico_sleep_manual/fast
+
+#=============================================================================
 # Target rules for targets named tflite_test
 
 # Build rule for target.
@@ -139,7 +152,7 @@ bs2_default: cmake_check_build_system
 
 # fast build rule for target.
 bs2_default/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default.dir/build.make pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/build.make pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/build
 .PHONY : bs2_default/fast
 
 #=============================================================================
@@ -152,7 +165,7 @@ bs2_default_bin: cmake_check_build_system
 
 # fast build rule for target.
 bs2_default_bin/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_bin.dir/build.make pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_bin.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_bin.dir/build.make pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_bin.dir/build
 .PHONY : bs2_default_bin/fast
 
 #=============================================================================
@@ -165,7 +178,7 @@ bs2_default_library: cmake_check_build_system
 
 # fast build rule for target.
 bs2_default_library/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/build.make pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_library.dir/build.make pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_library.dir/build
 .PHONY : bs2_default_library/fast
 
 #=============================================================================
@@ -193,6 +206,135 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h: cmake_check_build_system
 cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_scanvideo_scanvideo_pio_h
+
+# Build rule for target.
+pico_scanvideo_scanvideo_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_scanvideo_scanvideo_pio_h
+.PHONY : pico_scanvideo_scanvideo_pio_h
+
+# fast build rule for target.
+pico_scanvideo_scanvideo_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/common/pico_scanvideo/CMakeFiles/pico_scanvideo_scanvideo_pio_h.dir/build.make pico_extras/src/common/pico_scanvideo/CMakeFiles/pico_scanvideo_scanvideo_pio_h.dir/build
+.PHONY : pico_scanvideo_scanvideo_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_audio_i2s_audio_i2s_pio_h
+
+# Build rule for target.
+pico_audio_i2s_audio_i2s_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_audio_i2s_audio_i2s_pio_h
+.PHONY : pico_audio_i2s_audio_i2s_pio_h
+
+# fast build rule for target.
+pico_audio_i2s_audio_i2s_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build
+.PHONY : pico_audio_i2s_audio_i2s_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_audio_pwm_audio_pwm_pio_h
+
+# Build rule for target.
+pico_audio_pwm_audio_pwm_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_audio_pwm_audio_pwm_pio_h
+.PHONY : pico_audio_pwm_audio_pwm_pio_h
+
+# fast build rule for target.
+pico_audio_pwm_audio_pwm_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build
+.PHONY : pico_audio_pwm_audio_pwm_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_audio_spdif_audio_spdif_pio_h
+
+# Build rule for target.
+pico_audio_spdif_audio_spdif_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_audio_spdif_audio_spdif_pio_h
+.PHONY : pico_audio_spdif_audio_spdif_pio_h
+
+# fast build rule for target.
+pico_audio_spdif_audio_spdif_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_spdif/CMakeFiles/pico_audio_spdif_audio_spdif_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_spdif/CMakeFiles/pico_audio_spdif_audio_spdif_pio_h.dir/build
+.PHONY : pico_audio_spdif_audio_spdif_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_sd_card_sd_card_pio_h
+
+# Build rule for target.
+pico_sd_card_sd_card_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_sd_card_sd_card_pio_h
+.PHONY : pico_sd_card_sd_card_pio_h
+
+# fast build rule for target.
+pico_sd_card_sd_card_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_sd_card/CMakeFiles/pico_sd_card_sd_card_pio_h.dir/build.make pico_extras/src/rp2_common/pico_sd_card/CMakeFiles/pico_sd_card_sd_card_pio_h.dir/build
+.PHONY : pico_sd_card_sd_card_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_scanvideo_dpi_timing_pio_h
+
+# Build rule for target.
+pico_scanvideo_dpi_timing_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_scanvideo_dpi_timing_pio_h
+.PHONY : pico_scanvideo_dpi_timing_pio_h
+
+# fast build rule for target.
+pico_scanvideo_dpi_timing_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build.make pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build
+.PHONY : pico_scanvideo_dpi_timing_pio_h/fast
+
+home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.o: home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.o
+
+# target to build an object file
+home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.o
+
+home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.i: home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.i
+
+# target to preprocess a source file
+home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.i
+
+home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.s: home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.s
+
+# target to generate assembly for a file
+home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.c.s
+
+home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.o: home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.o
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.o
+
+# target to build an object file
+home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.o
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.o
+
+home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.i: home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.i
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.i
+
+# target to preprocess a source file
+home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.i
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.i
+
+home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.s: home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.s
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.s
+
+# target to generate assembly for a file
+home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.s
+.PHONY : home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.c.s
 
 home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o: home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o
 .PHONY : home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o
@@ -631,6 +773,7 @@ home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.o: home/jslucena/Wor
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.o
 
@@ -639,6 +782,7 @@ home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.i: home/jslucena/Wor
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.i
 
@@ -647,6 +791,7 @@ home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.s: home/jslucena/Wor
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/hardware_claim/claim.c.s
 
@@ -655,6 +800,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.o: home/jsluce
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.o
 
@@ -663,6 +809,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.i: home/jsluce
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.i
 
@@ -671,6 +818,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.s: home/jsluce
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/critical_section.c.s
 
@@ -679,6 +827,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.o: home/jslucena/Work
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.o
 
@@ -687,6 +836,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.i: home/jslucena/Work
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.i
 
@@ -695,6 +845,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.s: home/jslucena/Work
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/lock_core.c.s
 
@@ -703,6 +854,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.o: home/jslucena/Work/pic
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.o
 
@@ -711,6 +863,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.i: home/jslucena/Work/pic
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.i
 
@@ -719,6 +872,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.s: home/jslucena/Work/pic
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/mutex.c.s
 
@@ -727,6 +881,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.o: home/jslucena/Work/pico-
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.o
 
@@ -735,6 +890,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.i: home/jslucena/Work/pico-
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.i
 
@@ -743,6 +899,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.s: home/jslucena/Work/pico-
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_sync/sem.c.s
 
@@ -751,6 +908,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_time/time.o: home/jslucena/Work/pico
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.o
 
@@ -759,6 +917,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_time/time.i: home/jslucena/Work/pico
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.i
 
@@ -767,6 +926,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_time/time.s: home/jslucena/Work/pico
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_time/time.c.s
 
@@ -775,6 +935,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.o: home/jslucena
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.o
 
@@ -783,6 +944,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.i: home/jslucena
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.i
 
@@ -791,6 +953,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.s: home/jslucena
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_time/timeout_helper.c.s
 
@@ -799,6 +962,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.o: home/jslucena/Work/
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.o
 
@@ -807,6 +971,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.i: home/jslucena/Work/
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.i
 
@@ -815,6 +980,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.s: home/jslucena/Work/
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/datetime.c.s
 
@@ -823,6 +989,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.o: home/jslucena/Work/pic
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.o
 
@@ -831,6 +998,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.i: home/jslucena/Work/pic
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.i
 
@@ -839,6 +1007,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.s: home/jslucena/Work/pic
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/pheap.c.s
 
@@ -847,6 +1016,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/queue.o: home/jslucena/Work/pic
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.o
 
@@ -855,6 +1025,7 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/queue.i: home/jslucena/Work/pic
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.i
 
@@ -863,38 +1034,43 @@ home/jslucena/Work/pico-sdk/src/common/pico_util/queue.s: home/jslucena/Work/pic
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/common/pico_util/queue.c.s
 
-home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.o: home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.o
+home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.o: home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.o
+home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.o
 
-home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.i: home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.i
+home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.i: home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.i
 
 # target to preprocess a source file
-home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.i
+home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.i
 
-home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.s: home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.s
+home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.s: home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.s
 
 # target to generate assembly for a file
-home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.c.s
+home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.c.s
 
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.o: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 
@@ -903,6 +1079,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.i: home/
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.i
 
@@ -911,6 +1088,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.s: home/
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.s
 
@@ -919,6 +1097,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.o: home/jsluce
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o
 
@@ -927,6 +1106,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.i: home/jsluce
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 
@@ -935,16 +1115,36 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.s: home/jsluce
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 
-home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.o: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.o: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
+
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.i: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.i
+
+# target to preprocess a source file
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.s: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.s
+
+# target to generate assembly for a file
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
 
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.o: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.o
@@ -975,6 +1175,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.o: home/jslucena/W
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o
 
@@ -983,6 +1184,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 
@@ -991,6 +1193,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 
@@ -999,6 +1202,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.o: home/jslucena/Wor
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.o
 
@@ -1007,6 +1211,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.i: home/jslucena/Wor
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 
@@ -1015,6 +1220,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.s: home/jslucena/Wor
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 
@@ -1023,6 +1229,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.o: hom
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o
 
@@ -1031,6 +1238,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.o: home/jslucena/Wor
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.o
 
@@ -1039,6 +1247,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.i: home/jslucena/Wor
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 
@@ -1047,14 +1256,43 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.s: home/jslucena/Wor
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
+
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.o: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.o
+
+# target to build an object file
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.i: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.i
+
+# target to preprocess a source file
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.s: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.s
+
+# target to generate assembly for a file
+home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
 
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.o: home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.o
 
@@ -1063,6 +1301,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 
@@ -1071,6 +1310,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 
@@ -1079,6 +1319,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_loc
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o
 
@@ -1087,6 +1328,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_loc
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.i
 
@@ -1095,6 +1337,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_loc
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.s
 
@@ -1103,6 +1346,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.o: home/jslucena
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o
 
@@ -1111,6 +1355,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.i: home/jslucena
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.i
 
@@ -1119,6 +1364,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.s: home/jslucena
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.s
 
@@ -1127,6 +1373,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.o: home/jslucena
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.o
 
@@ -1135,6 +1382,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.i: home/jslucena
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 
@@ -1143,6 +1391,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.s: home/jslucena
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 
@@ -1151,6 +1400,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.o: home/jslucena/W
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.o
 
@@ -1159,6 +1409,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 
@@ -1167,6 +1418,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 
@@ -1175,6 +1427,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.o: home/jslucena/W
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o
 
@@ -1183,6 +1436,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 
@@ -1191,6 +1445,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 
@@ -1199,6 +1454,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.o: home/js
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o
 
@@ -1207,6 +1463,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.i: home/js
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 
@@ -1215,6 +1472,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.s: home/js
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 
@@ -1247,6 +1505,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.o: home/jslucena/W
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o
 
@@ -1255,6 +1514,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 
@@ -1263,14 +1523,43 @@ home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.o
+
+# target to build an object file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.i: home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.i
+
+# target to preprocess a source file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.s: home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.s
+
+# target to generate assembly for a file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o
 
@@ -1279,6 +1568,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.i
 
@@ -1287,6 +1577,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.c.s
 
@@ -1295,6 +1586,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.o: home/js
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o
 
@@ -1303,6 +1595,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.o: home/jslucena
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o
 
@@ -1311,6 +1604,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.i: home/jslucena
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 
@@ -1319,6 +1613,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.s: home/jslucena
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 
@@ -1327,6 +1622,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.o: home/jsl
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o
 
@@ -1335,6 +1631,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.i: home/jsl
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.i
 
@@ -1343,6 +1640,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.s: home/jsl
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.s
 
@@ -1351,6 +1649,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o
 
@@ -1359,6 +1658,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.i
 
@@ -1367,6 +1667,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.s
 
@@ -1375,6 +1676,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.o: home/jslucena/Work/
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o
 
@@ -1383,6 +1685,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.o: home/j
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o
 
@@ -1391,6 +1694,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.i: home/j
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.i
 
@@ -1399,54 +1703,70 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.s: home/j
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.o
-
-# target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.o
-
-# target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
-
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.i: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.i
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.i: home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.i
 
 # target to preprocess a source file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.s: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.s
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.s: home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.s
 
 # target to generate assembly for a file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.o
+
+# target to build an object file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.o
+
+# target to build an object file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.o
+
+# target to build an object file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.o
 
@@ -1455,6 +1775,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.i: home/jsluc
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 
@@ -1463,16 +1784,18 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.s: home/jsluc
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.o
@@ -1503,6 +1826,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.o: home/jslucena/Wor
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.o
 
@@ -1511,6 +1835,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.i: home/jslucena/Wor
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.i
 
@@ -1519,46 +1844,34 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.s: home/jslucena/Wor
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.c.s
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.S.o
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
-
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.i: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.i
-
-# target to preprocess a source file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
-
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.s: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.s
-
-# target to generate assembly for a file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.S.o
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.o
 
@@ -1567,6 +1880,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.i: home/jslucen
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 
@@ -1575,30 +1889,25 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.s: home/jslucen
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.o
 
 # target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
-
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.o
-
-# target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o
 
@@ -1607,6 +1916,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.i
 
@@ -1615,22 +1925,16 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s
-
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.o
-
-# target to build an object file
-home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
-.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.o
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o
 
@@ -1639,6 +1943,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.i: home/jsl
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.i
 
@@ -1647,6 +1952,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.s: home/jsl
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.s
 
@@ -1655,6 +1961,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.o: home/jslucena/W
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.o
 
@@ -1663,6 +1970,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 
@@ -1671,6 +1979,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 
@@ -1679,6 +1988,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.o: home/jslucena
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o
 
@@ -1687,6 +1997,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.i: home/jslucena
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 
@@ -1695,6 +2006,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.s: home/jslucena
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 
@@ -1703,6 +2015,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.o: hom
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o
 
@@ -1711,6 +2024,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.i: hom
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.i
 
@@ -1719,6 +2033,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.s: hom
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.s
 
@@ -1727,6 +2042,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o
 
@@ -1735,6 +2051,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.i
 
@@ -1743,6 +2060,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.s
 
@@ -1751,6 +2069,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o
 
@@ -1759,6 +2078,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.i
 
@@ -1767,6 +2087,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.s
 
@@ -1775,6 +2096,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_bi
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o
 
@@ -1783,6 +2105,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_bi
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.i
 
@@ -1791,6 +2114,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_bi
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.s
 
@@ -1799,6 +2123,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.o: home/jslucena/Wor
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o
 
@@ -1807,6 +2132,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.i: home/jslucena/Wor
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 
@@ -1815,8 +2141,33 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.s: home/jslucena/Wor
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.o
+
+# target to build an object file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i: home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i
+
+# target to preprocess a source file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s: home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s
+
+# target to generate assembly for a file
+home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
+.PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
 
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.o: home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.o
@@ -1895,6 +2246,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.o: home/jslucena/W
 
 # target to build an object file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o
 
@@ -1903,6 +2255,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i: home/jslucena/W
 
 # target to preprocess a source file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 
@@ -1911,6 +2264,7 @@ home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s: home/jslucena/W
 
 # target to generate assembly for a file
 home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pico_sleep_manual.dir/build.make CMakeFiles/pico_sleep_manual.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tflite_test.dir/build.make CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 .PHONY : home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 
@@ -1972,10 +2326,23 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... bs2_default_bin"
 	@echo "... cyw43_driver_picow_cyw43_bus_pio_spi_pio_h"
+	@echo "... pico_audio_i2s_audio_i2s_pio_h"
+	@echo "... pico_audio_pwm_audio_pwm_pio_h"
+	@echo "... pico_audio_spdif_audio_spdif_pio_h"
+	@echo "... pico_scanvideo_dpi_timing_pio_h"
+	@echo "... pico_scanvideo_scanvideo_pio_h"
+	@echo "... pico_sd_card_sd_card_pio_h"
 	@echo "... pioasmBuild"
 	@echo "... bs2_default"
 	@echo "... bs2_default_library"
+	@echo "... pico_sleep_manual"
 	@echo "... tflite_test"
+	@echo "... home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.o"
+	@echo "... home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.i"
+	@echo "... home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc/rosc.s"
+	@echo "... home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.o"
+	@echo "... home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.i"
+	@echo "... home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep/sleep.s"
 	@echo "... home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o"
 	@echo "... home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.i"
 	@echo "... home/jslucena/Work/pico-sdk/lib/tinyusb/src/class/audio/audio_device.s"
@@ -2060,9 +2427,9 @@ help:
 	@echo "... home/jslucena/Work/pico-sdk/src/common/pico_util/queue.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/common/pico_util/queue.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/common/pico_util/queue.s"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.i"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/platform.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.i"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/platform.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.s"
@@ -2070,6 +2437,8 @@ help:
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks/clocks.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.i"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider/divider.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash/flash.s"
@@ -2083,6 +2452,9 @@ help:
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll/pll.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.i"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman/powman.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync/sync.s"
@@ -2110,6 +2482,9 @@ help:
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc/xosc.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.i"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic/atomic.s"
@@ -2127,34 +2502,31 @@ help:
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.s"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_hardware.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.i"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.i"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider/divider_compiler.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_conv_m33.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_math.s"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_double/double_sci_m33.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash/flash.s"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.i"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_common_m33.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_conv32_vfp.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_math.s"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.o"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc/malloc.s"
-	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/panic.s"
@@ -2179,6 +2551,9 @@ help:
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio/stdio.s"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.o"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i"
+	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.o"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.i"
 	@echo "... home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.s"

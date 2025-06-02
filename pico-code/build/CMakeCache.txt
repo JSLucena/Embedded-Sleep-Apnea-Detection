@@ -32,7 +32,7 @@ CMAKE_ASM_COMPILER_AR:FILEPATH=/usr/bin/arm-none-eabi-gcc-ar
 CMAKE_ASM_COMPILER_RANLIB:FILEPATH=/usr/bin/arm-none-eabi-gcc-ranlib
 
 //Flags used by the ASM compiler during all build types.
-CMAKE_ASM_FLAGS:STRING=-mcpu=cortex-m0plus -mthumb
+CMAKE_ASM_FLAGS:STRING=-mcpu=cortex-m33 -mthumb -march=armv8-m.main+fp+dsp -mfloat-abi=softfp -mcmse
 
 //Flags used by the ASM compiler during DEBUG builds.
 CMAKE_ASM_FLAGS_DEBUG:STRING=-Og -g
@@ -65,7 +65,7 @@ CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/arm-none-eabi-gcc-ar
 CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/arm-none-eabi-gcc-ranlib
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=-mcpu=cortex-m0plus -mthumb
+CMAKE_CXX_FLAGS:STRING=-mcpu=cortex-m33 -mthumb -march=armv8-m.main+fp+dsp -mfloat-abi=softfp -mcmse
 
 //Flags used by the CXX compiler during DEBUG builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=-Og -g
@@ -91,7 +91,7 @@ CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/arm-none-eabi-gcc-ar
 CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/arm-none-eabi-gcc-ranlib
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=-mcpu=cortex-m0plus -mthumb
+CMAKE_C_FLAGS:STRING=-mcpu=cortex-m33 -mthumb -march=armv8-m.main+fp+dsp -mfloat-abi=softfp -mcmse
 
 //Flags used by the C compiler during DEBUG builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-Og -g
@@ -234,7 +234,7 @@ CMAKE_STRIP:FILEPATH=/usr/bin/arm-none-eabi-strip
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
 //The CMake toolchain file
-CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/jslucena/Work/pico-sdk/cmake/preload/toolchains/pico_arm_cortex_m0plus_gcc.cmake
+CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/jslucena/Work/pico-sdk/cmake/preload/toolchains/pico_arm_cortex_m33_gcc.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -291,6 +291,16 @@ PICO_DEFAULT_BOOT_STAGE2:STRING=compile_time_choice
 //Build debug builds with -O0
 PICO_DEOPTIMIZED_DEBUG:BOOL=OFF
 
+//Set to ON to fetch copy of PICO EXTRAS from git if not otherwise
+// locatable
+PICO_EXTRAS_FETCH_FROM_GIT:BOOL=
+
+//location to download EXTRAS
+PICO_EXTRAS_FETCH_FROM_GIT_PATH:FILEPATH=
+
+//Path to the PICO EXTRAS
+PICO_EXTRAS_PATH:PATH=/home/jslucena/Work/pico-extras
+
 //Default binaries to not not use flash
 PICO_NO_FLASH:BOOL=OFF
 
@@ -329,6 +339,15 @@ PICO_STDIO_USB:BOOL=OFF
 
 //Directory where pioasm has been installed
 PIOASM_INSTALL_DIR:PATH=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pioasm-install
+
+//Value Computed by CMake
+pico_extras_BINARY_DIR:STATIC=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico_extras
+
+//Value Computed by CMake
+pico_extras_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pico_extras_SOURCE_DIR:STATIC=/home/jslucena/Work/pico-extras
 
 //Value Computed by CMake
 pico_sdk_BINARY_DIR:STATIC=/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk
@@ -392,7 +411,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=0
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -483,7 +502,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=96
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=120
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -539,24 +558,25 @@ FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/home/jslucena/.pyenv/shims/pytho
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 PICO_32BIT:INTERNAL=1
 PICO_ARM:INTERNAL=1
-PICO_BOOT_STAGE2_DIR:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2040/boot_stage2
+PICO_BOOT_STAGE2_DIR:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2350/boot_stage2
 PICO_CMAKE_PRELOAD_PLATFORM_DIR:INTERNAL=/home/jslucena/Work/pico-sdk/cmake/preload/platforms
-PICO_CMAKE_PRELOAD_PLATFORM_FILE:INTERNAL=/home/jslucena/Work/pico-sdk/cmake/preload/platforms/rp2040.cmake
-PICO_CMSIS_DEVICE:INTERNAL=RP2040
+PICO_CMAKE_PRELOAD_PLATFORM_FILE:INTERNAL=/home/jslucena/Work/pico-sdk/cmake/preload/platforms/rp2350-arm-s.cmake
+PICO_CMSIS_DEVICE:INTERNAL=RP2350
 PICO_COMPILER_ASM:INTERNAL=/usr/bin/arm-none-eabi-gcc
-PICO_DOXYGEN_ENABLED_SECTIONS:INTERNAL=rp2040_specific
-PICO_DOXYGEN_EXCLUDE_PATHS:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs;/home/jslucena/Work/pico-sdk/src/rp2_common/cmsis
-PICO_DOXYGEN_PATHS:INTERNAL=/home/jslucena/Work/pico-sdk/src/common/boot_picobin_headers;/home/jslucena/Work/pico-sdk/src/common/boot_picoboot_headers;/home/jslucena/Work/pico-sdk/src/common/boot_uf2_headers;/home/jslucena/Work/pico-sdk/src/common/pico_base_headers;/home/jslucena/Work/pico-sdk/src/common/pico_usb_reset_interface_headers;/home/jslucena/Work/pico-sdk/src/common/pico_bit_ops_headers;/home/jslucena/Work/pico-sdk/src/common/pico_binary_info;/home/jslucena/Work/pico-sdk/src/common/pico_divider_headers;/home/jslucena/Work/pico-sdk/src/common/pico_sync;/home/jslucena/Work/pico-sdk/src/common/pico_time;/home/jslucena/Work/pico-sdk/src/common/pico_util;/home/jslucena/Work/pico-sdk/src/common/pico_stdlib_headers;/home/jslucena/Work/pico-sdk/src/common/hardware_claim;/home/jslucena/Work/pico-sdk/src/rp2040/pico_platform;/home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs;/home/jslucena/Work/pico-sdk/src/rp2040/hardware_structs;/home/jslucena/Work/pico-sdk/src/rp2040/boot_stage2;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_base;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_adc;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_dma;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_exception;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_i2c;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_interp;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pio;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pwm;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_resets;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_rtc;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_spi;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc;/home/jslucena/Work/pico-sdk/src/rp2_common/boot_bootrom_headers;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_sections;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootsel_via_double_reset;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_multicore;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_rand;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_semihosting;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_rtt;/home/jslucena/Work/pico-sdk/src/rp2_common/cmsis;/home/jslucena/Work/pico-sdk/src/rp2_common/tinyusb;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_i2c_slave;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_async_context;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_btstack;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cyw43_driver;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_lwip/tools;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_lwip;/home/jslucena/Work/pico-sdk/lib/cyw43-driver/src;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cyw43_arch;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mbedtls;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_time_adapter;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_link;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib;/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/extra_doxygen
-PICO_DOXYGEN_PRE_DEFINES:INTERNAL=PICO_RP2040=1;PICO_RP2350=0
+PICO_DOXYGEN_ENABLED_SECTIONS:INTERNAL=rp2350_specific
+PICO_DOXYGEN_EXCLUDE_PATHS:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs;/home/jslucena/Work/pico-sdk/src/rp2_common/cmsis
+PICO_DOXYGEN_PATHS:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_riscv;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_hazard3;/home/jslucena/Work/pico-sdk/src/common/boot_picobin_headers;/home/jslucena/Work/pico-sdk/src/common/boot_picoboot_headers;/home/jslucena/Work/pico-sdk/src/common/boot_uf2_headers;/home/jslucena/Work/pico-sdk/src/common/pico_base_headers;/home/jslucena/Work/pico-sdk/src/common/pico_usb_reset_interface_headers;/home/jslucena/Work/pico-sdk/src/common/pico_bit_ops_headers;/home/jslucena/Work/pico-sdk/src/common/pico_binary_info;/home/jslucena/Work/pico-sdk/src/common/pico_divider_headers;/home/jslucena/Work/pico-sdk/src/common/pico_sync;/home/jslucena/Work/pico-sdk/src/common/pico_time;/home/jslucena/Work/pico-sdk/src/common/pico_util;/home/jslucena/Work/pico-sdk/src/common/pico_stdlib_headers;/home/jslucena/Work/pico-sdk/src/common/hardware_claim;/home/jslucena/Work/pico-sdk/src/rp2350/pico_platform;/home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs;/home/jslucena/Work/pico-sdk/src/rp2350/hardware_structs;/home/jslucena/Work/pico-sdk/src/rp2350/boot_stage2;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_base;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_adc;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_boot_lock;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_clocks;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_divider;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_dma;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_exception;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_flash;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_gpio;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_i2c;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_interp;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_irq;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pio;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pll;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_pwm;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_resets;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_spi;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sync_spin_lock;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_ticks;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_timer;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_uart;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_vreg;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_watchdog;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xip_cache;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_xosc;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_powman;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_riscv_platform_timer;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_sha256;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_dcp;/home/jslucena/Work/pico-sdk/src/rp2_common/hardware_rcp;/home/jslucena/Work/pico-sdk/src/rp2_common/boot_bootrom_headers;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_sections;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_aon_timer;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootrom;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bootsel_via_double_reset;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_multicore;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_unique_id;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_atomic;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_bit_ops;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_divider;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_double;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_int64_ops;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_flash;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_float;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mem_ops;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_malloc;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_printf;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_rand;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_sha256;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_semihosting;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_uart;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_rtt;/home/jslucena/Work/pico-sdk/src/rp2_common/cmsis;/home/jslucena/Work/pico-sdk/src/rp2_common/tinyusb;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio_usb;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_i2c_slave;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_async_context;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_btstack;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cyw43_driver;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_lwip/tools;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_lwip;/home/jslucena/Work/pico-sdk/lib/cyw43-driver/src;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cyw43_arch;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_mbedtls;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_time_adapter;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_crt0;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_clib_interface;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_binary_info;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_standard_link;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_fix;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime_init;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_runtime;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdio;/home/jslucena/Work/pico-sdk/src/rp2_common/pico_stdlib;/home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/pico-sdk/src/extra_doxygen;/home/jslucena/Work/pico-extras/src/rp2_common/hardware_rosc;/home/jslucena/Work/pico-extras/src/rp2_common/pico_sleep;/home/jslucena/Work/pico-extras/src/rp2_common/pico_audio_i2s;/home/jslucena/Work/pico-extras/src/rp2_common/pico_audio_pwm;/home/jslucena/Work/pico-extras/src/rp2_common/pico_audio_spdif;/home/jslucena/Work/pico-extras/src/rp2_common/pico_sd_card;/home/jslucena/Work/pico-extras/src/rp2_common/pico_scanvideo_dpi;/home/jslucena/Work/pico-extras/src/rp2_common/usb_common;/home/jslucena/Work/pico-extras/src/rp2_common/usb_device;/home/jslucena/Work/pico-extras/src/rp2_common/usb_device_msc
+PICO_DOXYGEN_PRE_DEFINES:INTERNAL=PICO_RP2040=0;PICO_RP2350=1;NUM_DOORBELLS=1
 PICO_GCC_TRIPLE:INTERNAL=arm-none-eabi
 PICO_NO_HARDWARE:INTERNAL=0
 PICO_ON_DEVICE:INTERNAL=1
-PICO_PLATFORM_CMAKE_FILE:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2040.cmake
+PICO_PIO_VERSION:INTERNAL=1
+PICO_PLATFORM_CMAKE_FILE:INTERNAL=/home/jslucena/Work/pico-sdk/src/rp2350-arm-s.cmake
 //Saved CMAKE_TOOLCHAIN_FILE
-PICO_PREVIOUS_CMAKE_TOOLCHAIN_FILE:INTERNAL=/home/jslucena/Work/pico-sdk/cmake/preload/toolchains/pico_arm_cortex_m0plus_gcc.cmake
+PICO_PREVIOUS_CMAKE_TOOLCHAIN_FILE:INTERNAL=/home/jslucena/Work/pico-sdk/cmake/preload/toolchains/pico_arm_cortex_m33_gcc.cmake
 PICO_RISCV:INTERNAL=0
-PICO_RP2040:INTERNAL=1
-PICO_RP2350:INTERNAL=0
+PICO_RP2040:INTERNAL=0
+PICO_RP2350:INTERNAL=1
 //Enable build of SDK tests
 PICO_SDK_TESTS_ENABLED:INTERNAL=
 PICO_TOOLCHAIN_PATH:INTERNAL=

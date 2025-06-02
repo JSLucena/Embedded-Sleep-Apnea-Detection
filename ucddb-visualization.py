@@ -55,7 +55,7 @@ def load_respiratory_events(file_path, meas_date):
     return df
 
 # Rest of the code remains the same as in your original script
-patient_path = "datasets/files/ucddb027"
+patient_path = "datasets/files/ucddb015"
 file = patient_path + ".edf"
 data = mne.io.read_raw_edf(file)
 raw_data = data.get_data()
@@ -82,7 +82,12 @@ time_vector = pd.date_range(start=meas_date, periods=num_samples, freq=pd.Timede
 
 df_edf = pd.DataFrame(raw_data.T, columns=channels)
 df_edf['Time'] = time_vector
-
+print(df_edf['Time'])
+#count = 0
+#for i in range(0,len(df_edf),128):
+#    print(df_edf.iloc[i]['Time'])
+#    count+=1
+#print(count)
 # Plotting
 plt.figure(figsize=(15, 6))
 
@@ -122,11 +127,11 @@ ax1.set_ylabel("SpO2 (%)")
 ax1.legend(loc='upper right')
 
 # --- Subplot 2: Labeled Dataset with Abnormal Breathing ---
-ax2.plot(dataset['Time'], dataset['SpO2'], color='green', label='Dataset SpO2', linewidth=1)
+ax2.plot(df_edf['Time'], df_edf['SpO2'], color='green', label='Dataset SpO2', linewidth=1)
 # Overlay labeled events (where Label == 1)
-label_changes = np.diff(dataset['Label'], prepend=0)
-event_starts = dataset['Time'][label_changes == 1].values
-event_ends = dataset['Time'][np.roll(label_changes, -1) == -1].values
+label_changes = np.diff(df_edf['Label'], prepend=0)
+event_starts = df_edf['Time'][label_changes == 1].values
+event_ends = df_edf['Time'][np.roll(label_changes, -1) == -1].values
 for start, end in zip(event_starts, event_ends):
     ax2.axvspan(start, end, color='purple', alpha=0.3, 
                 label='Abnormal Breathing' if start == event_starts[0] else "")

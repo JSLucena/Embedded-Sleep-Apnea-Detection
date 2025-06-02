@@ -4,7 +4,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
-from keras import layers
+#from keras import layers
 from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, auc,classification_report, roc_auc_score
 from sklearn.utils import shuffle
 from keras import regularizers
@@ -19,9 +19,9 @@ from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 # Define all combinations to test
-FREQ = 8  # Hz
+FREQ = 1  # Hz
 LENGTH = 60 # seconds
-OVERLAP = 75 # 75%, 50%, 25% overlap
+OVERLAP = 25 # 75%, 50%, 25% overlap
 
 # Set up pandas display options
 pd.set_option('display.max_columns', None)
@@ -99,16 +99,16 @@ X_train = X_train_resampled.reshape(-1, X_train_resampled.shape[1], 1)
 y_train = y_train_resampled.reshape(-1, 1)
 X_test = X_test.reshape(-1, X_test.shape[1], 1)
 model = keras.Sequential([
-    layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),),
-    layers.MaxPool1D(pool_size=2),
-    layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001)),
-    layers.MaxPool1D(pool_size=2),
-    layers.Conv1D(filters=64, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001)),
-    layers.MaxPool1D(pool_size=2),
-    layers.Flatten(),
-    layers.Dropout(0.25),
-    layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
-    layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
+    keras.layers.Conv1D(filters=16, kernel_size=9, strides=1, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001),input_shape=(X_train.shape[1], 1)),
+    keras.layers.MaxPool1D(pool_size=2),
+    keras.layers.Conv1D(filters=32, kernel_size=5, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001)),
+    keras.layers.MaxPool1D(pool_size=2),
+    keras.layers.Conv1D(filters=64, kernel_size=3, padding="same", activation="relu",kernel_initializer='he_normal',kernel_regularizer=regularizers.L2(0.001)),
+    keras.layers.MaxPool1D(pool_size=2),
+    keras.layers.Flatten(),
+    keras.layers.Dropout(0.25),
+    keras.layers.Dense(16, activation="relu",kernel_initializer='he_normal'),
+    keras.layers.Dense(1, activation="sigmoid", kernel_regularizer=regularizers.L2(0.01),kernel_initializer='glorot_uniform')
 ])
 reduce_lr = ReduceLROnPlateau(
     monitor='val_loss', 
@@ -152,6 +152,8 @@ history = model.fit(
     class_weight=class_weights,
     verbose=1
 )
+model_path = f"models/a.keras"
+model.save(model_path)  
 training_time = time.time() - start_time
 print(f"Training time: {training_time:.2f} seconds")
 

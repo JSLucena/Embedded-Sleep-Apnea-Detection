@@ -1,9 +1,9 @@
 CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp \
  /usr/arm-none-eabi/include/c++/14.2.1/cstdlib \
- /usr/arm-none-eabi/include/c++/14.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++config.h \
- /usr/arm-none-eabi/include/c++/14.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/os_defines.h \
- /usr/arm-none-eabi/include/c++/14.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/cpu_defines.h \
+ /usr/arm-none-eabi/include/c++/14.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/c++config.h \
+ /usr/arm-none-eabi/include/c++/14.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/os_defines.h \
+ /usr/arm-none-eabi/include/c++/14.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/cpu_defines.h \
  /usr/arm-none-eabi/include/c++/14.2.1/pstl/pstl_config.h \
  /usr/arm-none-eabi/include/stdlib.h \
  /usr/arm-none-eabi/include/machine/ieeefp.h \
@@ -37,12 +37,12 @@ CMakeFiles/tflite_test.dir/home/jslucena/Work/pico-sdk/src/rp2_common/pico_cxx_o
  /home/jslucena/Work/Embedded-Sleep-Apnea-Detection/pico-code/build/generated/pico_base/pico/config_autogen.h \
  /home/jslucena/Work/pico-sdk/src/boards/include/boards/pico2_w.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/pico_platform/include/pico/platform.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs/include/hardware/platform_defs.h \
  /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h \
  /home/jslucena/Work/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
- /home/jslucena/Work/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h \
+ /home/jslucena/Work/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h \
  /home/jslucena/Work/pico-sdk/src/common/pico_base_headers/include/pico/error.h
