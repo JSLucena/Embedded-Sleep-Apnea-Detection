@@ -55,7 +55,7 @@ def load_respiratory_events(file_path, meas_date):
     return df
 
 # Rest of the code remains the same as in your original script
-patient_path = "datasets/files/ucddb015"
+patient_path = "datasets/files/ucddb006"
 file = patient_path + ".edf"
 data = mne.io.read_raw_edf(file)
 raw_data = data.get_data()

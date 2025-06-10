@@ -20,7 +20,7 @@ from imblearn.over_sampling import SMOTE
 from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 # Define all combinations to test
 TARGET_FREQUENCIES = [1, 2,4, 8, 16]  # Hz
-SEGMENT_LENGTHS = [ 11, 15, 20,  30, 60]  # seconds
+SEGMENT_LENGTHS = [120]  # seconds
 WINDOW_OVERLAPS = [0.25, 0.5, 0.75]  # 25%, 50%, 75% overlap
 
 

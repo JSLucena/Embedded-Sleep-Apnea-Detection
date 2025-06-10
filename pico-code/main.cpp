@@ -192,13 +192,13 @@ void run_benchmark(const ModelConfig* config) {
   // Get input/output tensors
     TfLiteTensor* input = interpreter->input(0);
     TfLiteTensor* output = interpreter->output(0);
-    printf("\nBenchmarking %s model...\n", config->model_name);
+    //printf("\nBenchmarking %s model...\n", config->model_name);
     uint32_t start_time = to_ms_since_boot(get_absolute_time());
     normalize(received_data, SEGMENT_LENGTH);
-    printf("First 5 values: ");
-    for (uint32_t i = 0; i < (data_length < 5 ? data_length : 5); i++) {
-        printf("%.6f ", received_data[i]);
-    }
+    //printf("First 5 values: ");
+    //for (uint32_t i = 0; i < (data_length < 5 ? data_length : 5); i++) {
+    //    printf("%.6f ", received_data[i]);
+    //}
     if (config->is_quantized) {
        // Quantize input: float → uint8
       float scale = input->params.scale;
@@ -217,14 +217,15 @@ void run_benchmark(const ModelConfig* config) {
     if (interpreter->Invoke() != kTfLiteOk) {
       printf("Invoke Failed!\n");
     }
-    printf("Output type: %d, bytes: %d\n", output->type, output->bytes);
+    //printf("Output type: %d, bytes: %d\n", output->type, output->bytes);
 
-    uint32_t duration = to_ms_since_boot(get_absolute_time()) - start_time;
+    //uint32_t duration = to_ms_since_boot(get_absolute_time()) - start_time;
     
-    printf("Latency: %d\n", duration);
+    //printf("Latency: %d\n", duration);
     //printf("Model size: %d KB\n", config->model_len / 1024);
     //printf("Arena used bytes: %d\n", interpreter.arena_used_bytes());
-    printf("Result: ");
+    //printf("Result: ");
+    /*
     if (config->is_quantized) {
         // Dequantize output: uint8 → float
         float scale = output->params.scale;
@@ -240,8 +241,8 @@ void run_benchmark(const ModelConfig* config) {
             printf("%f ", output->data.f[j]);
         }
     }
-        printf("\n");
-
+        //printf("\n");
+    */
     fflush(stdout);
     stdio_flush();
 }
@@ -308,7 +309,7 @@ int main() {
     
     //set_sys_clock_khz(48000, true);
     
-    //gpio_acknowledge_irq(button_pin, GPIO_IRQ_EDGE_FALL);
+    //gpio_acknaowledge_irq(button_pin, GPIO_IRQ_EDGE_FALL);
     
     //gpio_acknowledge_irq(button_pin, GPIO_IRQ_EDGE_FALL);
     
@@ -321,13 +322,19 @@ int main() {
             
             //gpio_put(new_led_pin, true);
             //gpio_put(new_led_pin, false);
-            sleep_run_from_dormant_source(DORMANT_SOURCE_ROSC);  
+            sleep_run_from_dormant_source(DORMANT_SOURCE_ROSC);
+            //sleep_goto_sleep_for(200, NULL);  
             sleep_goto_dormant_until_pin(button_pin, true, false);
             sleep_power_up();
             //gpio_put(new_led_pin, true);
+            uint32_t start_time = to_ms_since_boot(get_absolute_time());
+            //for(int i = 0; i < 10; i++)
             run_benchmark(&baseline_config);
 
-           // sleep_goto_sleep_for(500, NULL);
+            uint32_t duration = to_ms_since_boot(get_absolute_time()) - start_time;
+            printf("Latency: %d\n", duration);
+
+           
         }
 
     return 0;
